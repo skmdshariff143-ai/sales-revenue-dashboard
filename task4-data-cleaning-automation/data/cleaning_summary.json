@@ -1,0 +1,14 @@
+{
+    "initial_rows": 215,
+    "steps": {
+        "step1_duplicates_removed": 15,
+        "step10_rows_sorted": 200
+    },
+    "quality_metrics": {
+        "initial_quality_score_pct": 97.8,
+        "final_quality_score_pct": 100.0,
+        "total_issues_resolved": 885,
+        "total_duplicates_dropped": 15
+    },
+    "final_rows": 200
+}

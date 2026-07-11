@@ -145,6 +145,10 @@
             background: linear-gradient(90deg, #10b981, #059669);
         }
 
+        .card:nth-child(4)::before {
+            background: linear-gradient(90deg, #198754, #0f5132);
+        }
+
         .card:hover {
             border-color: var(--border-glow);
             transform: translateY(-6px);
@@ -180,6 +184,11 @@
 
         .card:nth-child(3) .card-tag {
             background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-emerald);
+        }
+
+        .card:nth-child(4) .card-tag {
+            background: rgba(25, 135, 84, 0.15);
             color: var(--accent-emerald);
         }
 
@@ -232,6 +241,10 @@
             color: var(--accent-emerald);
         }
 
+        .card:nth-child(4) .card-link {
+            color: var(--accent-emerald);
+        }
+
         .card:hover .card-link {
             gap: 10px;
         }
@@ -270,7 +283,7 @@
         <div class="logo-icon">📊</div>
         <h1>Data Analytics Portfolio</h1>
         <p class="subtitle">
-            Interactive dashboards and machine learning projects — explore sales analytics, K-Means customer segmentation, and predictive revenue forecasting models.
+            Interactive dashboards and machine learning projects — explore sales analytics, customer segmentation, predictive revenue forecasting, and data quality cleaning automation pipelines.
         </p>
 
         <div class="cards">
@@ -320,6 +333,23 @@
                     <span class="tech-badge">Python</span>
                     <span class="tech-badge">pandas</span>
                     <span class="tech-badge">scikit-learn</span>
+                    <span class="tech-badge">Chart.js</span>
+                </div>
+                <span class="card-link">Open Dashboard →</span>
+            </a>
+
+            <!-- Task 4 -->
+            <a href="task4-data-cleaning-automation/cleaning_dashboard.html" class="card" id="card-task4">
+                <div class="card-icon">🧼</div>
+                <span class="card-tag">Task 4</span>
+                <h2>Data Cleaning & Reporting</h2>
+                <p>
+                    Automated 11-step data cleaning pipeline handling missing values, duplicates, and inconsistent formatting. Generates formatted Excel audits and provides an interactive quality tracking dashboard.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">pandas</span>
+                    <span class="tech-badge">openpyxl</span>
                     <span class="tech-badge">Chart.js</span>
                 </div>
                 <span class="card-link">Open Dashboard →</span>

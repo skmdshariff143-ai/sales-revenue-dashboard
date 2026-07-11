@@ -1,0 +1,216 @@
+OrderID,CustomerName,OrderDate,Region,Category,Quantity,UnitPrice,Sales
+ ORD-096 ,Michael-Brown,2026.05.03,WEST,,4.0,-10.0,
+ ORD-166 ,Linda K.,05/02/2026,North,Furniture,5.0,25.5,127.5
+ ORD-139 ,Michael-Brown,10/05/2026,West Coast,ELECTRONICS,-1.0,15.0,
+ ORD-177 ,Mary Jane!,05/02/2026,east,furn,1.0,15.0,15.0
+ORD016,Mary Jane!,2026-05-07,US-East,,1.0,15.0,15.0
+ ORD-112 ,  robert lee  ,05-08-2026,south,,1.0,25.5,25.5
+ ORD-169 ,,04-05-2026,south,ELECTRONICS,10.0,15.0,150.0
+ ORD-074 ,john smith,2026.05.09,South-Region,furn,2.0,25.5,51.0
+ ORD-129 ,UNKNOWN,05-08-2026,US-East,Office Supplies,3.0,120.0,360.0
+ ORD-140 ,Mary Jane!,2026-05-07,  NORTH-EAST  ,,3.0,450.0,1350.0
+ ORD-159 ,Michael-Brown,"May 06, 2026",North,ELECTRONICS,1.0,15.0,15.0
+ ORD-031 ,Sarah O'Connor,"May 06, 2026",east,Office Supplies,2.0,15.0,30.0
+ ORD-187 ,john smith,05-08-2026,US-East,Electronics,1.0,15.0,15.0
+ord_010,Mary Jane!,05/02/2026,east,Furniture,1.0,450.0,450.0
+ ORD-068 ,,2026/05/05,US-East,,2.0,25.5,51.0
+ ORD-176 ,Mary Jane!,2026-05-07,South-Region,Electronics,1.0,25.5,25.5
+ ORD-172 ,Michael-Brown,10/05/2026,WEST,ELECTRONICS,4.0,15.0,
+ORD019,Linda K.,2026.05.03,east,elec,1.0,25.5,25.5
+ ORD-154 ,Sarah O'Connor,2026.05.09,south,office,1.0,15.0,15.0
+ ORD-067 ,UNKNOWN,05/02/2026,South-Region,Furniture,1.0,15.0,15.0
+ ORD-186 ,Michael-Brown,2026.05.09,West Coast,elec,3.0,15.0,
+ ORD-143 ,Linda K.,10/05/2026,West Coast,,1.0,120.0,120.0
+ ORD-080 ,Sarah O'Connor,2026/05/05,US-East,Furniture,3.0,120.0,360.0
+ ORD-026 ,  robert lee  ,05-08-2026,south,,3.0,15.0,45.0
+ ORD-105 ,Sarah O'Connor,2026/05/05,US-East,Office Supplies,1.0,120.0,120.0
+ ORD-146 ,john smith,04-05-2026,south,Office Supplies,1.0,25.5,25.5
+ ORD-190 ,Linda K.,05-08-2026,WEST,Office Supplies,3.0,25.5,76.5
+ORD017,,2026.05.03,south,ELECTRONICS,1.0,15.0,15.0
+ ORD-046 ,  robert lee  ,2026-05-01,  NORTH-EAST  ,Electronics,,25.5,
+ ORD-151 ,Sarah O'Connor,04-05-2026,West Coast,Furniture,-1.0,120.0,
+ ORD-109 ,Sarah O'Connor,10/05/2026,south,office,5.0,-10.0,
+ ORD-056 ,Mary Jane!,2026-05-01,east,Office Supplies,1.0,120.0,120.0
+ ORD-113 ,,05/02/2026,West Coast,ELECTRONICS,2.0,15.0,30.0
+ ORD-192 ,  robert lee  ,10/05/2026,east,Electronics,1.0,120.0,120.0
+ ORD-125 ,Mary Jane!,"May 06, 2026",West Coast,,2.0,15.0,30.0
+ ORD-129 ,UNKNOWN,05-08-2026,US-East,Office Supplies,3.0,120.0,360.0
+ ORD-076 ,UNKNOWN,2026-05-01,  NORTH-EAST  ,furn,2.0,120.0,240.0
+ ORD-136 ,Michael-Brown,05/02/2026,south,Furniture,1.0,120.0,120.0
+ ORD-119 ,,10/05/2026,east,furn,1.0,15.0,15.0
+ ORD-099 ,Michael-Brown,2026.05.09,east,office,,120.0,
+ ORD-097 ,Linda K.,10/05/2026,US-East,elec,10.0,450.0,
+ ORD-184 ,Mary Jane!,05-08-2026,North,office,10.0,120.0,1200.0
+ ORD-118 ,Linda K.,05-08-2026,North,office,1.0,25.5,25.5
+ ORD-094 ,Mary Jane!,10/05/2026,WEST,Furniture,1.0,15.0,15.0
+ ORD-085 ,Michael-Brown,04-05-2026,US-East,Office Supplies,1.0,450.0,450.0
+ ORD-096 ,Michael-Brown,2026.05.03,WEST,,4.0,-10.0,
+ ORD-138 ,,2026/05/05,West Coast,Electronics,1.0,15.0,15.0
+ ORD-067 ,UNKNOWN,05/02/2026,South-Region,Furniture,1.0,15.0,15.0
+ ORD-087 ,Mary Jane!,2026.05.03,West Coast,office,1.0,25.5,25.5
+ ORD-163 ,Mary Jane!,2026.05.03,US-East,Office Supplies,1.0,25.5,25.5
+ ORD-153 ,john smith,2026-05-07,south,ELECTRONICS,1.0,15.0,15.0
+ ORD-039 ,,05-08-2026,WEST,Office Supplies,2.0,15.0,30.0
+ ORD-025 ,,2026/05/05,West Coast,Electronics,2.0,15.0,30.0
+ ORD-166 ,Linda K.,05/02/2026,North,Furniture,5.0,25.5,127.5
+ ORD-121 ,john smith,10/05/2026,North,furn,2.0,120.0,240.0
+ ORD-030 ,Linda K.,05-08-2026,WEST,office,1.0,120.0,120.0
+ORD020,,2026/05/05,WEST,Office Supplies,1.0,25.5,25.5
+ ORD-070 ,john smith,2026/05/05,South-Region,ELECTRONICS,2.0,120.0,240.0
+ ORD-098 ,Linda K.,"May 06, 2026",  NORTH-EAST  ,Electronics,4.0,,
+ ORD-061 ,john smith,2026-05-01,WEST,furn,1.0,15.0,15.0
+ ORD-069 ,Mary Jane!,04-05-2026,US-East,Furniture,2.0,15.0,30.0
+ord_006,Michael-Brown,2026/05/05,West Coast,office,1.0,15.0,15.0
+ ORD-137 ,Sarah O'Connor,2026-05-01,West Coast,ELECTRONICS,3.0,25.5,76.5
+ ORD-057 ,Sarah O'Connor,05-08-2026,South-Region,Electronics,3.0,15.0,45.0
+ ORD-101 ,Michael-Brown,"May 06, 2026",North,furn,-1.0,25.5,
+ ORD-199 ,Mary Jane!,2026-05-07,south,ELECTRONICS,1.0,15.0,15.0
+ ORD-083 ,john smith,2026-05-07,South-Region,Office Supplies,1.0,15.0,15.0
+ ORD-066 ,Michael-Brown,2026-05-01,North,Furniture,1.0,25.5,
+ ORD-110 ,,2026-05-01,US-East,elec,1.0,25.5,25.5
+ ORD-183 ,Michael-Brown,04-05-2026,West Coast,,3.0,15.0,45.0
+ ORD-032 ,Sarah O'Connor,2026.05.03,West Coast,Office Supplies,2.0,25.5,
+ORD013,Michael-Brown,2026-05-01,US-East,furn,1.0,25.5,25.5
+ ORD-036 ,john smith,2026-05-01,WEST,Furniture,1.0,15.0,15.0
+ ORD-029 ,john smith,05/02/2026,US-East,ELECTRONICS,2.0,25.5,51.0
+ ORD-043 ,Sarah O'Connor,"May 06, 2026",West Coast,ELECTRONICS,1.0,15.0,15.0
+ ORD-160 ,john smith,2026-05-01,WEST,Electronics,2.0,450.0,900.0
+ ORD-102 ,Mary Jane!,2026-05-01,east,ELECTRONICS,1.0,15.0,15.0
+ ORD-147 ,,04-05-2026,South-Region,furn,3.0,120.0,360.0
+ ORD-052 ,,10/05/2026,North,furn,4.0,120.0,480.0
+ ORD-116 ,john smith,"May 06, 2026",North,Electronics,1.0,450.0,450.0
+ ORD-174 ,  robert lee  ,"May 06, 2026",WEST,elec,3.0,15.0,45.0
+ ORD-077 ,UNKNOWN,04-05-2026,US-East,Electronics,4.0,15.0,60.0
+ ORD-042 ,Sarah O'Connor,05-08-2026,  NORTH-EAST  ,,4.0,25.5,102.0
+ ORD-133 ,  robert lee  ,05/02/2026,US-East,Office Supplies,1.0,25.5,25.5
+ ORD-079 ,Linda K.,2026.05.03,  NORTH-EAST  ,Furniture,1.0,15.0,15.0
+ ORD-128 ,,05/02/2026,North,Office Supplies,2.0,450.0,
+ ORD-027 ,Sarah O'Connor,2026-05-07,WEST,Office Supplies,1.0,15.0,15.0
+ ORD-144 ,Sarah O'Connor,04-05-2026,south,office,,120.0,
+ ORD-114 ,Mary Jane!,"May 06, 2026",WEST,elec,1.0,15.0,15.0
+ ORD-126 ,UNKNOWN,04-05-2026,south,office,5.0,15.0,75.0
+ord_003,Mary Jane!,"May 06, 2026",  NORTH-EAST  ,Furniture,1.0,,
+ ORD-078 ,john smith,2026.05.09,WEST,Furniture,4.0,15.0,60.0
+ ORD-047 ,UNKNOWN,2026.05.09,West Coast,Furniture,,15.0,
+ ORD-079 ,Linda K.,2026.05.03,  NORTH-EAST  ,Furniture,1.0,15.0,15.0
+ ORD-116 ,john smith,"May 06, 2026",North,Electronics,1.0,450.0,450.0
+ ORD-091 ,Sarah O'Connor,04-05-2026,West Coast,ELECTRONICS,1.0,15.0,15.0
+ ORD-086 ,Sarah O'Connor,2026.05.03,south,Furniture,3.0,25.5,76.5
+ ORD-145 ,  robert lee  ,04-05-2026,North,Electronics,2.0,120.0,240.0
+ ORD-037 ,Michael-Brown,2026-05-07,  NORTH-EAST  ,ELECTRONICS,1.0,15.0,15.0
+ ORD-123 ,john smith,04-05-2026,South-Region,elec,2.0,25.5,51.0
+ ORD-062 ,UNKNOWN,2026.05.09,south,,2.0,15.0,30.0
+ ORD-023 ,UNKNOWN,10/05/2026,south,ELECTRONICS,1.0,15.0,15.0
+ ORD-142 ,UNKNOWN,05-08-2026,South-Region,,2.0,15.0,30.0
+ ORD-120 ,Linda K.,05/02/2026,North,Office Supplies,1.0,25.5,25.5
+ ORD-034 ,,05-08-2026,North,elec,1.0,15.0,15.0
+ORD012,Michael-Brown,2026/05/05,east,office,2.0,,
+ ORD-046 ,  robert lee  ,2026-05-01,  NORTH-EAST  ,Electronics,,25.5,
+ ORD-171 ,,04-05-2026,South-Region,ELECTRONICS,2.0,120.0,240.0
+ord_007,UNKNOWN,2026.05.09,east,elec,1.0,15.0,15.0
+ ORD-028 ,john smith,05/02/2026,West Coast,Electronics,2.0,15.0,30.0
+ ORD-197 ,Linda K.,05-08-2026,WEST,office,2.0,120.0,240.0
+ ORD-070 ,john smith,2026/05/05,South-Region,ELECTRONICS,2.0,120.0,240.0
+ ORD-148 ,  robert lee  ,10/05/2026,WEST,Furniture,1.0,15.0,15.0
+ord_005,Sarah O'Connor,2026.05.03,WEST,,1.0,,
+ ORD-033 ,  robert lee  ,04-05-2026,North,ELECTRONICS,2.0,15.0,30.0
+ORD016,Mary Jane!,2026-05-07,US-East,,1.0,15.0,15.0
+ ORD-156 ,Mary Jane!,04-05-2026,US-East,ELECTRONICS,2.0,450.0,900.0
+ ORD-173 ,Sarah O'Connor,"May 06, 2026",South-Region,furn,3.0,15.0,45.0
+ ORD-155 ,Linda K.,2026.05.09,South-Region,office,3.0,15.0,45.0
+ ORD-115 ,Mary Jane!,2026-05-01,south,elec,2.0,25.5,
+ORD011,Linda K.,2026-05-07,  NORTH-EAST  ,Office Supplies,2.0,,
+ ORD-063 ,Linda K.,2026/05/05,  NORTH-EAST  ,office,2.0,25.5,51.0
+ ORD-127 ,,2026-05-07,North,Electronics,1.0,15.0,15.0
+ ORD-157 ,Mary Jane!,2026-05-01,West Coast,elec,2.0,15.0,30.0
+ ORD-178 ,Michael-Brown,2026.05.09,east,Furniture,1.0,25.5,25.5
+ord_001,Linda K.,05-08-2026,WEST,furn,2.0,15.0,30.0
+ ORD-194 ,john smith,05-08-2026,West Coast,,,-10.0,
+ ORD-164 ,Mary Jane!,2026.05.03,south,Office Supplies,1.0,15.0,15.0
+ ORD-071 ,  robert lee  ,05/02/2026,WEST,furn,1.0,25.5,25.5
+ ORD-182 ,Sarah O'Connor,2026-05-01,south,ELECTRONICS,1.0,25.5,25.5
+ ORD-065 ,john smith,04-05-2026,south,Office Supplies,1.0,15.0,15.0
+ ORD-045 ,Sarah O'Connor,2026-05-01,North,,1.0,120.0,120.0
+ ORD-141 ,john smith,2026-05-01,North,office,1.0,450.0,450.0
+ ORD-041 ,,04-05-2026,South-Region,Electronics,3.0,15.0,45.0
+ ORD-124 ,john smith,10/05/2026,WEST,ELECTRONICS,1.0,15.0,15.0
+ ORD-024 ,john smith,2026.05.09,US-East,ELECTRONICS,4.0,450.0,
+ ORD-162 ,,2026-05-01,West Coast,Office Supplies,1.0,25.5,25.5
+ ORD-193 ,Linda K.,"May 06, 2026",east,furn,-1.0,15.0,
+ ORD-082 ,Linda K.,05/02/2026,South-Region,ELECTRONICS,,25.5,
+ ORD-040 ,  robert lee  ,05/02/2026,US-East,furn,1.0,25.5,25.5
+ ORD-181 ,Michael-Brown,2026/05/05,US-East,elec,1.0,25.5,
+ ORD-048 ,Linda K.,2026-05-01,West Coast,Furniture,1.0,15.0,15.0
+ ORD-095 ,Michael-Brown,"May 06, 2026",US-East,Furniture,1.0,15.0,15.0
+ ORD-165 ,Linda K.,10/05/2026,West Coast,,1.0,25.5,25.5
+ ORD-044 ,Michael-Brown,05-08-2026,West Coast,Office Supplies,2.0,120.0,240.0
+ ORD-149 ,Mary Jane!,"May 06, 2026",  NORTH-EAST  ,Office Supplies,1.0,25.5,25.5
+ord_004,Mary Jane!,2026.05.09,south,furn,1.0,25.5,25.5
+ ORD-106 ,Linda K.,2026/05/05,North,office,2.0,120.0,240.0
+ ORD-054 ,,2026.05.03,south,,1.0,15.0,15.0
+ ORD-134 ,Mary Jane!,05/02/2026,South-Region,,1.0,15.0,
+ ORD-195 ,UNKNOWN,2026.05.03,WEST,office,1.0,120.0,
+ ORD-168 ,john smith,05-08-2026,WEST,office,1.0,15.0,15.0
+ ORD-200 ,  robert lee  ,04-05-2026,North,Office Supplies,1.0,15.0,
+ ORD-050 ,,05/02/2026,south,,2.0,,
+ ORD-081 ,Michael-Brown,10/05/2026,South-Region,elec,1.0,25.5,25.5
+ ORD-035 ,Linda K.,10/05/2026,North,Office Supplies,1.0,25.5,25.5
+ord_008,Sarah O'Connor,05-08-2026,North,Furniture,1.0,450.0,450.0
+ ORD-111 ,Michael-Brown,2026.05.03,east,furn,2.0,25.5,51.0
+ ORD-092 ,Linda K.,2026/05/05,North,Electronics,2.0,15.0,30.0
+ ORD-084 ,  robert lee  ,2026/05/05,east,elec,2.0,15.0,30.0
+ ORD-191 ,Michael-Brown,"May 06, 2026",south,,,450.0,
+ ORD-196 ,Linda K.,05/02/2026,  NORTH-EAST  ,ELECTRONICS,5.0,25.5,127.5
+ ORD-090 ,Mary Jane!,2026/05/05,WEST,furn,1.0,450.0,450.0
+ord_009,,"May 06, 2026",WEST,elec,1.0,25.5,
+ORD014,,2026.05.03,  NORTH-EAST  ,office,3.0,120.0,360.0
+ ORD-060 ,Sarah O'Connor,10/05/2026,east,office,1.0,,
+ ORD-185 ,Sarah O'Connor,2026.05.03,North,Furniture,2.0,15.0,30.0
+ ORD-132 ,UNKNOWN,2026/05/05,  NORTH-EAST  ,Office Supplies,2.0,-10.0,
+ORD018,john smith,2026-05-07,South-Region,elec,3.0,25.5,76.5
+ ORD-167 ,  robert lee  ,05-08-2026,  NORTH-EAST  ,office,1.0,120.0,120.0
+ ORD-073 ,Linda K.,2026/05/05,WEST,elec,1.0,-10.0,
+ ORD-175 ,  robert lee  ,2026-05-01,south,office,1.0,25.5,25.5
+ ORD-135 ,john smith,05-08-2026,West Coast,office,2.0,120.0,240.0
+ ORD-179 ,Mary Jane!,2026/05/05,WEST,office,1.0,15.0,15.0
+ ORD-198 ,Mary Jane!,10/05/2026,US-East,,5.0,25.5,127.5
+ ORD-064 ,,"May 06, 2026",West Coast,furn,1.0,15.0,
+ ORD-055 ,Linda K.,2026.05.03,North,Office Supplies,1.0,25.5,25.5
+ ORD-108 ,  robert lee  ,05/02/2026,West Coast,office,1.0,25.5,25.5
+ ORD-051 ,  robert lee  ,10/05/2026,east,elec,3.0,25.5,76.5
+ ORD-175 ,  robert lee  ,2026-05-01,south,office,1.0,25.5,25.5
+ ORD-183 ,Michael-Brown,04-05-2026,West Coast,,3.0,15.0,45.0
+ ORD-170 ,Linda K.,2026-05-07,  NORTH-EAST  ,elec,2.0,120.0,240.0
+ ORD-059 ,,10/05/2026,South-Region,elec,1.0,120.0,120.0
+ ORD-049 ,john smith,05/02/2026,  NORTH-EAST  ,ELECTRONICS,2.0,-10.0,
+ ORD-089 ,john smith,2026-05-01,North,Furniture,1.0,25.5,25.5
+ ORD-022 ,Michael-Brown,2026/05/05,south,Electronics,5.0,120.0,600.0
+ ORD-058 ,Sarah O'Connor,04-05-2026,south,furn,1.0,25.5,25.5
+ ORD-161 ,,2026-05-01,US-East,office,1.0,15.0,15.0
+ ORD-171 ,,04-05-2026,South-Region,ELECTRONICS,2.0,120.0,240.0
+ ORD-188 ,Michael-Brown,2026.05.03,WEST,Furniture,1.0,25.5,25.5
+ ORD-130 ,  robert lee  ,2026.05.03,  NORTH-EAST  ,elec,4.0,15.0,60.0
+ ORD-038 ,  robert lee  ,"May 06, 2026",WEST,,3.0,25.5,76.5
+ ORD-158 ,UNKNOWN,2026-05-07,  NORTH-EAST  ,Electronics,1.0,15.0,15.0
+ ORD-159 ,Michael-Brown,"May 06, 2026",North,ELECTRONICS,1.0,15.0,15.0
+ord_002,  robert lee  ,2026/05/05,West Coast,,2.0,120.0,
+ ORD-053 ,Michael-Brown,2026-05-07,WEST,elec,2.0,120.0,240.0
+ ORD-150 ,Sarah O'Connor,05-08-2026,east,furn,2.0,25.5,
+ ORD-131 ,Sarah O'Connor,2026-05-01,West Coast,Furniture,3.0,25.5,76.5
+ ORD-152 ,Linda K.,10/05/2026,east,Electronics,1.0,15.0,15.0
+ ORD-104 ,,10/05/2026,North,elec,2.0,120.0,240.0
+ ORD-100 ,Mary Jane!,2026-05-01,US-East,ELECTRONICS,1.0,15.0,15.0
+ ORD-117 ,Michael-Brown,04-05-2026,US-East,elec,4.0,120.0,480.0
+ ORD-088 ,Sarah O'Connor,2026.05.09,WEST,,3.0,25.5,76.5
+ ORD-031 ,Sarah O'Connor,"May 06, 2026",east,Office Supplies,2.0,15.0,30.0
+ ORD-075 ,  robert lee  ,04-05-2026,US-East,ELECTRONICS,1.0,120.0,120.0
+ ORD-122 ,UNKNOWN,2026-05-01,WEST,Electronics,1.0,25.5,25.5
+ ORD-187 ,john smith,05-08-2026,US-East,Electronics,1.0,15.0,15.0
+ ORD-021 ,Sarah O'Connor,2026-05-07,South-Region,,1.0,15.0,15.0
+ ORD-189 ,Sarah O'Connor,2026-05-01,West Coast,ELECTRONICS,1.0,,
+ ORD-072 ,Mary Jane!,10/05/2026,  NORTH-EAST  ,furn,2.0,15.0,30.0
+ ORD-107 ,UNKNOWN,05/02/2026,  NORTH-EAST  ,Furniture,1.0,25.5,25.5
+ORD015,Michael-Brown,10/05/2026,east,office,1.0,450.0,450.0
+ ORD-093 ,  robert lee  ,05-08-2026,WEST,elec,1.0,15.0,15.0
+ ORD-180 ,UNKNOWN,05/02/2026,West Coast,,2.0,25.5,51.0
+ ORD-103 ,Michael-Brown,2026-05-01,South-Region,Furniture,2.0,25.5,51.0

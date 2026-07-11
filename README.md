@@ -1,6 +1,6 @@
-# 📊 Data Analytics Portfolio — Sales, Segmentation & Predictive Analytics
+# 📊 Data Analytics Portfolio — Sales, Segmentation, Forecasting & Data Quality Automation
 
-A data analytics portfolio featuring three projects: an interactive Sales & Revenue Dashboard, a Customer Segmentation analysis using K-Means clustering, and a Predictive Revenue Forecasting model. All three include interactive web-based dashboards deployed via GitHub Pages.
+A data analytics portfolio featuring four projects: an interactive Sales & Revenue Dashboard, a Customer Segmentation analysis using K-Means clustering, a Predictive Revenue Forecasting model, and an Automated Data Quality & Cleaning Pipeline. All four include interactive web-based dashboards deployed via GitHub Pages.
 
 ## 🌐 Live Demo
 
@@ -11,6 +11,7 @@ A data analytics portfolio featuring three projects: an interactive Sales & Reve
 | Task 1 — Sales Dashboard | [Open Dashboard](https://skmdshariff143-ai.github.io/sales-revenue-dashboard/task1-sales-dashboard/sales_dashboard.html) |
 | Task 2 — Customer Segmentation | [Open Dashboard](https://skmdshariff143-ai.github.io/sales-revenue-dashboard/task2-customer-segmentation/segmentation_dashboard.html) |
 | Task 3 — Predictive Revenue Forecasting | [Open Dashboard](https://skmdshariff143-ai.github.io/sales-revenue-dashboard/task3-predictive-analytics/predictive_dashboard.html) |
+| Task 4 — Data Quality & Cleaning Automation | [Open Dashboard](https://skmdshariff143-ai.github.io/sales-revenue-dashboard/task4-data-cleaning-automation/cleaning_dashboard.html) |
 
 ---
 
@@ -36,18 +37,29 @@ sales-revenue-dashboard/
 │       ├── segment_profile_heatmap.png         # Feature heatmap by segment
 │       └── segment_sizes.png                   # Segment distribution bar chart
 │
-└── task3-predictive-analytics/
-    ├── predictive_dashboard.html               # Predictive Analytics Dashboard
-    ├── predictive_analytics.py                 # Time-series forecasting script
-    ├── data/
-    │   ├── historical_cleaned.csv              # Historical cleaned sales data
-    │   ├── forecast_next_6_months.csv          # Future 6-month forecast values
-    │   └── model_evaluation.csv                # Model comparison metrics
-    └── charts/
-        ├── forecast_overview.png               # Forecast trend line chart
-        ├── residuals.png                       # Residual distribution plot
-        ├── model_comparison.png                # Model performance comparison
-        └── feature_importance.png              # Random Forest feature weights
+├── task3-predictive-analytics/
+│   ├── predictive_dashboard.html               # Predictive Analytics Dashboard
+│   ├── predictive_analytics.py                 # Time-series forecasting script
+│   ├── data/
+│   │   ├── historical_cleaned.csv              # Historical cleaned sales data
+│   │   ├── forecast_next_6_months.csv          # Future 6-month forecast values
+│   │   └── model_evaluation.csv                # Model comparison metrics
+│   └── charts/
+│       ├── forecast_overview.png               # Forecast trend line chart
+│       ├── residuals.png                       # Residual distribution plot
+│       ├── model_comparison.png                # Model performance comparison
+│       └── feature_importance.png              # Random Forest feature weights
+│
+└── task4-data-cleaning-automation/
+    ├── cleaning_dashboard.html                 # Data Cleaning Audit Dashboard
+    ├── data_cleaning_automation.py             # Data cleaning pipeline script
+    ├── build_excel_report.py                   # Excel report generator script
+    ├── data_cleaning_report.xlsx               # Automated Excel report
+    └── data/
+        ├── raw_messy_orders.csv                # Original messy dataset
+        ├── cleaned_orders.csv                  # Cleaned output dataset
+        ├── cleaning_log.csv                    # Audit cleaning execution log
+        └── cleaning_summary.json               # Pipeline metrics summary JSON
 ```
 
 ---
@@ -94,6 +106,20 @@ A machine learning and time-series forecasting project that predicts future mont
 | scikit-learn | Linear Regression, RandomForestRegressor, Train/Test split |
 | Matplotlib & Seaborn | Static evaluation chart generation |
 | HTML/CSS/Chart.js | Interactive dashboard |
+
+---
+
+## Task 4 — Data Cleaning & Reporting Automation
+
+An automated data engineering and reporting pipeline built with **Python**, **pandas**, and **xlsxwriter**. The pipeline implements an 11-step automated data cleaning process that handles missing values, removes duplicates, parses inconsistent date formats, standardizes text fields, and aligns computed fields (Quantity, UnitPrice, and Sales). The system logs all modifications to an audit CSV file, generates a metrics summary JSON file, and automatically creates a highly formatted multi-sheet Excel report complete with native formulas, auto-adjusted column dimensions, custom header styles, and embedded charts. By resolving all structural and content anomalies, the data quality score was successfully improved from 97.8% initially to a perfect 100.0%. A companion interactive dark glassmorphism dashboard allows users to filter, search, and visualize the audit logs and progress metrics in real time.
+
+### Tech Stack
+| Technology | Purpose |
+|-----------|---------|
+| Python 3 | Core scripting |
+| pandas & NumPy | Data manipulation & cleaning pipeline |
+| xlsxwriter | Excel workbook formatting, styling, formulas, and charts |
+| HTML/CSS/Chart.js | Interactive dashboard & log search UI |
 
 ---
 

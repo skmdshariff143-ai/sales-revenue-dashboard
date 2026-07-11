@@ -1,0 +1,871 @@
+Step,RowIndex,ColumnName,OriginalValue,CleanedValue,Description
+Step 2: OrderID Standardize,0,OrderID, ORD-096 ,ORD-096,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,1,OrderID, ORD-166 ,ORD-166,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,2,OrderID, ORD-139 ,ORD-139,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,3,OrderID, ORD-177 ,ORD-177,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,4,OrderID,ORD016,ORD-016,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,5,OrderID, ORD-112 ,ORD-112,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,6,OrderID, ORD-169 ,ORD-169,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,7,OrderID, ORD-074 ,ORD-074,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,8,OrderID, ORD-129 ,ORD-129,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,9,OrderID, ORD-140 ,ORD-140,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,10,OrderID, ORD-159 ,ORD-159,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,11,OrderID, ORD-031 ,ORD-031,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,12,OrderID, ORD-187 ,ORD-187,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,13,OrderID,ord_010,ORD-010,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,14,OrderID, ORD-068 ,ORD-068,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,15,OrderID, ORD-176 ,ORD-176,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,16,OrderID, ORD-172 ,ORD-172,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,17,OrderID,ORD019,ORD-019,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,18,OrderID, ORD-154 ,ORD-154,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,19,OrderID, ORD-067 ,ORD-067,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,20,OrderID, ORD-186 ,ORD-186,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,21,OrderID, ORD-143 ,ORD-143,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,22,OrderID, ORD-080 ,ORD-080,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,23,OrderID, ORD-026 ,ORD-026,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,24,OrderID, ORD-105 ,ORD-105,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,25,OrderID, ORD-146 ,ORD-146,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,26,OrderID, ORD-190 ,ORD-190,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,27,OrderID,ORD017,ORD-017,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,28,OrderID, ORD-046 ,ORD-046,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,29,OrderID, ORD-151 ,ORD-151,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,30,OrderID, ORD-109 ,ORD-109,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,31,OrderID, ORD-056 ,ORD-056,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,32,OrderID, ORD-113 ,ORD-113,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,33,OrderID, ORD-192 ,ORD-192,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,34,OrderID, ORD-125 ,ORD-125,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,35,OrderID, ORD-076 ,ORD-076,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,36,OrderID, ORD-136 ,ORD-136,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,37,OrderID, ORD-119 ,ORD-119,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,38,OrderID, ORD-099 ,ORD-099,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,39,OrderID, ORD-097 ,ORD-097,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,40,OrderID, ORD-184 ,ORD-184,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,41,OrderID, ORD-118 ,ORD-118,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,42,OrderID, ORD-094 ,ORD-094,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,43,OrderID, ORD-085 ,ORD-085,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,44,OrderID, ORD-138 ,ORD-138,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,45,OrderID, ORD-087 ,ORD-087,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,46,OrderID, ORD-163 ,ORD-163,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,47,OrderID, ORD-153 ,ORD-153,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,48,OrderID, ORD-039 ,ORD-039,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,49,OrderID, ORD-025 ,ORD-025,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,50,OrderID, ORD-121 ,ORD-121,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,51,OrderID, ORD-030 ,ORD-030,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,52,OrderID,ORD020,ORD-020,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,53,OrderID, ORD-070 ,ORD-070,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,54,OrderID, ORD-098 ,ORD-098,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,55,OrderID, ORD-061 ,ORD-061,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,56,OrderID, ORD-069 ,ORD-069,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,57,OrderID,ord_006,ORD-006,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,58,OrderID, ORD-137 ,ORD-137,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,59,OrderID, ORD-057 ,ORD-057,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,60,OrderID, ORD-101 ,ORD-101,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,61,OrderID, ORD-199 ,ORD-199,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,62,OrderID, ORD-083 ,ORD-083,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,63,OrderID, ORD-066 ,ORD-066,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,64,OrderID, ORD-110 ,ORD-110,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,65,OrderID, ORD-183 ,ORD-183,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,66,OrderID, ORD-032 ,ORD-032,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,67,OrderID,ORD013,ORD-013,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,68,OrderID, ORD-036 ,ORD-036,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,69,OrderID, ORD-029 ,ORD-029,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,70,OrderID, ORD-043 ,ORD-043,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,71,OrderID, ORD-160 ,ORD-160,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,72,OrderID, ORD-102 ,ORD-102,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,73,OrderID, ORD-147 ,ORD-147,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,74,OrderID, ORD-052 ,ORD-052,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,75,OrderID, ORD-116 ,ORD-116,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,76,OrderID, ORD-174 ,ORD-174,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,77,OrderID, ORD-077 ,ORD-077,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,78,OrderID, ORD-042 ,ORD-042,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,79,OrderID, ORD-133 ,ORD-133,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,80,OrderID, ORD-079 ,ORD-079,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,81,OrderID, ORD-128 ,ORD-128,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,82,OrderID, ORD-027 ,ORD-027,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,83,OrderID, ORD-144 ,ORD-144,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,84,OrderID, ORD-114 ,ORD-114,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,85,OrderID, ORD-126 ,ORD-126,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,86,OrderID,ord_003,ORD-003,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,87,OrderID, ORD-078 ,ORD-078,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,88,OrderID, ORD-047 ,ORD-047,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,89,OrderID, ORD-091 ,ORD-091,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,90,OrderID, ORD-086 ,ORD-086,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,91,OrderID, ORD-145 ,ORD-145,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,92,OrderID, ORD-037 ,ORD-037,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,93,OrderID, ORD-123 ,ORD-123,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,94,OrderID, ORD-062 ,ORD-062,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,95,OrderID, ORD-023 ,ORD-023,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,96,OrderID, ORD-142 ,ORD-142,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,97,OrderID, ORD-120 ,ORD-120,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,98,OrderID, ORD-034 ,ORD-034,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,99,OrderID,ORD012,ORD-012,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,100,OrderID, ORD-171 ,ORD-171,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,101,OrderID,ord_007,ORD-007,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,102,OrderID, ORD-028 ,ORD-028,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,103,OrderID, ORD-197 ,ORD-197,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,104,OrderID, ORD-148 ,ORD-148,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,105,OrderID,ord_005,ORD-005,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,106,OrderID, ORD-033 ,ORD-033,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,107,OrderID, ORD-156 ,ORD-156,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,108,OrderID, ORD-173 ,ORD-173,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,109,OrderID, ORD-155 ,ORD-155,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,110,OrderID, ORD-115 ,ORD-115,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,111,OrderID,ORD011,ORD-011,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,112,OrderID, ORD-063 ,ORD-063,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,113,OrderID, ORD-127 ,ORD-127,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,114,OrderID, ORD-157 ,ORD-157,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,115,OrderID, ORD-178 ,ORD-178,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,116,OrderID,ord_001,ORD-001,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,117,OrderID, ORD-194 ,ORD-194,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,118,OrderID, ORD-164 ,ORD-164,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,119,OrderID, ORD-071 ,ORD-071,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,120,OrderID, ORD-182 ,ORD-182,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,121,OrderID, ORD-065 ,ORD-065,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,122,OrderID, ORD-045 ,ORD-045,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,123,OrderID, ORD-141 ,ORD-141,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,124,OrderID, ORD-041 ,ORD-041,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,125,OrderID, ORD-124 ,ORD-124,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,126,OrderID, ORD-024 ,ORD-024,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,127,OrderID, ORD-162 ,ORD-162,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,128,OrderID, ORD-193 ,ORD-193,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,129,OrderID, ORD-082 ,ORD-082,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,130,OrderID, ORD-040 ,ORD-040,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,131,OrderID, ORD-181 ,ORD-181,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,132,OrderID, ORD-048 ,ORD-048,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,133,OrderID, ORD-095 ,ORD-095,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,134,OrderID, ORD-165 ,ORD-165,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,135,OrderID, ORD-044 ,ORD-044,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,136,OrderID, ORD-149 ,ORD-149,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,137,OrderID,ord_004,ORD-004,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,138,OrderID, ORD-106 ,ORD-106,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,139,OrderID, ORD-054 ,ORD-054,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,140,OrderID, ORD-134 ,ORD-134,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,141,OrderID, ORD-195 ,ORD-195,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,142,OrderID, ORD-168 ,ORD-168,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,143,OrderID, ORD-200 ,ORD-200,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,144,OrderID, ORD-050 ,ORD-050,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,145,OrderID, ORD-081 ,ORD-081,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,146,OrderID, ORD-035 ,ORD-035,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,147,OrderID,ord_008,ORD-008,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,148,OrderID, ORD-111 ,ORD-111,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,149,OrderID, ORD-092 ,ORD-092,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,150,OrderID, ORD-084 ,ORD-084,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,151,OrderID, ORD-191 ,ORD-191,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,152,OrderID, ORD-196 ,ORD-196,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,153,OrderID, ORD-090 ,ORD-090,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,154,OrderID,ord_009,ORD-009,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,155,OrderID,ORD014,ORD-014,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,156,OrderID, ORD-060 ,ORD-060,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,157,OrderID, ORD-185 ,ORD-185,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,158,OrderID, ORD-132 ,ORD-132,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,159,OrderID,ORD018,ORD-018,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,160,OrderID, ORD-167 ,ORD-167,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,161,OrderID, ORD-073 ,ORD-073,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,162,OrderID, ORD-175 ,ORD-175,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,163,OrderID, ORD-135 ,ORD-135,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,164,OrderID, ORD-179 ,ORD-179,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,165,OrderID, ORD-198 ,ORD-198,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,166,OrderID, ORD-064 ,ORD-064,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,167,OrderID, ORD-055 ,ORD-055,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,168,OrderID, ORD-108 ,ORD-108,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,169,OrderID, ORD-051 ,ORD-051,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,170,OrderID, ORD-170 ,ORD-170,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,171,OrderID, ORD-059 ,ORD-059,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,172,OrderID, ORD-049 ,ORD-049,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,173,OrderID, ORD-089 ,ORD-089,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,174,OrderID, ORD-022 ,ORD-022,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,175,OrderID, ORD-058 ,ORD-058,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,176,OrderID, ORD-161 ,ORD-161,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,177,OrderID, ORD-188 ,ORD-188,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,178,OrderID, ORD-130 ,ORD-130,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,179,OrderID, ORD-038 ,ORD-038,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,180,OrderID, ORD-158 ,ORD-158,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,181,OrderID,ord_002,ORD-002,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,182,OrderID, ORD-053 ,ORD-053,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,183,OrderID, ORD-150 ,ORD-150,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,184,OrderID, ORD-131 ,ORD-131,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,185,OrderID, ORD-152 ,ORD-152,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,186,OrderID, ORD-104 ,ORD-104,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,187,OrderID, ORD-100 ,ORD-100,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,188,OrderID, ORD-117 ,ORD-117,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,189,OrderID, ORD-088 ,ORD-088,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,190,OrderID, ORD-075 ,ORD-075,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,191,OrderID, ORD-122 ,ORD-122,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,192,OrderID, ORD-021 ,ORD-021,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,193,OrderID, ORD-189 ,ORD-189,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,194,OrderID, ORD-072 ,ORD-072,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,195,OrderID, ORD-107 ,ORD-107,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,196,OrderID,ORD015,ORD-015,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,197,OrderID, ORD-093 ,ORD-093,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,198,OrderID, ORD-180 ,ORD-180,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 2: OrderID Standardize,199,OrderID, ORD-103 ,ORD-103,"Trimmed spaces, set to uppercase, unified ORD- prefix"
+Step 3: OrderDate Parse,0,OrderDate,2026.05.03,2026-05-03,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,1,OrderDate,05/02/2026,2026-05-02,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,2,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,3,OrderDate,05/02/2026,2026-05-02,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,5,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,6,OrderDate,04-05-2026,2026-05-04,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,7,OrderDate,2026.05.09,2026-05-09,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,8,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,10,OrderDate,"May 06, 2026",2026-05-06,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,11,OrderDate,"May 06, 2026",2026-05-06,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,12,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,13,OrderDate,05/02/2026,2026-05-02,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,14,OrderDate,2026/05/05,2026-05-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,16,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,17,OrderDate,2026.05.03,2026-05-03,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,18,OrderDate,2026.05.09,2026-05-09,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,19,OrderDate,05/02/2026,2026-05-02,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,20,OrderDate,2026.05.09,2026-05-09,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,21,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,22,OrderDate,2026/05/05,2026-05-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,23,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,24,OrderDate,2026/05/05,2026-05-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,25,OrderDate,04-05-2026,2026-05-04,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,26,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,27,OrderDate,2026.05.03,2026-05-03,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,29,OrderDate,04-05-2026,2026-05-04,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,30,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,32,OrderDate,05/02/2026,2026-05-02,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,33,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,34,OrderDate,"May 06, 2026",2026-05-06,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,36,OrderDate,05/02/2026,2026-05-02,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,37,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,38,OrderDate,2026.05.09,2026-05-09,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,39,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,40,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,41,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,42,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,43,OrderDate,04-05-2026,2026-05-04,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,44,OrderDate,2026/05/05,2026-05-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,45,OrderDate,2026.05.03,2026-05-03,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,46,OrderDate,2026.05.03,2026-05-03,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,48,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,49,OrderDate,2026/05/05,2026-05-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,50,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,51,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,52,OrderDate,2026/05/05,2026-05-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,53,OrderDate,2026/05/05,2026-05-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,54,OrderDate,"May 06, 2026",2026-05-06,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,56,OrderDate,04-05-2026,2026-05-04,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,57,OrderDate,2026/05/05,2026-05-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,59,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,60,OrderDate,"May 06, 2026",2026-05-06,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,65,OrderDate,04-05-2026,2026-05-04,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,66,OrderDate,2026.05.03,2026-05-03,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,69,OrderDate,05/02/2026,2026-05-02,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,70,OrderDate,"May 06, 2026",2026-05-06,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,73,OrderDate,04-05-2026,2026-05-04,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,74,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,75,OrderDate,"May 06, 2026",2026-05-06,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,76,OrderDate,"May 06, 2026",2026-05-06,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,77,OrderDate,04-05-2026,2026-05-04,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,78,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,79,OrderDate,05/02/2026,2026-05-02,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,80,OrderDate,2026.05.03,2026-05-03,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,81,OrderDate,05/02/2026,2026-05-02,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,83,OrderDate,04-05-2026,2026-05-04,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,84,OrderDate,"May 06, 2026",2026-05-06,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,85,OrderDate,04-05-2026,2026-05-04,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,86,OrderDate,"May 06, 2026",2026-05-06,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,87,OrderDate,2026.05.09,2026-05-09,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,88,OrderDate,2026.05.09,2026-05-09,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,89,OrderDate,04-05-2026,2026-05-04,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,90,OrderDate,2026.05.03,2026-05-03,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,91,OrderDate,04-05-2026,2026-05-04,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,93,OrderDate,04-05-2026,2026-05-04,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,94,OrderDate,2026.05.09,2026-05-09,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,95,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,96,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,97,OrderDate,05/02/2026,2026-05-02,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,98,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,99,OrderDate,2026/05/05,2026-05-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,100,OrderDate,04-05-2026,2026-05-04,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,101,OrderDate,2026.05.09,2026-05-09,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,102,OrderDate,05/02/2026,2026-05-02,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,103,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,104,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,105,OrderDate,2026.05.03,2026-05-03,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,106,OrderDate,04-05-2026,2026-05-04,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,107,OrderDate,04-05-2026,2026-05-04,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,108,OrderDate,"May 06, 2026",2026-05-06,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,109,OrderDate,2026.05.09,2026-05-09,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,112,OrderDate,2026/05/05,2026-05-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,115,OrderDate,2026.05.09,2026-05-09,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,116,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,117,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,118,OrderDate,2026.05.03,2026-05-03,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,119,OrderDate,05/02/2026,2026-05-02,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,121,OrderDate,04-05-2026,2026-05-04,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,124,OrderDate,04-05-2026,2026-05-04,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,125,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,126,OrderDate,2026.05.09,2026-05-09,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,128,OrderDate,"May 06, 2026",2026-05-06,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,129,OrderDate,05/02/2026,2026-05-02,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,130,OrderDate,05/02/2026,2026-05-02,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,131,OrderDate,2026/05/05,2026-05-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,133,OrderDate,"May 06, 2026",2026-05-06,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,134,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,135,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,136,OrderDate,"May 06, 2026",2026-05-06,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,137,OrderDate,2026.05.09,2026-05-09,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,138,OrderDate,2026/05/05,2026-05-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,139,OrderDate,2026.05.03,2026-05-03,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,140,OrderDate,05/02/2026,2026-05-02,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,141,OrderDate,2026.05.03,2026-05-03,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,142,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,143,OrderDate,04-05-2026,2026-05-04,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,144,OrderDate,05/02/2026,2026-05-02,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,145,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,146,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,147,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,148,OrderDate,2026.05.03,2026-05-03,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,149,OrderDate,2026/05/05,2026-05-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,150,OrderDate,2026/05/05,2026-05-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,151,OrderDate,"May 06, 2026",2026-05-06,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,152,OrderDate,05/02/2026,2026-05-02,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,153,OrderDate,2026/05/05,2026-05-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,154,OrderDate,"May 06, 2026",2026-05-06,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,155,OrderDate,2026.05.03,2026-05-03,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,156,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,157,OrderDate,2026.05.03,2026-05-03,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,158,OrderDate,2026/05/05,2026-05-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,160,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,161,OrderDate,2026/05/05,2026-05-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,163,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,164,OrderDate,2026/05/05,2026-05-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,165,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,166,OrderDate,"May 06, 2026",2026-05-06,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,167,OrderDate,2026.05.03,2026-05-03,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,168,OrderDate,05/02/2026,2026-05-02,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,169,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,171,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,172,OrderDate,05/02/2026,2026-05-02,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,174,OrderDate,2026/05/05,2026-05-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,175,OrderDate,04-05-2026,2026-05-04,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,177,OrderDate,2026.05.03,2026-05-03,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,178,OrderDate,2026.05.03,2026-05-03,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,179,OrderDate,"May 06, 2026",2026-05-06,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,181,OrderDate,2026/05/05,2026-05-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,183,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,185,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,186,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,188,OrderDate,04-05-2026,2026-05-04,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,189,OrderDate,2026.05.09,2026-05-09,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,190,OrderDate,04-05-2026,2026-05-04,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,194,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,195,OrderDate,05/02/2026,2026-05-02,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,196,OrderDate,10/05/2026,2026-10-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,197,OrderDate,05-08-2026,2026-08-05,Parsed and standardized to YYYY-MM-DD
+Step 3: OrderDate Parse,198,OrderDate,05/02/2026,2026-05-02,Parsed and standardized to YYYY-MM-DD
+Step 4: CustomerName Clean,1,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,3,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,4,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,5,CustomerName,  robert lee  ,Robert Lee,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,6,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,7,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,8,CustomerName,UNKNOWN,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,9,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,12,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,13,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,14,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,15,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,17,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,19,CustomerName,UNKNOWN,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,21,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,23,CustomerName,  robert lee  ,Robert Lee,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,25,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,26,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,27,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,28,CustomerName,  robert lee  ,Robert Lee,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,31,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,32,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,33,CustomerName,  robert lee  ,Robert Lee,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,34,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,35,CustomerName,UNKNOWN,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,37,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,39,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,40,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,41,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,42,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,44,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,45,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,46,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,47,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,48,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,49,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,50,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,51,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,52,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,53,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,54,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,55,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,56,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,61,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,62,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,64,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,68,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,69,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,71,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,72,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,73,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,74,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,75,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,76,CustomerName,  robert lee  ,Robert Lee,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,77,CustomerName,UNKNOWN,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,79,CustomerName,  robert lee  ,Robert Lee,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,80,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,81,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,84,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,85,CustomerName,UNKNOWN,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,86,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,87,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,88,CustomerName,UNKNOWN,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,91,CustomerName,  robert lee  ,Robert Lee,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,93,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,94,CustomerName,UNKNOWN,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,95,CustomerName,UNKNOWN,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,96,CustomerName,UNKNOWN,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,97,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,98,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,100,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,101,CustomerName,UNKNOWN,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,102,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,103,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,104,CustomerName,  robert lee  ,Robert Lee,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,106,CustomerName,  robert lee  ,Robert Lee,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,107,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,109,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,110,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,111,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,112,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,113,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,114,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,116,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,117,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,118,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,119,CustomerName,  robert lee  ,Robert Lee,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,121,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,123,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,124,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,125,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,126,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,127,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,128,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,129,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,130,CustomerName,  robert lee  ,Robert Lee,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,132,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,134,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,136,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,137,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,138,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,139,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,140,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,141,CustomerName,UNKNOWN,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,142,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,143,CustomerName,  robert lee  ,Robert Lee,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,144,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,146,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,149,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,150,CustomerName,  robert lee  ,Robert Lee,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,152,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,153,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,154,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,155,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,158,CustomerName,UNKNOWN,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,159,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,160,CustomerName,  robert lee  ,Robert Lee,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,161,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,162,CustomerName,  robert lee  ,Robert Lee,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,163,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,164,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,165,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,166,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,167,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,168,CustomerName,  robert lee  ,Robert Lee,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,169,CustomerName,  robert lee  ,Robert Lee,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,170,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,171,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,172,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,173,CustomerName,john smith,John Smith,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,176,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,178,CustomerName,  robert lee  ,Robert Lee,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,179,CustomerName,  robert lee  ,Robert Lee,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,180,CustomerName,UNKNOWN,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,181,CustomerName,  robert lee  ,Robert Lee,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,185,CustomerName,Linda K.,Linda K,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,186,CustomerName,None,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,187,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,190,CustomerName,  robert lee  ,Robert Lee,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,191,CustomerName,UNKNOWN,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,194,CustomerName,Mary Jane!,Mary Jane,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,195,CustomerName,UNKNOWN,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 4: CustomerName Clean,197,CustomerName,  robert lee  ,Robert Lee,Cleaned punctuation and standardized to Title Case
+Step 4: CustomerName Clean,198,CustomerName,UNKNOWN,Anonymous Customer,Missing/Unknown name set to Anonymous Customer
+Step 5: Category Standardize,0,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,2,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,3,Category,furn,Furniture,Standardized category naming convention
+Step 5: Category Standardize,4,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,5,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,6,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,7,Category,furn,Furniture,Standardized category naming convention
+Step 5: Category Standardize,9,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,10,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,14,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,16,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,17,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,18,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,20,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,21,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,23,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,27,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,30,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,32,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,34,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,35,Category,furn,Furniture,Standardized category naming convention
+Step 5: Category Standardize,37,Category,furn,Furniture,Standardized category naming convention
+Step 5: Category Standardize,38,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,39,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,40,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,41,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,45,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,47,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,50,Category,furn,Furniture,Standardized category naming convention
+Step 5: Category Standardize,51,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,53,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,55,Category,furn,Furniture,Standardized category naming convention
+Step 5: Category Standardize,57,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,58,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,60,Category,furn,Furniture,Standardized category naming convention
+Step 5: Category Standardize,61,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,64,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,65,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,67,Category,furn,Furniture,Standardized category naming convention
+Step 5: Category Standardize,69,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,70,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,72,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,73,Category,furn,Furniture,Standardized category naming convention
+Step 5: Category Standardize,74,Category,furn,Furniture,Standardized category naming convention
+Step 5: Category Standardize,76,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,78,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,83,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,84,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,85,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,89,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,92,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,93,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,94,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,95,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,96,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,98,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,99,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,100,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,101,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,103,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,105,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,106,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,107,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,108,Category,furn,Furniture,Standardized category naming convention
+Step 5: Category Standardize,109,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,110,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,112,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,114,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,116,Category,furn,Furniture,Standardized category naming convention
+Step 5: Category Standardize,117,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,119,Category,furn,Furniture,Standardized category naming convention
+Step 5: Category Standardize,120,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,122,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,123,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,125,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,126,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,128,Category,furn,Furniture,Standardized category naming convention
+Step 5: Category Standardize,129,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,130,Category,furn,Furniture,Standardized category naming convention
+Step 5: Category Standardize,131,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,134,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,137,Category,furn,Furniture,Standardized category naming convention
+Step 5: Category Standardize,138,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,139,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,140,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,141,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,142,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,144,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,145,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,148,Category,furn,Furniture,Standardized category naming convention
+Step 5: Category Standardize,150,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,151,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,152,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,153,Category,furn,Furniture,Standardized category naming convention
+Step 5: Category Standardize,154,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,155,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,156,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,159,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,160,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,161,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,162,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,163,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,164,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,165,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,166,Category,furn,Furniture,Standardized category naming convention
+Step 5: Category Standardize,168,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,169,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,170,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,171,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,172,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,175,Category,furn,Furniture,Standardized category naming convention
+Step 5: Category Standardize,176,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,178,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,179,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,181,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,182,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,183,Category,furn,Furniture,Standardized category naming convention
+Step 5: Category Standardize,186,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,187,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,188,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,189,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,190,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,192,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 5: Category Standardize,193,Category,ELECTRONICS,Electronics,Standardized category naming convention
+Step 5: Category Standardize,194,Category,furn,Furniture,Standardized category naming convention
+Step 5: Category Standardize,196,Category,office,Office Supplies,Standardized category naming convention
+Step 5: Category Standardize,197,Category,elec,Electronics,Standardized category naming convention
+Step 5: Category Standardize,198,Category,None,Office Supplies,Imputed missing category with fallback default
+Step 6: Region Standardize,0,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,2,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,3,Region,east,East,Standardized regional naming conventions
+Step 6: Region Standardize,4,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,5,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,6,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,7,Region,South-Region,South,Standardized regional naming conventions
+Step 6: Region Standardize,8,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,9,Region,  NORTH-EAST  ,East,Standardized regional naming conventions
+Step 6: Region Standardize,11,Region,east,East,Standardized regional naming conventions
+Step 6: Region Standardize,12,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,13,Region,east,East,Standardized regional naming conventions
+Step 6: Region Standardize,14,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,15,Region,South-Region,South,Standardized regional naming conventions
+Step 6: Region Standardize,16,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,17,Region,east,East,Standardized regional naming conventions
+Step 6: Region Standardize,18,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,19,Region,South-Region,South,Standardized regional naming conventions
+Step 6: Region Standardize,20,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,21,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,22,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,23,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,24,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,25,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,26,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,27,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,28,Region,  NORTH-EAST  ,East,Standardized regional naming conventions
+Step 6: Region Standardize,29,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,30,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,31,Region,east,East,Standardized regional naming conventions
+Step 6: Region Standardize,32,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,33,Region,east,East,Standardized regional naming conventions
+Step 6: Region Standardize,34,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,35,Region,  NORTH-EAST  ,East,Standardized regional naming conventions
+Step 6: Region Standardize,36,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,37,Region,east,East,Standardized regional naming conventions
+Step 6: Region Standardize,38,Region,east,East,Standardized regional naming conventions
+Step 6: Region Standardize,39,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,42,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,43,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,44,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,45,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,46,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,47,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,48,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,49,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,51,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,52,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,53,Region,South-Region,South,Standardized regional naming conventions
+Step 6: Region Standardize,54,Region,  NORTH-EAST  ,East,Standardized regional naming conventions
+Step 6: Region Standardize,55,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,56,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,57,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,58,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,59,Region,South-Region,South,Standardized regional naming conventions
+Step 6: Region Standardize,61,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,62,Region,South-Region,South,Standardized regional naming conventions
+Step 6: Region Standardize,64,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,65,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,66,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,67,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,68,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,69,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,70,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,71,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,72,Region,east,East,Standardized regional naming conventions
+Step 6: Region Standardize,73,Region,South-Region,South,Standardized regional naming conventions
+Step 6: Region Standardize,76,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,77,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,78,Region,  NORTH-EAST  ,East,Standardized regional naming conventions
+Step 6: Region Standardize,79,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,80,Region,  NORTH-EAST  ,East,Standardized regional naming conventions
+Step 6: Region Standardize,82,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,83,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,84,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,85,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,86,Region,  NORTH-EAST  ,East,Standardized regional naming conventions
+Step 6: Region Standardize,87,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,88,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,89,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,90,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,92,Region,  NORTH-EAST  ,East,Standardized regional naming conventions
+Step 6: Region Standardize,93,Region,South-Region,South,Standardized regional naming conventions
+Step 6: Region Standardize,94,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,95,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,96,Region,South-Region,South,Standardized regional naming conventions
+Step 6: Region Standardize,99,Region,east,East,Standardized regional naming conventions
+Step 6: Region Standardize,100,Region,South-Region,South,Standardized regional naming conventions
+Step 6: Region Standardize,101,Region,east,East,Standardized regional naming conventions
+Step 6: Region Standardize,102,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,103,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,104,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,105,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,107,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,108,Region,South-Region,South,Standardized regional naming conventions
+Step 6: Region Standardize,109,Region,South-Region,South,Standardized regional naming conventions
+Step 6: Region Standardize,110,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,111,Region,  NORTH-EAST  ,East,Standardized regional naming conventions
+Step 6: Region Standardize,112,Region,  NORTH-EAST  ,East,Standardized regional naming conventions
+Step 6: Region Standardize,114,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,115,Region,east,East,Standardized regional naming conventions
+Step 6: Region Standardize,116,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,117,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,118,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,119,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,120,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,121,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,124,Region,South-Region,South,Standardized regional naming conventions
+Step 6: Region Standardize,125,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,126,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,127,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,128,Region,east,East,Standardized regional naming conventions
+Step 6: Region Standardize,129,Region,South-Region,South,Standardized regional naming conventions
+Step 6: Region Standardize,130,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,131,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,132,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,133,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,134,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,135,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,136,Region,  NORTH-EAST  ,East,Standardized regional naming conventions
+Step 6: Region Standardize,137,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,139,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,140,Region,South-Region,South,Standardized regional naming conventions
+Step 6: Region Standardize,141,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,142,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,144,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,145,Region,South-Region,South,Standardized regional naming conventions
+Step 6: Region Standardize,148,Region,east,East,Standardized regional naming conventions
+Step 6: Region Standardize,150,Region,east,East,Standardized regional naming conventions
+Step 6: Region Standardize,151,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,152,Region,  NORTH-EAST  ,East,Standardized regional naming conventions
+Step 6: Region Standardize,153,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,154,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,155,Region,  NORTH-EAST  ,East,Standardized regional naming conventions
+Step 6: Region Standardize,156,Region,east,East,Standardized regional naming conventions
+Step 6: Region Standardize,158,Region,  NORTH-EAST  ,East,Standardized regional naming conventions
+Step 6: Region Standardize,159,Region,South-Region,South,Standardized regional naming conventions
+Step 6: Region Standardize,160,Region,  NORTH-EAST  ,East,Standardized regional naming conventions
+Step 6: Region Standardize,161,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,162,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,163,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,164,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,165,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,166,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,168,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,169,Region,east,East,Standardized regional naming conventions
+Step 6: Region Standardize,170,Region,  NORTH-EAST  ,East,Standardized regional naming conventions
+Step 6: Region Standardize,171,Region,South-Region,South,Standardized regional naming conventions
+Step 6: Region Standardize,172,Region,  NORTH-EAST  ,East,Standardized regional naming conventions
+Step 6: Region Standardize,174,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,175,Region,south,South,Standardized regional naming conventions
+Step 6: Region Standardize,176,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,177,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,178,Region,  NORTH-EAST  ,East,Standardized regional naming conventions
+Step 6: Region Standardize,179,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,180,Region,  NORTH-EAST  ,East,Standardized regional naming conventions
+Step 6: Region Standardize,181,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,182,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,183,Region,east,East,Standardized regional naming conventions
+Step 6: Region Standardize,184,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,185,Region,east,East,Standardized regional naming conventions
+Step 6: Region Standardize,187,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,188,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,189,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,190,Region,US-East,East,Standardized regional naming conventions
+Step 6: Region Standardize,191,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,192,Region,South-Region,South,Standardized regional naming conventions
+Step 6: Region Standardize,193,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,194,Region,  NORTH-EAST  ,East,Standardized regional naming conventions
+Step 6: Region Standardize,195,Region,  NORTH-EAST  ,East,Standardized regional naming conventions
+Step 6: Region Standardize,196,Region,east,East,Standardized regional naming conventions
+Step 6: Region Standardize,197,Region,WEST,West,Standardized regional naming conventions
+Step 6: Region Standardize,198,Region,West Coast,West,Standardized regional naming conventions
+Step 6: Region Standardize,199,Region,South-Region,South,Standardized regional naming conventions
+Step 7: Quantity Impute,2,Quantity,-1.0,1,Negative quantity set to positive absolute value
+Step 7: Quantity Impute,28,Quantity,nan,1,Missing quantity imputed to 1
+Step 7: Quantity Impute,29,Quantity,-1.0,1,Negative quantity set to positive absolute value
+Step 7: Quantity Impute,38,Quantity,nan,1,Missing quantity imputed to 1
+Step 7: Quantity Impute,60,Quantity,-1.0,1,Negative quantity set to positive absolute value
+Step 7: Quantity Impute,83,Quantity,nan,1,Missing quantity imputed to 1
+Step 7: Quantity Impute,88,Quantity,nan,1,Missing quantity imputed to 1
+Step 7: Quantity Impute,117,Quantity,nan,1,Missing quantity imputed to 1
+Step 7: Quantity Impute,128,Quantity,-1.0,1,Negative quantity set to positive absolute value
+Step 7: Quantity Impute,129,Quantity,nan,1,Missing quantity imputed to 1
+Step 7: Quantity Impute,151,Quantity,nan,1,Missing quantity imputed to 1
+Step 8: UnitPrice Impute,0,UnitPrice,-10.0,10.0,Negative unit price converted to positive absolute value
+Step 8: UnitPrice Impute,30,UnitPrice,-10.0,10.0,Negative unit price converted to positive absolute value
+Step 8: UnitPrice Impute,54,UnitPrice,nan,150.0,Missing price imputed to category median ($150.0)
+Step 8: UnitPrice Impute,86,UnitPrice,nan,80.0,Missing price imputed to category median ($80.0)
+Step 8: UnitPrice Impute,99,UnitPrice,nan,15.0,Missing price imputed to category median ($15.0)
+Step 8: UnitPrice Impute,105,UnitPrice,nan,15.0,Missing price imputed to category median ($15.0)
+Step 8: UnitPrice Impute,111,UnitPrice,nan,15.0,Missing price imputed to category median ($15.0)
+Step 8: UnitPrice Impute,117,UnitPrice,-10.0,10.0,Negative unit price converted to positive absolute value
+Step 8: UnitPrice Impute,144,UnitPrice,nan,15.0,Missing price imputed to category median ($15.0)
+Step 8: UnitPrice Impute,156,UnitPrice,nan,15.0,Missing price imputed to category median ($15.0)
+Step 8: UnitPrice Impute,158,UnitPrice,-10.0,10.0,Negative unit price converted to positive absolute value
+Step 8: UnitPrice Impute,161,UnitPrice,-10.0,10.0,Negative unit price converted to positive absolute value
+Step 8: UnitPrice Impute,172,UnitPrice,-10.0,10.0,Negative unit price converted to positive absolute value
+Step 8: UnitPrice Impute,193,UnitPrice,nan,150.0,Missing price imputed to category median ($150.0)
+Step 9: Sales Alignment,0,Sales,nan,40.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,2,Sales,nan,15.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,16,Sales,nan,60.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,20,Sales,nan,45.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,28,Sales,nan,25.5,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,29,Sales,nan,120.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,30,Sales,nan,50.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,38,Sales,nan,120.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,39,Sales,nan,4500.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,54,Sales,nan,600.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,60,Sales,nan,25.5,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,63,Sales,nan,25.5,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,66,Sales,nan,51.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,81,Sales,nan,900.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,83,Sales,nan,120.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,86,Sales,nan,80.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,88,Sales,nan,15.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,99,Sales,nan,30.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,105,Sales,nan,15.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,110,Sales,nan,51.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,111,Sales,nan,30.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,117,Sales,nan,10.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,126,Sales,nan,1800.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,128,Sales,nan,15.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,129,Sales,nan,25.5,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,131,Sales,nan,25.5,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,140,Sales,nan,15.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,141,Sales,nan,120.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,143,Sales,nan,15.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,144,Sales,nan,30.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,151,Sales,nan,450.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,154,Sales,nan,25.5,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,156,Sales,nan,15.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,158,Sales,nan,20.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,161,Sales,nan,10.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,166,Sales,nan,15.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,172,Sales,nan,20.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,181,Sales,nan,240.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,183,Sales,nan,51.0,Recalculated sales value to align with Quantity * UnitPrice
+Step 9: Sales Alignment,193,Sales,nan,150.0,Recalculated sales value to align with Quantity * UnitPrice
