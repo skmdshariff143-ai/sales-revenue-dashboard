@@ -151,7 +151,7 @@ tr:hover td{background:rgba(99,102,241,.04)}
   <div class="kpi-grid">
     <div class="card kpi-card">
       <div class="kpi-icon">👥</div>
-      <div class="kpi-value" id="kpiTotalCustomers">200</div>
+      <div class="kpi-value" id="kpiTotalCustomers">600</div>
       <div class="kpi-label">Total Customers</div>
       <div class="kpi-trend up">▲ 12% vs last quarter</div>
     </div>
@@ -242,10 +242,10 @@ tr:hover td{background:rgba(99,102,241,.04)}
    DATA
    ═══════════════════════════════════════════════════ */
 const SEGMENTS = [
-  { name:'Premium Loyalists', color:'#6366f1', bg:'rgba(99,102,241,.12)', textColor:'#a5b4fc', badgeClass:'badge-seg1', count:56, pct:28, revenue:485000, avgIncome:'$92,400', avgSpending:82, avgFrequency:'5.2x/mo', desc:'High-income loyal customers with consistent premium purchases and strong brand affinity.' },
-  { name:'Budget Shoppers',   color:'#22c55e', bg:'rgba(34,197,94,.12)',  textColor:'#86efac', badgeClass:'badge-seg2', count:64, pct:32, revenue:198000, avgIncome:'$38,600', avgSpending:45, avgFrequency:'3.1x/mo', desc:'Price-conscious shoppers who respond well to discounts and value-oriented promotions.' },
-  { name:'New High-Value',    color:'#f59e0b', bg:'rgba(245,158,11,.12)',textColor:'#fcd34d', badgeClass:'badge-seg3', count:36, pct:18, revenue:312000, avgIncome:'$78,200', avgSpending:74, avgFrequency:'4.6x/mo', desc:'Recently acquired customers showing high spending potential and rapid engagement growth.' },
-  { name:'At-Risk',           color:'#ef4444', bg:'rgba(239,68,68,.12)', textColor:'#fca5a5', badgeClass:'badge-seg4', count:44, pct:22, revenue:127000, avgIncome:'$54,100', avgSpending:31, avgFrequency:'1.4x/mo', desc:'Previously active customers with declining engagement — require re-activation campaigns.' }
+  { name:'Premium Loyalists', color:'#6366f1', bg:'rgba(99,102,241,.12)', textColor:'#a5b4fc', badgeClass:'badge-seg1', count:108, pct:18, revenue:310500, avgIncome:'$71,969', avgSpending:77, avgFrequency:'17.4x/mo', desc:'High-income loyal customers with consistent premium purchases and strong brand affinity.' },
+  { name:'Budget Shoppers',   color:'#22c55e', bg:'rgba(34,197,94,.12)',  textColor:'#86efac', badgeClass:'badge-seg2', count:136, pct:23, revenue:212000, avgIncome:'$48,635', avgSpending:34, avgFrequency:'5.4x/mo', desc:'Price-conscious shoppers who respond well to discounts and value-oriented promotions.' },
+  { name:'New High-Value',    color:'#f59e0b', bg:'rgba(245,158,11,.12)',textColor:'#fcd34d', badgeClass:'badge-seg3', count:168, pct:28, revenue:312000, avgIncome:'$96,620', avgSpending:81, avgFrequency:'27.8x/mo', desc:'Recently acquired customers showing high spending potential and rapid engagement growth.' },
+  { name:'At-Risk',           color:'#ef4444', bg:'rgba(239,68,68,.12)', textColor:'#fca5a5', badgeClass:'badge-seg4', count:188, pct:31, revenue:145000, avgIncome:'$38,525', avgSpending:31, avgFrequency:'10.8x/mo', desc:'Previously active customers with declining engagement — require re-activation campaigns.' }
 ];
 
 const CUSTOMERS = [
@@ -384,7 +384,7 @@ new Chart(document.getElementById('doughnutChart'), {
       ctx.textAlign = 'center';
       ctx.fillStyle = '#e2e8f0';
       ctx.font = "800 28px 'Inter', sans-serif";
-      ctx.fillText('200', cx, cy - 4);
+      ctx.fillText('600', cx, cy - 4);
       ctx.fillStyle = '#64748b';
       ctx.font = "500 11px 'Inter', sans-serif";
       ctx.fillText('CUSTOMERS', cx, cy + 16);
@@ -586,10 +586,10 @@ function filterBySegment() {
   // Update KPI total
   const seg = document.getElementById('segmentFilter').value;
   if (seg === 'All') {
-    document.getElementById('kpiTotalCustomers').textContent = '200';
+    document.getElementById('kpiTotalCustomers').textContent = '600';
   } else {
     const s = SEGMENTS.find(s => s.name === seg);
-    document.getElementById('kpiTotalCustomers').textContent = s ? s.count : '200';
+    document.getElementById('kpiTotalCustomers').textContent = s ? s.count : '600';
   }
 }
 

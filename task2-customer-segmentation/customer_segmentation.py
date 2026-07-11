@@ -28,7 +28,7 @@ warnings.filterwarnings('ignore')
 # Configuration
 # ============================================================================
 RANDOM_SEED = 42
-N_CUSTOMERS = 200
+N_CUSTOMERS = 600
 K_RANGE = range(2, 9)       # Test K = 2..8
 OPTIMAL_K = 4
 FEATURES = [
