@@ -136,6 +136,10 @@ tr:hover td{background:rgba(255,255,255,.02)}
         <input type="checkbox" id="optMedian" checked/>
         Impute numeric nulls with Median
       </label>
+      <label class="option-item">
+        <input type="checkbox" id="optCasing" checked/>
+        Standardize text casing (Title Case, skips IDs)
+      </label>
 
       <button class="btn" id="btnClean" onclick="cleanData()" disabled style="margin-top:14px;">
         ✨ Clean Dataset
@@ -273,6 +277,7 @@ function cleanData() {
   const convertNulls = document.getElementById('optNulls').checked;
   const standardizeDates = document.getElementById('optDates').checked;
   const imputeMedian = document.getElementById('optMedian').checked;
+  const standardizeCasing = document.getElementById('optCasing').checked;
 
   let working = JSON.parse(jsonStringifySafe(originalData));
   let dupCount = 0;
@@ -333,6 +338,24 @@ function cleanData() {
           const dateObj = new Date(dt);
           // Convert to YYYY-MM-DD
           val = dateObj.toISOString().split('T')[0];
+        }
+      }
+
+      // Standardize text casing (Title Case, skips IDs)
+      if (standardizeCasing && typeof val === 'string' && val.length > 0) {
+        const colLower = col.toLowerCase();
+        const isIdCol = colLower.includes('id') || 
+                         colLower.includes('no') || 
+                         colLower.includes('code') || 
+                         colLower.includes('num') || 
+                         colLower.includes('key') ||
+                         colLower.includes('customer') ||
+                         colLower.includes('invoice');
+        
+        const isAlphanumericId = /^[A-Za-z0-9\-_]+$/.test(val) && /[A-Za-z]/.test(val) && /[0-9]/.test(val);
+        
+        if (!isIdCol && !isAlphanumericId) {
+          val = val.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
         }
       }
 
