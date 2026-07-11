@@ -754,13 +754,13 @@
                 <div class="kpi-label">Avg. Order Value</div>
                 <div class="kpi-sparkline"><canvas id="sparkline-aov"></canvas></div>
             </div>
-            <div class="kpi-card" id="kpi-conversion">
+            <div class="kpi-card" id="kpi-repeat-purchase">
                 <div class="kpi-header">
-                    <div class="kpi-icon">📈</div>
-                    <span class="kpi-trend down" id="kpi-conversion-trend">↓ 1.2%</span>
+                    <div class="kpi-icon">🔄</div>
+                    <span class="kpi-trend up" id="kpi-repeat-purchase-trend">↑ 1.2%</span>
                 </div>
-                <div class="kpi-value" id="kpi-conversion-value">3.42%</div>
-                <div class="kpi-label">Conversion Rate</div>
+                <div class="kpi-value" id="kpi-repeat-purchase-value">0.00%</div>
+                <div class="kpi-label">Repeat Purchase Rate</div>
                 <div class="kpi-sparkline"><canvas id="sparkline-conversion"></canvas></div>
             </div>
             <div class="kpi-card" id="kpi-customers">
@@ -778,7 +778,7 @@
                     <span class="kpi-trend up" id="kpi-profit-trend">↑ 9.1%</span>
                 </div>
                 <div class="kpi-value" id="kpi-profit-value">$892K</div>
-                <div class="kpi-label">Net Profit</div>
+                <div class="kpi-label">Net Profit <span style="font-size: 10px; color: var(--text-muted); font-weight: 400;">(est., 25% margin assumed)</span></div>
                 <div class="kpi-sparkline"><canvas id="sparkline-profit"></canvas></div>
             </div>
         </section>
@@ -985,6 +985,7 @@
             let totalRevenue = 0;
             let orderIDs = new Set();
             let customers = new Set();
+            let customerInvoices = {};
             let productRevenue = {};
             let categoryRevenue = {
                 'Electronics': 0, 'Clothing': 0, 'Home & Garden': 0, 'Sports': 0, 'Books': 0
@@ -1006,7 +1007,16 @@
                 const rev = r.Revenue;
                 totalRevenue += rev;
                 if (r.InvoiceNo) orderIDs.add(r.InvoiceNo);
-                if (r.CustomerID) customers.add(r.CustomerID);
+                
+                if (r.CustomerID) {
+                    customers.add(r.CustomerID);
+                    if (!customerInvoices[r.CustomerID]) {
+                        customerInvoices[r.CustomerID] = new Set();
+                    }
+                    if (r.InvoiceNo) {
+                        customerInvoices[r.CustomerID].add(r.InvoiceNo);
+                    }
+                }
                 
                 productRevenue[r.Description] = (productRevenue[r.Description] || 0) + rev;
                 categoryRevenue[r.categoryLabel] += rev;
@@ -1049,10 +1059,21 @@
                 .sort((a, b) => b[1] - a[1])
                 .slice(0, 7);
                 
+            let repeatCustomersCount = 0;
+            let validCustomersCount = 0;
+            for (const cid in customerInvoices) {
+                validCustomersCount++;
+                if (customerInvoices[cid].size > 1) {
+                    repeatCustomersCount++;
+                }
+            }
+            let repeatPurchaseRate = validCustomersCount > 0 ? (repeatCustomersCount / validCustomersCount * 100) : 0;
+
             activeFilteredData = {
                 totalRevenue,
                 totalOrders: orderIDs.size,
                 uniqueCustomers: customers.size,
+                repeatPurchaseRate,
                 categoryRevenue,
                 regionRevenue,
                 topProducts: sortedProducts,
@@ -1662,9 +1683,9 @@
             document.getElementById('kpi-orders-value').textContent = orders.toLocaleString();
             document.getElementById('kpi-aov-value').textContent = '$' + aov.toFixed(2);
             
-            // Simulated baseline conversion rate metric aligned to real customers count
-            const conversion = (customers / (customers + 8000) * 10).toFixed(2) + '%';
-            document.getElementById('kpi-conversion-value').textContent = conversion;
+            // Real calculated Repeat Purchase Rate
+            const repeatRate = activeFilteredData.repeatPurchaseRate.toFixed(2) + '%';
+            document.getElementById('kpi-repeat-purchase-value').textContent = repeatRate;
             document.getElementById('kpi-customers-value').textContent = customers.toLocaleString();
             
             const netProfit = revenue * 0.25; // 25% profit margin
@@ -1675,14 +1696,16 @@
                 'kpi-revenue-trend': '↑ 14.8%',
                 'kpi-orders-trend': '↑ 11.2%',
                 'kpi-aov-trend': '↑ 3.2%',
-                'kpi-conversion-trend': '↑ 0.5%',
+                'kpi-repeat-purchase-trend': '↑ 0.5%',
                 'kpi-customers-trend': '↑ 18.5%',
                 'kpi-profit-trend': '↑ 12.0%'
             };
             for (const [id, val] of Object.entries(trends)) {
                 const el = document.getElementById(id);
-                el.className = 'kpi-trend up';
-                el.textContent = val;
+                if (el) {
+                    el.className = 'kpi-trend up';
+                    el.textContent = val;
+                }
             }
         }
 
