@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>🧹 Reusable Universal Data Cleaner — Standalone CSV Cleaner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0e17;--surface:rgba(255,255,255,.04);--surface-hover:rgba(255,255,255,.07);
+  --border:rgba(255,255,255,.08);--border-glow:rgba(99,102,241,.35);
+  --text:#e2e8f0;--text-secondary:#94a3b8;--text-muted:#64748b;
+  --accent:#6366f1;--accent-hover:#4f46e5;
+  --green:#22c55e;--amber:#f59e0b;--cyan:#06b6d4;
+  --radius:16px;--radius-sm:10px;
+}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 50% -20%,rgba(99,102,241,.12),transparent 70%),radial-gradient(ellipse 60% 50% at 20% 100%,rgba(139,92,246,.08),transparent 60%);pointer-events:none;z-index:0}
+
+.wrapper{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:32px 24px 60px}
+
+/* Header */
+.header{margin-bottom:36px;animation:fadeDown .6s ease}
+.header h1{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:900;letter-spacing:-.8px;background:linear-gradient(135deg,#e2e8f0 0%,#a78bfa 50%,#6366f1 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.header p{color:var(--text-secondary);font-size:.95rem;margin-top:8px}
+
+/* Grid Layout */
+.app-grid{display:grid;grid-template-columns:1fr 2fr;gap:24px;align-items:start;margin-bottom:32px}
+
+/* Cards */
+.card{background:var(--surface);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:border-color .3s,box-shadow .3s}
+.card:hover{border-color:var(--border-glow);box-shadow:0 8px 32px rgba(99,102,241,.06)}
+
+/* Upload Section */
+.upload-zone{border:2px dashed rgba(255,255,255,.15);border-radius:var(--radius-sm);padding:36px 20px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;position:relative;margin-bottom:20px}
+.upload-zone:hover{border-color:var(--accent);background:rgba(99,102,241,.02)}
+.upload-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.upload-icon{font-size:2.2rem;margin-bottom:12px;display:block}
+.upload-text{font-size:.9rem;font-weight:600;color:var(--text)}
+.upload-subtext{font-size:.76rem;color:var(--text-muted);margin-top:4px}
+
+/* Options checkboxes */
+.options-title{font-size:.8rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:14px}
+.option-item{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:.85rem;cursor:pointer;user-select:none;color:var(--text-secondary)}
+.option-item input{accent-color:var(--accent);width:16px;height:16px;cursor:pointer}
+.option-item:hover{color:var(--text)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:white;border:none;padding:12px 20px;border-radius:var(--radius-sm);font-family:inherit;font-size:.88rem;font-weight:600;cursor:pointer;transition:background .2s,transform .1s;width:100%;text-align:center}
+.btn:hover{background:var(--accent-hover)}
+.btn:active{transform:scale(.98)}
+.btn:disabled{background:var(--border);color:var(--text-muted);cursor:not-allowed;transform:none}
+.btn-secondary{background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--text)}
+.btn-secondary:hover{background:rgba(255,255,255,.1)}
+
+/* Stats Card */
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.stat-item{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px;text-align:center}
+.stat-value{font-size:1.6rem;font-weight:800;color:var(--text)}
+.stat-value.success{color:var(--green)}
+.stat-value.warning{color:var(--amber)}
+.stat-label{font-size:.72rem;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:.4px;margin-top:4px}
+
+/* Tabs & Preview */
+.preview-tabs{display:flex;gap:12px;border-bottom:1px solid var(--border);margin-bottom:18px;padding-bottom:1px}
+.tab-btn{background:transparent;border:none;color:var(--text-secondary);font-family:inherit;font-size:.86rem;font-weight:600;padding:8px 16px;cursor:pointer;position:relative;transition:color .2s}
+.tab-btn:hover{color:var(--text)}
+.tab-btn.active{color:var(--accent)}
+.tab-btn.active::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:2px;background:var(--accent)}
+
+.table-container{overflow-x:auto;max-height:420px;border:1px solid var(--border);border-radius:var(--radius-sm);background:rgba(0,0,0,.15)}
+table{width:100%;border-collapse:collapse;font-size:.82rem;text-align:left}
+thead{background:rgba(255,255,255,.03);position:sticky;top:0;z-index:2}
+th{padding:12px 16px;color:var(--text-secondary);font-weight:600;border-bottom:1px solid var(--border)}
+td{padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.03);white-space:nowrap}
+tr:hover td{background:rgba(255,255,255,.02)}
+
+.placeholder-view{display:flex;flex-direction:column;align-items:center;justify-content:center;height:240px;color:var(--text-muted);text-align:center;gap:12px}
+
+@keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:850px){
+  .app-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+  
+  <!-- ═══ Header ═══ -->
+  <header class="header">
+    <h1>🧹 Universal Reusable CSV Cleaner</h1>
+    <p>Upload any tabular CSV file to perform zero-backend automated data cleaning, duplicate removal, formatting, and profiling.</p>
+  </header>
+
+  <!-- ═══ Main Application Grid ═══ -->
+  <div class="app-grid">
+    
+    <!-- Controls Sidebar -->
+    <aside class="card" style="animation:fadeUp .6s ease both">
+      <div class="upload-zone">
+        <span class="upload-icon">📁</span>
+        <span class="upload-text">Choose CSV File</span>
+        <span class="upload-subtext">or drag & drop here</span>
+        <input type="file" id="csvFile" accept=".csv" onchange="handleFileSelect(event)"/>
+      </div>
+      
+      <div id="fileInfo" style="display:none; font-size:.8rem; margin-bottom:20px; padding:10px; background:rgba(255,255,255,.02); border:1px solid var(--border); border-radius:6px; word-break:break-all;">
+        <strong>Selected File:</strong> <span id="fileName" style="color:var(--accent);">None</span>
+      </div>
+
+      <div class="options-title">Cleaning Actions</div>
+      <label class="option-item">
+        <input type="checkbox" id="optDuplicates" checked/>
+        Remove duplicate rows
+      </label>
+      <label class="option-item">
+        <input type="checkbox" id="optTrim" checked/>
+        Trim spaces & whitespace
+      </label>
+      <label class="option-item">
+        <input type="checkbox" id="optNulls" checked/>
+        Convert empty strings to Nulls
+      </label>
+      <label class="option-item">
+        <input type="checkbox" id="optDates" checked/>
+        Standardize Date strings
+      </label>
+      <label class="option-item">
+        <input type="checkbox" id="optMedian" checked/>
+        Impute numeric nulls with Median
+      </label>
+
+      <button class="btn" id="btnClean" onclick="cleanData()" disabled style="margin-top:14px;">
+        ✨ Clean Dataset
+      </button>
+      <button class="btn btn-secondary" id="btnDownload" onclick="downloadCleaned()" disabled style="margin-top:10px;">
+        📥 Download Cleaned CSV
+      </button>
+    </aside>
+
+    <!-- Results/Preview Pane -->
+    <main class="card" style="animation:fadeUp .6s ease both; animation-delay:.15s;">
+      
+      <!-- Summary Statistics (Visible after cleaning) -->
+      <div class="stats-grid" id="statsRow" style="display:none;">
+        <div class="stat-item">
+          <div class="stat-value" id="statRows">0</div>
+          <div class="stat-label">Total Rows</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value success" id="statDuplicates">0</div>
+          <div class="stat-label">Duplicates Removed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value warning" id="statNulls">0</div>
+          <div class="stat-label">Imputed Cells</div>
+        </div>
+      </div>
+
+      <div class="preview-tabs">
+        <button class="tab-btn active" id="tabOriginal" onclick="switchTab('original')">Original Preview</button>
+        <button class="tab-btn" id="tabCleaned" onclick="switchTab('cleaned')">Cleaned Output</button>
+      </div>
+
+      <div class="table-container" id="previewArea">
+        <div class="placeholder-view">
+          <span style="font-size:3rem;">📊</span>
+          <p>Please upload a CSV file to inspect data and clean it.</p>
+        </div>
+      </div>
+      <div id="rowCountLabel" style="font-size:.76rem; color:var(--text-muted); margin-top:12px; display:none;">
+        Previewing top 100 rows.
+      </div>
+    </main>
+
+  </div>
+
+  <!-- ═══ Footer ═══ -->
+  <footer style="text-align:center; padding-top:40px; font-size:.78rem; color:var(--text-muted);">
+    Universal CSV Cleaner &copy; 2026 &nbsp;·&nbsp; 
+    <a href="../index.html" style="color:var(--accent); text-decoration:none;">Back to Portfolio Hub</a>
+  </footer>
+
+</div>
+
+<script>
+let originalData = null;
+let cleanedData = null;
+let originalHeaders = null;
+let currentTab = 'original';
+
+function handleFileSelect(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  document.getElementById('fileName').textContent = file.name;
+  document.getElementById('fileInfo').style.display = 'block';
+  document.getElementById('btnClean').disabled = false;
+
+  Papa.parse(file, {
+    header: true,
+    dynamicTyping: true,
+    skipEmptyLines: 'greedy',
+    complete: function(results) {
+      originalData = results.data;
+      originalHeaders = results.meta.fields;
+      cleanedData = null;
+      document.getElementById('btnDownload').disabled = true;
+      document.getElementById('statsRow').style.display = 'none';
+      switchTab('original');
+    }
+  });
+}
+
+function switchTab(tab) {
+  currentTab = tab;
+  document.getElementById('tabOriginal').classList.toggle('active', tab === 'original');
+  document.getElementById('tabCleaned').classList.toggle('active', tab === 'cleaned');
+  renderPreview();
+}
+
+function renderPreview() {
+  const container = document.getElementById('previewArea');
+  const data = currentTab === 'original' ? originalData : cleanedData;
+  const headers = originalHeaders;
+
+  if (!data || data.length === 0) {
+    container.innerHTML = `
+      <div class="placeholder-view">
+        <span style="font-size:3rem;">⚠️</span>
+        <p>No data loaded for this view.</p>
+      </div>
+    `;
+    document.getElementById('rowCountLabel').style.display = 'none';
+    return;
+  }
+
+  document.getElementById('rowCountLabel').style.display = 'block';
+
+  // Preview only top 100 rows to keep browser highly responsive
+  const previewRows = data.slice(0, 100);
+  
+  let html = '<table><thead><tr>';
+  headers.forEach(h => html += `<th>${h}</th>`);
+  html += '</tr></thead><tbody>';
+
+  previewRows.forEach(row => {
+    html += '<tr>';
+    headers.forEach(h => {
+      const val = row[h];
+      const displayVal = val === null || val === undefined ? '<span style="color:var(--text-muted);font-style:italic;">null</span>' : val;
+      html += `<td>${displayVal}</td>`;
+    });
+    html += '</tr>';
+  });
+
+  html += '</tbody></table>';
+  container.innerHTML = html;
+}
+
+function cleanData() {
+  if (!originalData) return;
+
+  const removeDuplicates = document.getElementById('optDuplicates').checked;
+  const trimSpaces = document.getElementById('optTrim').checked;
+  const convertNulls = document.getElementById('optNulls').checked;
+  const standardizeDates = document.getElementById('optDates').checked;
+  const imputeMedian = document.getElementById('optMedian').checked;
+
+  let working = JSON.parse(jsonStringifySafe(originalData));
+  let dupCount = 0;
+  let imputeBay = 0;
+
+  // 1. Remove duplicate rows
+  if (removeDuplicates) {
+    const seen = new Set();
+    const unique = [];
+    working.forEach(row => {
+      const str = JSON.stringify(row);
+      if (!seen.has(str)) {
+        seen.add(str);
+        unique.push(row);
+      } else {
+        dupCount++;
+      }
+    });
+    working = unique;
+  }
+
+  // 2. Pre-calculate medians for imputation
+  const medians = {};
+  if (imputeMedian) {
+    originalHeaders.forEach(col => {
+      const vals = working
+        .map(row => row[col])
+        .filter(v => typeof v === 'number' && v !== null && !isNaN(v))
+        .sort((a, b) => a - b);
+      if (vals.length > 0) {
+        const mid = Math.floor(vals.length / 2);
+        medians[col] = vals.length % 2 !== 0 ? vals[mid] : (vals[mid - 1] + vals[mid]) / 2;
+      }
+    });
+  }
+
+  // 3. Row-level cleaning operations
+  working = working.map(row => {
+    const newRow = { ...row };
+    originalHeaders.forEach(col => {
+      let val = newRow[col];
+
+      // Trim white spaces
+      if (trimSpaces && typeof val === 'string') {
+        val = val.trim();
+      }
+
+      // Convert empty strings to null
+      if (convertNulls && val === '') {
+        val = null;
+        imputeBay++;
+      }
+
+      // Standardize Date formats
+      if (standardizeDates && typeof val === 'string' && val.length > 5) {
+        const dt = Date.parse(val);
+        if (!isNaN(dt)) {
+          const dateObj = new Date(dt);
+          // Convert to YYYY-MM-DD
+          val = dateObj.toISOString().split('T')[0];
+        }
+      }
+
+      // Impute numeric nulls with Median
+      if (imputeMedian && (val === null || val === undefined || isNaN(val)) && (col in medians)) {
+        val = medians[col];
+        imputeBay++;
+      }
+
+      newRow[col] = val;
+    });
+    return newRow;
+  });
+
+  cleanedData = working;
+
+  // Update Stats
+  document.getElementById('statRows').textContent = cleanedData.length.toLocaleString();
+  document.getElementById('statDuplicates').textContent = dupCount.toLocaleString();
+  document.getElementById('statNulls').textContent = imputeBay.toLocaleString();
+  document.getElementById('statsRow').style.display = 'grid';
+
+  // Toggle download button
+  document.getElementById('btnDownload').disabled = false;
+
+  // Switch to cleaned tab
+  switchTab('cleaned');
+}
+
+function downloadCleaned() {
+  if (!cleanedData) return;
+  const csv = Papa.unparse(cleanedData);
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  
+  const link = document.createElement("a");
+  link.setAttribute("href", url);
+  link.setAttribute("download", "cleaned_dataset_export.csv");
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+// JSON safety helper to prevent circular structure crashes
+function jsonStringifySafe(obj) {
+  return JSON.stringify(obj);
+}
+</script>
+</body>
+</html>
