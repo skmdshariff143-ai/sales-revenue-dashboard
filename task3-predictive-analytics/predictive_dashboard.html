@@ -117,8 +117,8 @@ tr:hover td{background:rgba(16,185,129,.04)}
       <span class="control-label">Forecasting Model</span>
       <div style="margin-top:4px;">
         <select id="modelSelect" style="background:#1a1f2e;color:var(--text);border:1px solid var(--border);padding:8px 12px;border-radius:6px;outline:none;cursor:pointer;font-family:inherit;font-size:.85rem;" onchange="updateForecast()">
-          <option value="RF">Random Forest Regressor (Optimal)</option>
-          <option value="LR">Linear Regression</option>
+          <option value="LR">Linear Regression (Optimal)</option>
+          <option value="RF">Random Forest Regressor</option>
         </select>
       </div>
     </div>
@@ -139,7 +139,7 @@ tr:hover td{background:rgba(16,185,129,.04)}
     <div class="card kpi-card">
       <div class="kpi-icon">💰</div>
       <div class="kpi-value" id="kpi6MonthRevenue">$1.96M</div>
-      <div class="kpi-label">Forecasted 6-Month Revenue</div>
+      <div class="kpi-label">Forecasted 3-Month Revenue</div>
       <div class="kpi-trend up">▲ 8.2% vs last half</div>
     </div>
     <div class="card kpi-card">
@@ -150,13 +150,13 @@ tr:hover td{background:rgba(16,185,129,.04)}
     </div>
     <div class="card kpi-card">
       <div class="kpi-icon">🎯</div>
-      <div class="kpi-value">91.2%</div>
+      <div class="kpi-value" id="kpiR2">93.2%</div>
       <div class="kpi-label">Model Accuracy (R²)</div>
       <div class="kpi-trend up">▲ High Feature Correlation</div>
     </div>
     <div class="card kpi-card">
       <div class="kpi-icon">📉</div>
-      <div class="kpi-value" id="kpiMape">7.68%</div>
+      <div class="kpi-value" id="kpiMape">1.42%</div>
       <div class="kpi-label">Model Error (MAPE)</div>
       <div class="kpi-trend up">▲ Low Holdout Variance</div>
     </div>
@@ -166,7 +166,7 @@ tr:hover td{background:rgba(16,185,129,.04)}
   <div class="charts-grid">
     <div class="card chart-card">
       <div class="chart-title">Revenue Forecast Trend</div>
-      <div class="chart-subtitle">Historical actuals (21 months) combined with 6-month predictive forecasts</div>
+      <div class="chart-subtitle">Historical actuals (21 months) combined with 3-month predictive forecasts</div>
       <div class="chart-container"><canvas id="forecastChart"></canvas></div>
     </div>
     <div class="card chart-card">
@@ -181,7 +181,7 @@ tr:hover td{background:rgba(16,185,129,.04)}
     <!-- Table Section -->
     <div class="card table-section" style="grid-column: 1 / -1;">
       <div class="table-header">
-        <div class="table-title">📄 Projected Forecast Data (Next 6 Months)</div>
+        <div class="table-title">📄 Projected Forecast Data (Next 3 Months)</div>
       </div>
       <div class="data-table-wrap">
         <table id="forecastTable">
@@ -211,52 +211,103 @@ tr:hover td{background:rgba(16,185,129,.04)}
 <script>
 // ═══ Hardcoded Data derived from python output run ═══
 const HISTORICAL_DATA = [
-  { date: 'Oct 2024', revenue: 211535.40 },
-  { date: 'Nov 2024', revenue: 241314.36 },
-  { date: 'Dec 2024', revenue: 261586.03 },
-  { date: 'Jan 2025', revenue: 234146.03 },
-  { date: 'Feb 2025', revenue: 262749.04 },
-  { date: 'Mar 2025', revenue: 268123.07 },
-  { date: 'Apr 2025', revenue: 268551.23 },
-  { date: 'May 2025', revenue: 272952.29 },
-  { date: 'Jun 2025', revenue: 249389.57 },
-  { date: 'Jul 2025', revenue: 258404.15 },
-  { date: 'Aug 2025', revenue: 222657.36 },
-  { date: 'Sep 2025', revenue: 230931.32 },
-  { date: 'Oct 2025', revenue: 259628.81 },
-  { date: 'Nov 2025', revenue: 310371.12 },
-  { date: 'Dec 2025', revenue: 329870.71 },
-  { date: 'Jan 2026', revenue: 324739.93 },
-  { date: 'Feb 2026', revenue: 328092.84 },
-  { date: 'Mar 2026', revenue: 324630.93 },
-  { date: 'Apr 2026', revenue: 327429.21 },
-  { date: 'May 2026', revenue: 329680.12 },
-  { date: 'Jun 2026', revenue: 321590.22 }
+  {
+    "date": "Mar 2011",
+    "revenue": 595500.76
+  },
+  {
+    "date": "Apr 2011",
+    "revenue": 469200.361
+  },
+  {
+    "date": "May 2011",
+    "revenue": 678594.56
+  },
+  {
+    "date": "Jun 2011",
+    "revenue": 661213.6900000001
+  },
+  {
+    "date": "Jul 2011",
+    "revenue": 600091.011
+  },
+  {
+    "date": "Aug 2011",
+    "revenue": 645343.9
+  },
+  {
+    "date": "Sep 2011",
+    "revenue": 952838.382
+  },
+  {
+    "date": "Oct 2011",
+    "revenue": 1039318.79
+  },
+  {
+    "date": "Nov 2011",
+    "revenue": 1161817.38
+  }
 ];
 
 // Base Model Outputs
 const FORECAST_BASE = {
-  RF: [
-    { date: 'Jul 2026', year: 2026, revenue: 325003.65, spend: 19462.88 },
-    { date: 'Aug 2026', year: 2026, revenue: 326652.17, spend: 19862.88 },
-    { date: 'Sep 2026', year: 2026, revenue: 327209.77, spend: 20262.88 },
-    { date: 'Oct 2026', year: 2026, revenue: 327219.91, spend: 20662.88 },
-    { date: 'Nov 2026', year: 2026, revenue: 327109.83, spend: 21062.88 },
-    { date: 'Dec 2026', year: 2026, revenue: 327421.22, spend: 21462.88 }
+  "RF": [
+    {
+      "date": "Dec 2011",
+      "year": 2011,
+      "revenue": 1097030.68,
+      "spend": 99479.66
+    },
+    {
+      "date": "Jan 2012",
+      "year": 2012,
+      "revenue": 1097030.68,
+      "spend": 101479.66
+    },
+    {
+      "date": "Feb 2012",
+      "year": 2012,
+      "revenue": 1097030.68,
+      "spend": 103479.66
+    }
   ],
-  LR: [
-    { date: 'Jul 2026', year: 2026, revenue: 318450.20, spend: 19462.88 },
-    { date: 'Aug 2026', year: 2026, revenue: 320120.45, spend: 19862.88 },
-    { date: 'Sep 2026', year: 2026, revenue: 321040.60, spend: 20262.88 },
-    { date: 'Oct 2026', year: 2026, revenue: 319800.70, spend: 20662.88 },
-    { date: 'Nov 2026', year: 2026, revenue: 323400.90, spend: 21062.88 },
-    { date: 'Dec 2026', year: 2026, revenue: 325100.15, spend: 21462.88 }
+  "LR": [
+    {
+      "date": "Dec 2011",
+      "year": 2011,
+      "revenue": 1194535.07,
+      "spend": 99479.66
+    },
+    {
+      "date": "Jan 2012",
+      "year": 2012,
+      "revenue": 1223374.95,
+      "spend": 101479.66
+    },
+    {
+      "date": "Feb 2012",
+      "year": 2012,
+      "revenue": 1250065.43,
+      "spend": 103479.66
+    }
   ]
 };
 
 const FEATURE_IMPORTANCES = {
-  RF: [0.42, 0.23, 0.18, 0.11, 0.06],
-  LR: [0.35, 0.28, 0.15, 0.12, 0.10]
+  "RF": [
+    0.13,
+    0.59,
+    0.05,
+    0.23,
+    0.0
+  ],
+  "LR": [
+    0.18,
+    0.5,
+    0.12,
+    0.2,
+    0.0
+  ]
 };
 
 let forecastChartInstance = null;
@@ -362,12 +413,13 @@ function updateForecast() {
   });
 
   // Update KPIs
-  const total6M = finalForecast.reduce((sum, item) => sum + item.revenue, 0);
-  const avgMonthly = total6M / 6;
+  const totalForecast = finalForecast.reduce((sum, item) => sum + item.revenue, 0);
+  const avgMonthly = totalForecast / finalForecast.length;
   
-  document.getElementById('kpi6MonthRevenue').textContent = '$' + (total6M / 1000000).toFixed(2) + 'M';
+  document.getElementById('kpi6MonthRevenue').textContent = '$' + (totalForecast / 1000000).toFixed(2) + 'M';
   document.getElementById('kpiAvgMonthly').textContent = '$' + (avgMonthly / 1000).toFixed(0) + 'K';
-  document.getElementById('kpiMape').textContent = model === 'RF' ? '7.68%' : '12.99%';
+  document.getElementById('kpiMape').textContent = model === 'LR' ? '1.42%' : '32.58%';
+  document.getElementById('kpiR2').textContent = model === 'LR' ? '93.2%' : '-34.8%';
 
   // Update chart
   const fcDataPoints = Array(HISTORICAL_DATA.length).fill(null).concat(finalForecast.map(d => d.revenue));
@@ -386,7 +438,7 @@ function updateForecast() {
   // Update Table
   const tbody = document.getElementById('tableBody');
   tbody.innerHTML = finalForecast.map(item => {
-    const errorMargin = item.revenue * (model === 'RF' ? 0.0768 : 0.1299);
+    const errorMargin = item.revenue * (model === 'LR' ? 0.0142 : 0.3258);
     const minVal = item.revenue - errorMargin;
     const maxVal = item.revenue + errorMargin;
     

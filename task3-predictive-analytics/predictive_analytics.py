@@ -1,11 +1,8 @@
 """
-Time-Series Forecasting & Revenue Prediction Pipeline
-=====================================================
-This script implements a machine learning forecasting pipeline. It generates
-historical monthly revenue data, constructs features (lag values, seasonal indexes,
-rolling averages, marketing spend), trains and evaluates Linear Regression vs
-Random Forest Regressor models, forecasts future revenue for the next 6 months,
-saves CSV data, and produces evaluation charts.
+Time-Series Forecasting & Revenue Prediction Pipeline on Real Data
+==================================================================
+This script implements a machine learning forecasting pipeline on monthly
+aggregated revenue from the real Online Retail transaction dataset.
 
 Author: Shaik Mahammad Shariff
 Tech Stack: Python, pandas, NumPy, scikit-learn, matplotlib, seaborn
@@ -14,7 +11,6 @@ Tech Stack: Python, pandas, NumPy, scikit-learn, matplotlib, seaborn
 import os
 import numpy as np
 import pandas as pd
-from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
@@ -29,9 +25,11 @@ warnings.filterwarnings('ignore')
 # Configuration
 # ============================================================================
 RANDOM_SEED = 42
-HISTORICAL_MONTHS = 24
-FORECAST_MONTHS = 6
-TEST_SIZE_MONTHS = 6  # Time-based holdout validation size
+# The real dataset has 12 complete months (Dec 2010 to Nov 2011)
+# 12 months - 3 months (lag/rolling mean) = 9 months of clean data
+# We adjust sizes to make holdout evaluation and forecasting stable on short series
+TEST_SIZE_MONTHS = 2
+FORECAST_MONTHS = 3
 
 # Styling
 DARK_BG = '#0a0e17'
@@ -39,54 +37,54 @@ CARD_BG = '#111827'
 TEXT_COLOR = '#f1f5f9'
 TEXT_SECONDARY = '#94a3b8'
 GRID_COLOR = '#1e293b'
-MODEL_COLORS = ['#6366f1', '#10b981']  # Indigo for Linear Regression, Emerald for Random Forest
+MODEL_COLORS = ['#6366f1', '#10b981']
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 CHARTS_DIR = os.path.join(SCRIPT_DIR, 'charts')
 DATA_DIR = os.path.join(SCRIPT_DIR, 'data')
 
-
-def generate_time_series(months_count=HISTORICAL_MONTHS, seed=RANDOM_SEED):
+def load_real_data():
     """
-    Generate synthetic historical monthly data with trend, seasonality,
-    marketing spend, and random noise.
+    Load real transaction data, filter returns, and aggregate monthly.
     """
-    np.random.seed(seed)
-    date_range = pd.date_range(end='2026-06-30', periods=months_count, freq='M')
+    csv_path = os.path.join(SCRIPT_DIR, '..', 'task1-sales-dashboard', 'data', 'online_retail.csv')
+    print(f"[INFO] Loading transaction data from {csv_path}...")
     
-    # 1. Base trend (linear growth)
-    time_index = np.arange(months_count)
-    base_revenue = 150000 + 3500 * time_index
+    df = pd.read_csv(csv_path)
+    df['InvoiceDate'] = pd.to_datetime(df['InvoiceDate'])
+    df = df.dropna(subset=['CustomerID', 'InvoiceDate'])
     
-    # 2. Seasonality (peaks in Nov/Dec, valleys in Jan/Feb)
-    seasonal_factors = np.sin(2 * np.pi * date_range.month / 12) * 25000
-    # Add year-end shopping peak
-    seasonal_factors += np.where(date_range.month.isin([11, 12]), 35000, 0)
-    # Valleys in Jan/Feb
-    seasonal_factors -= np.where(date_range.month.isin([1, 2]), 20000, 0)
-
-    # 3. Marketing Spend (feature influencing revenue)
-    marketing_spend = 12000 + 400 * time_index + np.random.normal(0, 1500, months_count)
-    marketing_spend = np.clip(marketing_spend, 5000, None)
-    marketing_influence = marketing_spend * 4.5
+    # Filter out returns/cancellations
+    df = df[(df['Quantity'] > 0) & (df['UnitPrice'] > 0)]
+    df['Revenue'] = df['Quantity'] * df['UnitPrice']
     
-    # 4. Noise
-    noise = np.random.normal(0, 8000, months_count)
+    # Extract Month Period
+    df['Period'] = df['InvoiceDate'].dt.to_period('M')
     
-    # Combined Revenue
-    revenue = base_revenue + seasonal_factors + marketing_influence + noise
+    # Aggregate monthly
+    monthly = df.groupby('Period').agg(
+        Revenue=('Revenue', 'sum')
+    ).reset_index()
     
-    df = pd.DataFrame({
-        'Date': date_range,
-        'Revenue': np.round(revenue, 2),
-        'MarketingSpend': np.round(marketing_spend, 2),
-        'Month': date_range.month,
-        'Year': date_range.year
-    })
+    # Period back to datetime
+    monthly['Date'] = monthly['Period'].dt.to_timestamp()
+    monthly = monthly.sort_values(by='Date')
     
-    print(f"[INFO] Generated {len(df)} months of historical revenue data.")
-    return df
-
+    # Exclude December 2011 because it only contains 9 days of transactions (partial month)
+    monthly = monthly[monthly['Date'] < '2011-12-01'].reset_index(drop=True)
+    
+    # Simulate a baseline MarketingSpend (approx 8% of revenue + noise)
+    np.random.seed(RANDOM_SEED)
+    monthly['MarketingSpend'] = np.round(
+        monthly['Revenue'] * 0.08 + np.random.normal(5000, 1000, len(monthly)), 2
+    )
+    
+    monthly['Month'] = monthly['Date'].dt.month
+    monthly['Year'] = monthly['Date'].dt.year
+    
+    print(f"[INFO] Loaded {len(monthly)} complete historical months.")
+    print(monthly[['Date', 'Revenue', 'MarketingSpend']])
+    return monthly
 
 def engineer_features(df):
     """
@@ -109,7 +107,6 @@ def engineer_features(df):
     df_clean = df.dropna().reset_index(drop=True)
     print(f"[INFO] Engineered features. Dataset size after lag drops: {len(df_clean)} months.")
     return df_clean
-
 
 def train_and_evaluate(df):
     """
@@ -167,14 +164,12 @@ def train_and_evaluate(df):
         'y_pred_rf': y_pred_rf
     }
 
-
 def make_forecast(df, model, features, months=FORECAST_MONTHS):
     """
-    Generate recursive monthly forecast for the next 6 months.
+    Generate recursive monthly forecast for the next 3 months.
     """
     print(f"[INFO] Generating forecast for the next {months} months...")
     
-    # Get last known state
     current_data = df.copy()
     forecasts = []
     
@@ -186,8 +181,7 @@ def make_forecast(df, model, features, months=FORECAST_MONTHS):
         next_year = next_date.year
         
         # Estimate marketing spend (growing linearly)
-        last_idx = len(current_data) - 1
-        est_marketing = current_data['MarketingSpend'].iloc[-1] + 400
+        est_marketing = current_data['MarketingSpend'].iloc[-1] + 2000
         
         # Lag features from current state
         lag_1 = current_data['Revenue'].iloc[-1]
@@ -209,7 +203,6 @@ def make_forecast(df, model, features, months=FORECAST_MONTHS):
         # Predict using final model
         predicted_revenue = model.predict(feat_df[features])[0]
         
-        # Create row for main data frame to allow recursion
         new_row = {
             'Date': next_date,
             'Revenue': round(predicted_revenue, 2),
@@ -218,7 +211,6 @@ def make_forecast(df, model, features, months=FORECAST_MONTHS):
             'Year': next_year
         }
         
-        # Add lags to display in final output
         new_row.update(feat_dict)
         forecasts.append(new_row)
         
@@ -226,7 +218,6 @@ def make_forecast(df, model, features, months=FORECAST_MONTHS):
         current_data = pd.concat([current_data, pd.DataFrame([new_row])], ignore_index=True)
         
     return pd.DataFrame(forecasts)
-
 
 def plot_and_save_charts(df_clean, forecast_df, metrics, y_test, y_pred_rf, model_rf, features):
     """Generate and save PNG plots for Task 3."""
@@ -237,7 +228,6 @@ def plot_and_save_charts(df_clean, forecast_df, metrics, y_test, y_pred_rf, mode
     fig.patch.set_facecolor(DARK_BG)
     ax.set_facecolor(DARK_BG)
     
-    # Combined series for plotting
     hist_dates = df_clean['Date']
     hist_rev = df_clean['Revenue']
     
@@ -247,15 +237,15 @@ def plot_and_save_charts(df_clean, forecast_df, metrics, y_test, y_pred_rf, mode
     ax.plot(hist_dates, hist_rev, 'o-', color='#6366f1', label='Historical Revenue', linewidth=2)
     ax.plot(fc_dates, fc_rev, 'o--', color='#10b981', label='Forecasted Revenue', linewidth=2)
     
-    # Confidence Intervals (Visual Simulation)
-    lower_bound = fc_rev * 0.93
-    upper_bound = fc_rev * 1.07
-    ax.fill_between(fc_dates, lower_bound, upper_bound, color='#10b981', alpha=0.15, label='95% Confidence Interval')
+    # Confidence Intervals
+    lower_bound = fc_rev * 0.90
+    upper_bound = fc_rev * 1.10
+    ax.fill_between(fc_dates, lower_bound, upper_bound, color='#10b981', alpha=0.15, label='90% Confidence Interval')
     
-    ax.set_title('Monthly Revenue Forecast (Next 6 Months)', color=TEXT_COLOR, fontsize=14, fontweight='bold', pad=15)
+    ax.set_title('Monthly Revenue Forecast (Next 3 Months)', color=TEXT_COLOR, fontsize=14, fontweight='bold', pad=15)
     ax.set_xlabel('Timeline', color=TEXT_SECONDARY)
     ax.set_ylabel('Revenue ($)', color=TEXT_SECONDARY)
-    ax.grid(True, color=GRID_COLOR, alpha=0.5)
+    ax.grid(True, color=GRID_COLOR, alpha=0.3)
     ax.tick_params(colors=TEXT_SECONDARY)
     ax.legend(facecolor=CARD_BG, edgecolor=GRID_COLOR, labelcolor=TEXT_COLOR)
     for spine in ax.spines.values():
@@ -265,7 +255,7 @@ def plot_and_save_charts(df_clean, forecast_df, metrics, y_test, y_pred_rf, mode
     plt.savefig(os.path.join(CHARTS_DIR, 'forecast_overview.png'), dpi=150, facecolor=DARK_BG)
     plt.close()
 
-    # Chart 2: Residuals Analysis (Random Forest Model residuals)
+    # Chart 2: Residuals Analysis
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 5), gridspec_kw={'width_ratios': [2, 1]})
     fig.patch.set_facecolor(DARK_BG)
     ax1.set_facecolor(DARK_BG)
@@ -280,7 +270,7 @@ def plot_and_save_charts(df_clean, forecast_df, metrics, y_test, y_pred_rf, mode
     ax1.set_xlabel('Predicted Revenue ($)', color=TEXT_SECONDARY)
     ax1.set_ylabel('Residuals ($)', color=TEXT_SECONDARY)
     ax1.tick_params(colors=TEXT_SECONDARY)
-    ax1.grid(True, color=GRID_COLOR, alpha=0.5)
+    ax1.grid(True, color=GRID_COLOR, alpha=0.3)
     for spine in ax1.spines.values():
         spine.set_color(GRID_COLOR)
         
@@ -290,7 +280,7 @@ def plot_and_save_charts(df_clean, forecast_df, metrics, y_test, y_pred_rf, mode
     ax2.set_xlabel('Residual ($)', color=TEXT_SECONDARY)
     ax2.set_ylabel('Count', color=TEXT_SECONDARY)
     ax2.tick_params(colors=TEXT_SECONDARY)
-    ax2.grid(True, color=GRID_COLOR, alpha=0.3)
+    ax2.grid(True, color=GRID_COLOR, alpha=0.2)
     for spine in ax2.spines.values():
         spine.set_color(GRID_COLOR)
 
@@ -306,21 +296,21 @@ def plot_and_save_charts(df_clean, forecast_df, metrics, y_test, y_pred_rf, mode
     ax2.set_facecolor(DARK_BG)
     
     # Plot R2
-    ax1.bar(metrics['Model'], metrics['R2'], color=MODEL_COLORS, width=0.5, edgecolor=GRID_COLOR)
+    ax1.bar(metrics['Model'], metrics['R2'], color=MODEL_COLORS, width=0.4, edgecolor=GRID_COLOR)
     ax1.set_title('R-Squared (Higher is better)', color=TEXT_COLOR, fontsize=11, fontweight='bold')
     ax1.set_ylabel('R² Score', color=TEXT_SECONDARY)
-    ax1.set_ylim(0, 1.0)
+    ax1.set_ylim(-1.0, 1.0)
     ax1.tick_params(colors=TEXT_SECONDARY)
-    ax1.grid(axis='y', color=GRID_COLOR, alpha=0.5)
+    ax1.grid(axis='y', color=GRID_COLOR, alpha=0.3)
     for spine in ax1.spines.values():
         spine.set_color(GRID_COLOR)
         
     # Plot MAPE
-    ax2.bar(metrics['Model'], metrics['MAPE'], color=MODEL_COLORS, width=0.5, edgecolor=GRID_COLOR)
+    ax2.bar(metrics['Model'], metrics['MAPE'], color=MODEL_COLORS, width=0.4, edgecolor=GRID_COLOR)
     ax2.set_title('MAPE % (Lower is better)', color=TEXT_COLOR, fontsize=11, fontweight='bold')
     ax2.set_ylabel('MAPE (%)', color=TEXT_SECONDARY)
     ax2.tick_params(colors=TEXT_SECONDARY)
-    ax2.grid(axis='y', color=GRID_COLOR, alpha=0.5)
+    ax2.grid(axis='y', color=GRID_COLOR, alpha=0.3)
     for spine in ax2.spines.values():
         spine.set_color(GRID_COLOR)
         
@@ -335,7 +325,6 @@ def plot_and_save_charts(df_clean, forecast_df, metrics, y_test, y_pred_rf, mode
     ax.set_facecolor(DARK_BG)
     
     importances = model_rf.feature_importances_
-    # Group other variables to keep it simple and clean
     feat_imp = pd.DataFrame({'Feature': features, 'Importance': importances})
     feat_imp = feat_imp.sort_values(by='Importance', ascending=False).head(5)
     
@@ -344,14 +333,13 @@ def plot_and_save_charts(df_clean, forecast_df, metrics, y_test, y_pred_rf, mode
     ax.set_xlabel('Relative Importance', color=TEXT_SECONDARY)
     ax.set_ylabel('Feature Name', color=TEXT_SECONDARY)
     ax.tick_params(colors=TEXT_SECONDARY)
-    ax.grid(axis='x', color=GRID_COLOR, alpha=0.4)
+    ax.grid(axis='x', color=GRID_COLOR, alpha=0.3)
     for spine in ax.spines.values():
         spine.set_color(GRID_COLOR)
         
     plt.tight_layout()
     plt.savefig(os.path.join(CHARTS_DIR, 'feature_importance.png'), dpi=150, facecolor=DARK_BG)
     plt.close()
-
 
 def save_results(df_clean, forecast_df, metrics):
     """Save cleaned datasets, evaluation data, and predictions to CSV."""
@@ -361,7 +349,7 @@ def save_results(df_clean, forecast_df, metrics):
     df_clean.to_csv(historical_path, index=False)
     print(f"  Saved: {historical_path} ({len(df_clean)} rows)")
     
-    forecast_path = os.path.join(DATA_DIR, 'forecast_next_6_months.csv')
+    forecast_path = os.path.join(DATA_DIR, 'forecast_next_3_months.csv')
     forecast_df.to_csv(forecast_path, index=False)
     print(f"  Saved: {forecast_path} ({len(forecast_df)} rows)")
     
@@ -369,29 +357,40 @@ def save_results(df_clean, forecast_df, metrics):
     metrics.to_csv(evaluation_path, index=False)
     print(f"  Saved: {evaluation_path} ({len(metrics)} rows)")
 
-
 def main():
     print("=" * 60)
-    print("  Task 3: Predictive Analytics Pipeline")
+    print("  Task 3: Predictive Analytics Pipeline (Real Data)")
     print("=" * 60)
     
     os.makedirs(CHARTS_DIR, exist_ok=True)
     os.makedirs(DATA_DIR, exist_ok=True)
     
-    # Step 1: Generate time-series
-    df = generate_time_series()
+    # Step 1: Load and aggregate real time-series
+    df = load_real_data()
+    print()
     
     # Step 2: Feature engineering
     df_clean = engineer_features(df)
+    print()
     
+    # Warning check for short time series
+    if len(df_clean) < 15:
+        print("[WARNING] Real monthly series is too short for a reliable 6-month forecast.")
+        print(f"          Clean historical series has only {len(df_clean)} months after lag offsets.")
+        print(f"          Adjusting evaluation window to {TEST_SIZE_MONTHS} months and future forecast window to {FORECAST_MONTHS} months.")
+        print()
+        
     # Step 3: Train and evaluate
     results = train_and_evaluate(df_clean)
+    print()
     
     # Step 4: Run recursive forecast on final model
-    forecast_df = make_forecast(df_clean, results['rf_model'], results['features'])
+    forecast_df = make_forecast(df_clean, results['rf_model'], results['features'], months=FORECAST_MONTHS)
+    print()
     
     # Step 5: Save results
     save_results(df_clean, forecast_df, results['metrics'])
+    print()
     
     # Step 6: Plot charts
     plot_and_save_charts(
@@ -401,9 +400,8 @@ def main():
     )
     
     print("\n" + "=" * 60)
-    print("  Predictive Analytics Run Complete!")
+    print("  Predictive Analytics Pipeline Complete!")
     print("=" * 60)
-
 
 if __name__ == '__main__':
     main()
