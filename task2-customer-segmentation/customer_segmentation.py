@@ -1,10 +1,9 @@
 """
-Customer Segmentation using K-Means Clustering
-================================================
+Customer Segmentation using K-Means Clustering on Real RFM Data
+================================================================
 This script performs customer segmentation analysis using K-Means clustering
-with scikit-learn. It generates synthetic customer data, applies feature scaling,
-determines optimal clusters via Elbow Method and Silhouette Analysis, and produces
-visualizations and summary reports.
+on RFM (Recency, Frequency, Monetary) metrics calculated from the real
+Online Retail transaction dataset.
 
 Author: Shaik Mahammad Shariff
 Tech Stack: Python, pandas, NumPy, scikit-learn, matplotlib, seaborn
@@ -18,7 +17,7 @@ from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from sklearn.metrics import silhouette_score
 import matplotlib
-matplotlib.use('Agg')  # Non-interactive backend for server/CI environments
+matplotlib.use('Agg')  # Non-interactive backend
 import matplotlib.pyplot as plt
 import seaborn as sns
 import warnings
@@ -28,19 +27,9 @@ warnings.filterwarnings('ignore')
 # Configuration
 # ============================================================================
 RANDOM_SEED = 42
-N_CUSTOMERS = 600
 K_RANGE = range(2, 9)       # Test K = 2..8
 OPTIMAL_K = 4
-FEATURES = [
-    'AnnualIncome', 'SpendingScore', 'PurchaseFrequency',
-    'AvgOrderValue', 'CustomerTenure', 'TotalPurchases'
-]
-SEGMENT_LABELS = {
-    0: 'Premium Loyalists',
-    1: 'Budget Shoppers',
-    2: 'New High-Value',
-    3: 'At-Risk Customers'
-}
+FEATURES = ['Recency', 'Frequency', 'Monetary']
 
 # Output directories (relative to script location)
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -53,20 +42,48 @@ CARD_BG = '#111827'
 TEXT_COLOR = '#f1f5f9'
 TEXT_SECONDARY = '#94a3b8'
 GRID_COLOR = '#1e293b'
-SEGMENT_COLORS = ['#6366f1', '#06b6d4', '#ec4899', '#f59e0b']
+SEGMENT_COLORS = ['#6366f1', '#22c55e', '#f59e0b', '#ef4444']
 
-
-def generate_synthetic_data(n_customers=N_CUSTOMERS, seed=RANDOM_SEED):
+def load_and_build_rfm():
     """
-    Generate realistic synthetic customer data with distinct behavioral patterns
-    that naturally form 4 clusters when segmented.
-
-    Returns:
-        pd.DataFrame: Customer data with features and metadata.
+    Load real transaction data and build RFM summary per CustomerID.
     """
-    np.random.seed(seed)
-    print(f"[INFO] Generating synthetic data for {n_customers} customers...")
-
+    csv_path = os.path.join(SCRIPT_DIR, '..', 'task1-sales-dashboard', 'data', 'online_retail.csv')
+    print(f"[INFO] Loading transaction data from {csv_path}...")
+    
+    # Read CSV
+    df = pd.read_csv(csv_path)
+    
+    # Preprocess
+    df['InvoiceDate'] = pd.to_datetime(df['InvoiceDate'])
+    df = df.dropna(subset=['CustomerID', 'InvoiceDate'])
+    
+    # Filter out returns and negative quantities/prices
+    df = df[(df['Quantity'] > 0) & (df['UnitPrice'] > 0)]
+    
+    # Compute spend per transaction line
+    df['Revenue'] = df['Quantity'] * df['UnitPrice']
+    
+    # Max date in dataset
+    max_date = df['InvoiceDate'].max()
+    print(f"[INFO] Maximum Date in Dataset: {max_date}")
+    
+    # Aggregate per CustomerID
+    print("[INFO] Computing RFM metrics per CustomerID...")
+    rfm = df.groupby('CustomerID').agg(
+        LastInvoiceDate=('InvoiceDate', 'max'),
+        Frequency=('InvoiceNo', 'nunique'),
+        Monetary=('Revenue', 'sum')
+    )
+    
+    # Calculate Recency in days relative to max_date
+    rfm['Recency'] = (max_date - rfm['LastInvoiceDate']).dt.days
+    
+    # Reorder columns
+    rfm = rfm.reset_index()[['CustomerID', 'Recency', 'Frequency', 'Monetary']]
+    
+    # Add synthetic Names/Age/Gender for dashboard visual completeness
+    np.random.seed(RANDOM_SEED)
     first_names = [
         'Alice', 'Bob', 'Carol', 'David', 'Eva', 'Frank', 'Grace', 'Henry',
         'Iris', 'Jack', 'Karen', 'Leo', 'Mia', 'Noah', 'Olivia', 'Peter',
@@ -82,94 +99,32 @@ def generate_synthetic_data(n_customers=N_CUSTOMERS, seed=RANDOM_SEED):
         'King', 'Wright', 'Scott', 'Green', 'Baker', 'Adams', 'Nelson',
         'Hill', 'Moore', 'Campbell', 'Mitchell', 'Roberts', 'Carter'
     ]
-
-    # Cluster proportions: Premium(28%), Budget(32%), NewHV(18%), AtRisk(22%)
-    cluster_sizes = [
-        int(n_customers * 0.28),  # 56 Premium Loyalists
-        int(n_customers * 0.32),  # 64 Budget Shoppers
-        int(n_customers * 0.18),  # 36 New High-Value
-    ]
-    cluster_sizes.append(n_customers - sum(cluster_sizes))  # Remainder = At-Risk
-
-    records = []
-    customer_id = 1
-
-    for cluster_idx, size in enumerate(cluster_sizes):
-        for _ in range(size):
-            name = f"{np.random.choice(first_names)} {np.random.choice(last_names)}"
-            gender = np.random.choice(['M', 'F'])
-
-            if cluster_idx == 0:  # Premium Loyalists
-                age = int(np.clip(np.random.normal(42, 8), 28, 65))
-                income = int(np.clip(np.random.normal(95000, 15000), 65000, 150000))
-                spending = int(np.clip(np.random.normal(82, 10), 60, 100))
-                freq = int(np.clip(np.random.normal(28, 6), 15, 45))
-                aov = round(np.clip(np.random.normal(185, 35), 110, 300), 2)
-                tenure = int(np.clip(np.random.normal(6, 2), 3, 12))
-                total = int(np.clip(np.random.normal(320, 70), 150, 500))
-
-            elif cluster_idx == 1:  # Budget Shoppers
-                age = int(np.clip(np.random.normal(32, 10), 18, 55))
-                income = int(np.clip(np.random.normal(35000, 8000), 18000, 52000))
-                spending = int(np.clip(np.random.normal(30, 12), 10, 55))
-                freq = int(np.clip(np.random.normal(12, 5), 3, 25))
-                aov = round(np.clip(np.random.normal(55, 15), 25, 90), 2)
-                tenure = int(np.clip(np.random.normal(3, 1.5), 1, 7))
-                total = int(np.clip(np.random.normal(85, 35), 20, 180))
-
-            elif cluster_idx == 2:  # New High-Value
-                age = int(np.clip(np.random.normal(28, 5), 20, 40))
-                income = int(np.clip(np.random.normal(72000, 12000), 50000, 110000))
-                spending = int(np.clip(np.random.normal(78, 12), 55, 98))
-                freq = int(np.clip(np.random.normal(18, 5), 8, 30))
-                aov = round(np.clip(np.random.normal(145, 30), 85, 230), 2)
-                tenure = int(np.clip(np.random.normal(1.2, 0.6), 0, 3))
-                total = int(np.clip(np.random.normal(55, 20), 15, 100))
-
-            else:  # At-Risk Customers
-                age = int(np.clip(np.random.normal(38, 12), 22, 68))
-                income = int(np.clip(np.random.normal(52000, 10000), 30000, 78000))
-                spending = int(np.clip(np.random.normal(35, 10), 15, 55))
-                freq = int(np.clip(np.random.normal(5, 3), 1, 12))
-                aov = round(np.clip(np.random.normal(78, 20), 35, 130), 2)
-                tenure = int(np.clip(np.random.normal(4, 2), 1, 9))
-                total = int(np.clip(np.random.normal(60, 25), 10, 120))
-
-            records.append({
-                'CustomerID': f'CUST-{customer_id:04d}',
-                'Name': name,
-                'Age': age,
-                'Gender': gender,
-                'AnnualIncome': income,
-                'SpendingScore': spending,
-                'PurchaseFrequency': freq,
-                'AvgOrderValue': aov,
-                'CustomerTenure': tenure,
-                'TotalPurchases': total
-            })
-            customer_id += 1
-
-    df = pd.DataFrame(records)
-    print(f"[INFO] Generated {len(df)} customer records with {len(FEATURES)} features.")
-    return df
-
+    
+    names = []
+    ages = []
+    genders = []
+    
+    for _ in range(len(rfm)):
+        names.append(f"{np.random.choice(first_names)} {np.random.choice(last_names)}")
+        ages.append(int(np.random.randint(18, 70)))
+        genders.append(np.random.choice(['M', 'F']))
+        
+    rfm['Name'] = names
+    rfm['Age'] = ages
+    rfm['Gender'] = genders
+    
+    print(f"[INFO] RFM table built: {len(rfm)} unique customers.")
+    return rfm
 
 def scale_features(df, features=FEATURES):
-    """Apply StandardScaler to the feature columns."""
+    """Apply StandardScaler to the RFM features."""
     print("[INFO] Scaling features with StandardScaler...")
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(df[features])
     return X_scaled, scaler
 
-
 def find_optimal_k(X_scaled, k_range=K_RANGE):
-    """
-    Evaluate K-Means for different values of K using inertia (Elbow Method)
-    and silhouette score.
-
-    Returns:
-        dict: {'inertias': list, 'silhouettes': list, 'optimal_k': int}
-    """
+    """Evaluate K-Means for different values of K."""
     print("[INFO] Evaluating K values from {} to {}...".format(k_range.start, k_range.stop - 1))
     inertias = []
     silhouettes = []
@@ -186,9 +141,8 @@ def find_optimal_k(X_scaled, k_range=K_RANGE):
     print(f"[INFO] Optimal K by silhouette: {optimal_k} (score={max(silhouettes):.4f})")
     return {'inertias': inertias, 'silhouettes': silhouettes, 'optimal_k': optimal_k}
 
-
 def run_kmeans(X_scaled, k=OPTIMAL_K):
-    """Run K-Means clustering with the specified K."""
+    """Run K-Means clustering with K=4."""
     print(f"[INFO] Running K-Means with K={k}...")
     km = KMeans(n_clusters=k, random_state=RANDOM_SEED, n_init=10, max_iter=300)
     labels = km.fit_predict(X_scaled)
@@ -196,47 +150,81 @@ def run_kmeans(X_scaled, k=OPTIMAL_K):
     print(f"[INFO] Final silhouette score: {sil:.4f}")
     return km, labels, sil
 
+def map_segment_labels(df, labels, k=OPTIMAL_K):
+    """
+    Dynamically map cluster indices to RFM profile names:
+    - Premium Loyalists: Highest Monetary spend.
+    - At-Risk: Highest Recency (days inactive) among the remaining.
+    - New High-Value: Remaining cluster with higher Monetary spend.
+    - Budget Shoppers: Remaining cluster with lower Monetary spend.
+    """
+    df['Segment'] = labels
+    cluster_means = df.groupby('Segment')[['Recency', 'Frequency', 'Monetary']].mean()
+    print("\n[INFO] Cluster Centroids (Raw Means):")
+    print(cluster_means)
+    
+    # 1. Premium Loyalists
+    premium_idx = cluster_means['Monetary'].idxmax()
+    
+    # 2. At-Risk
+    remaining_indices = [i for i in range(k) if i != premium_idx]
+    at_risk_idx = cluster_means.loc[remaining_indices, 'Recency'].idxmax()
+    
+    # 3. New High-Value & Budget Shoppers
+    last_two = [i for i in remaining_indices if i != at_risk_idx]
+    if cluster_means.loc[last_two[0], 'Monetary'] > cluster_means.loc[last_two[1], 'Monetary']:
+        new_hv_idx = last_two[0]
+        budget_idx = last_two[1]
+    else:
+        new_hv_idx = last_two[1]
+        budget_idx = last_two[0]
+        
+    segment_labels = {
+        premium_idx: 'Premium Loyalists',
+        budget_idx: 'Budget Shoppers',
+        new_hv_idx: 'New High-Value',
+        at_risk_idx: 'At-Risk'
+    }
+    
+    df['SegmentLabel'] = df['Segment'].map(segment_labels)
+    return segment_labels
 
 def apply_pca(X_scaled, n_components=2):
-    """Reduce dimensionality to 2D for visualization."""
+    """Reduce dimensions for PCA visual scatter."""
     print("[INFO] Applying PCA (2 components)...")
     pca = PCA(n_components=n_components, random_state=RANDOM_SEED)
     X_pca = pca.fit_transform(X_scaled)
-    explained = pca.explained_variance_ratio_
-    print(f"[INFO] Explained variance: PC1={explained[0]:.3f}, PC2={explained[1]:.3f}, Total={sum(explained):.3f}")
     return X_pca, pca
 
-
-def plot_pca_segments(X_pca, labels, save_path):
-    """Scatter plot of PCA-projected clusters."""
+def plot_pca_segments(X_pca, labels, segment_labels, save_path):
+    """Scatter plot of clusters in PCA space."""
     print("[CHART] Generating PCA segments scatter plot...")
     fig, ax = plt.subplots(figsize=(10, 7))
     fig.patch.set_facecolor(DARK_BG)
     ax.set_facecolor(DARK_BG)
 
-    for i, label_name in SEGMENT_LABELS.items():
+    for i in sorted(segment_labels.keys()):
         mask = labels == i
         ax.scatter(X_pca[mask, 0], X_pca[mask, 1],
-                   c=SEGMENT_COLORS[i], label=label_name,
-                   alpha=0.7, s=60, edgecolors='white', linewidths=0.3)
+                   c=SEGMENT_COLORS[i], label=segment_labels[i],
+                   alpha=0.6, s=40, edgecolors='none')
 
     ax.set_xlabel('PCA Component 1', color=TEXT_SECONDARY, fontsize=12)
     ax.set_ylabel('PCA Component 2', color=TEXT_SECONDARY, fontsize=12)
-    ax.set_title('Customer Segments — PCA Visualization', color=TEXT_COLOR, fontsize=16, fontweight='bold', pad=16)
+    ax.set_title('Customer Segments — PCA 2D Cluster Visual', color=TEXT_COLOR, fontsize=16, fontweight='bold', pad=16)
     ax.legend(facecolor=CARD_BG, edgecolor=GRID_COLOR, labelcolor=TEXT_COLOR, fontsize=10)
     ax.tick_params(colors=TEXT_SECONDARY)
     for spine in ax.spines.values():
         spine.set_color(GRID_COLOR)
-    ax.grid(True, alpha=0.15, color=GRID_COLOR)
+    ax.grid(True, alpha=0.1, color=GRID_COLOR)
 
     plt.tight_layout()
     plt.savefig(save_path, dpi=150, facecolor=DARK_BG, bbox_inches='tight')
     plt.close()
     print(f"[CHART] Saved: {save_path}")
 
-
 def plot_elbow_silhouette(k_range, inertias, silhouettes, save_path):
-    """Dual-axis plot: inertia (Elbow) + silhouette score."""
+    """Inertia and silhouette dual-axis plot."""
     print("[CHART] Generating Elbow + Silhouette plot...")
     fig, ax1 = plt.subplots(figsize=(10, 6))
     fig.patch.set_facecolor(DARK_BG)
@@ -254,7 +242,6 @@ def plot_elbow_silhouette(k_range, inertias, silhouettes, save_path):
     ax2.set_ylabel('Silhouette Score', color=SEGMENT_COLORS[1], fontsize=12)
     ax2.tick_params(axis='y', labelcolor=SEGMENT_COLORS[1])
 
-    # Mark optimal K
     optimal_idx = np.argmax(silhouettes)
     ax1.axvline(x=ks[optimal_idx], linestyle='--', color='#f43f5e', alpha=0.7, linewidth=1.5)
     ax1.text(ks[optimal_idx] + 0.15, max(inertias) * 0.95, f'Optimal K={ks[optimal_idx]}',
@@ -270,23 +257,22 @@ def plot_elbow_silhouette(k_range, inertias, silhouettes, save_path):
         spine.set_color(GRID_COLOR)
     for spine in ax2.spines.values():
         spine.set_color(GRID_COLOR)
-    ax1.grid(True, alpha=0.15, color=GRID_COLOR)
+    ax1.grid(True, alpha=0.1, color=GRID_COLOR)
 
     plt.tight_layout()
     plt.savefig(save_path, dpi=150, facecolor=DARK_BG, bbox_inches='tight')
     plt.close()
     print(f"[CHART] Saved: {save_path}")
 
-
 def plot_segment_heatmap(df, features, save_path):
-    """Heatmap of cluster centroids (mean feature values by segment)."""
+    """Heatmap of normalized cluster centroids."""
     print("[CHART] Generating segment profile heatmap...")
     profile = df.groupby('SegmentLabel')[features].mean()
 
-    # Normalize for heatmap (0-1 per feature)
+    # Normalize 0-1 per feature
     profile_norm = (profile - profile.min()) / (profile.max() - profile.min())
 
-    fig, ax = plt.subplots(figsize=(12, 5))
+    fig, ax = plt.subplots(figsize=(10, 5))
     fig.patch.set_facecolor(DARK_BG)
     ax.set_facecolor(DARK_BG)
 
@@ -295,8 +281,8 @@ def plot_segment_heatmap(df, features, save_path):
                 cbar_kws={'label': 'Normalized Score'},
                 annot_kws={'color': TEXT_COLOR, 'fontsize': 10, 'fontweight': 'bold'})
 
-    ax.set_title('Segment Profile Heatmap', color=TEXT_COLOR, fontsize=16, fontweight='bold', pad=16)
-    ax.set_xticklabels(ax.get_xticklabels(), rotation=30, ha='right', color=TEXT_SECONDARY, fontsize=10)
+    ax.set_title('Segment Profile Heatmap (Raw Mean Overlays)', color=TEXT_COLOR, fontsize=16, fontweight='bold', pad=16)
+    ax.set_xticklabels(ax.get_xticklabels(), rotation=0, color=TEXT_SECONDARY, fontsize=10)
     ax.set_yticklabels(ax.get_yticklabels(), rotation=0, color=TEXT_COLOR, fontsize=11)
     cbar = ax.collections[0].colorbar
     cbar.ax.yaxis.set_tick_params(color=TEXT_SECONDARY)
@@ -308,132 +294,125 @@ def plot_segment_heatmap(df, features, save_path):
     plt.close()
     print(f"[CHART] Saved: {save_path}")
 
-
-def plot_segment_sizes(df, save_path):
-    """Bar chart of cluster sizes."""
+def plot_segment_sizes(df, segment_labels, save_path):
+    """Bar chart of customer segment counts."""
     print("[CHART] Generating segment sizes bar chart...")
-    counts = df.groupby('SegmentLabel').size().reindex(SEGMENT_LABELS.values())
+    labels_order = ['Premium Loyalists', 'Budget Shoppers', 'New High-Value', 'At-Risk']
+    counts = df.groupby('SegmentLabel').size().reindex(labels_order).fillna(0)
 
     fig, ax = plt.subplots(figsize=(10, 6))
     fig.patch.set_facecolor(DARK_BG)
     ax.set_facecolor(DARK_BG)
 
-    bars = ax.bar(counts.index, counts.values, color=SEGMENT_COLORS,
+    # Color index mapping based on labels
+    label_to_index = {v: k for k, v in segment_labels.items()}
+    colors_ordered = [SEGMENT_COLORS[label_to_index[name]] for name in labels_order]
+
+    bars = ax.bar(counts.index, counts.values, color=colors_ordered,
                   edgecolor='white', linewidth=0.5, width=0.6)
 
     for bar, count in zip(bars, counts.values):
         pct = count / len(df) * 100
-        ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 1,
-                f'{count}\n({pct:.0f}%)', ha='center', va='bottom',
-                color=TEXT_COLOR, fontsize=12, fontweight='bold')
+        ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + (max(counts.values)*0.01),
+                f'{int(count)}\n({pct:.1f}%)', ha='center', va='bottom',
+                color=TEXT_COLOR, fontsize=11, fontweight='bold')
 
     ax.set_ylabel('Number of Customers', color=TEXT_SECONDARY, fontsize=12)
-    ax.set_title('Segment Distribution', color=TEXT_COLOR, fontsize=16, fontweight='bold', pad=16)
+    ax.set_title('Segment Size Distribution', color=TEXT_COLOR, fontsize=16, fontweight='bold', pad=16)
     ax.tick_params(colors=TEXT_SECONDARY)
-    ax.set_xticklabels(counts.index, rotation=15, ha='right', color=TEXT_SECONDARY, fontsize=10)
+    ax.set_xticklabels(counts.index, rotation=0, color=TEXT_SECONDARY, fontsize=10)
     for spine in ax.spines.values():
         spine.set_color(GRID_COLOR)
-    ax.grid(axis='y', alpha=0.15, color=GRID_COLOR)
+    ax.grid(axis='y', alpha=0.1, color=GRID_COLOR)
 
     plt.tight_layout()
     plt.savefig(save_path, dpi=150, facecolor=DARK_BG, bbox_inches='tight')
     plt.close()
     print(f"[CHART] Saved: {save_path}")
 
-
-def save_results(df, save_dir):
-    """Save segmented customers and summary profiles to CSV."""
+def save_results(df, segment_labels, save_dir):
+    """Save segmented customers and profiles to CSV files."""
     print("[DATA] Saving output CSVs...")
-
+    
+    # Save raw segmentation table
     customers_path = os.path.join(save_dir, 'segmented_customers.csv')
     df.to_csv(customers_path, index=False)
     print(f"[DATA] Saved: {customers_path} ({len(df)} rows)")
-
-    # Create segment profile summary
+    
+    # Aggregate segments profiles
     summary = df.groupby(['Segment', 'SegmentLabel']).agg(
         Count=('CustomerID', 'count'),
-        AvgAnnualIncome=('AnnualIncome', 'mean'),
-        AvgSpendingScore=('SpendingScore', 'mean'),
-        AvgPurchaseFrequency=('PurchaseFrequency', 'mean'),
-        AvgOrderValue=('AvgOrderValue', 'mean'),
-        AvgTenure=('CustomerTenure', 'mean'),
-        AvgTotalPurchases=('TotalPurchases', 'mean')
+        AvgRecency=('Recency', 'mean'),
+        AvgFrequency=('Frequency', 'mean'),
+        AvgMonetary=('Monetary', 'mean')
     ).reset_index()
-
-    # Calculate revenue contribution
-    df['EstRevenue'] = df['AvgOrderValue'] * df['TotalPurchases']
-    total_rev = df['EstRevenue'].sum()
-    rev_by_seg = df.groupby('Segment')['EstRevenue'].sum()
+    
+    total_rev = df['Monetary'].sum()
+    rev_by_seg = df.groupby('Segment')['Monetary'].sum()
     summary['RevenueContribution'] = summary['Segment'].map(
         lambda s: round(rev_by_seg.get(s, 0) / total_rev * 100, 1)
     )
-
+    
     summary_path = os.path.join(save_dir, 'segment_profile_summary.csv')
     summary.to_csv(summary_path, index=False)
     print(f"[DATA] Saved: {summary_path} ({len(summary)} rows)")
-
     return summary
 
-
 def main():
-    """Main pipeline: generate data → scale → cluster → visualize → save."""
     print("=" * 60)
-    print("  Customer Segmentation Pipeline")
+    print("  Customer Segmentation RFM Pipeline")
     print("=" * 60)
-
-    # Ensure output directories exist
+    
     os.makedirs(CHARTS_DIR, exist_ok=True)
     os.makedirs(DATA_DIR, exist_ok=True)
-
-    # Step 1: Generate or load data
-    df = generate_synthetic_data()
+    
+    # 1. Load and build RFM
+    df = load_and_build_rfm()
     print()
-
-    # Step 2: Scale features
+    
+    # 2. Scale features
     X_scaled, scaler = scale_features(df)
     print()
-
-    # Step 3: Find optimal K
+    
+    # 3. Find optimal K
     eval_results = find_optimal_k(X_scaled)
     print()
-
-    # Step 4: Run K-Means with optimal K
+    
+    # 4. Run K-Means
     km, labels, sil_score = run_kmeans(X_scaled, k=OPTIMAL_K)
-    df['Segment'] = labels
-    df['SegmentLabel'] = df['Segment'].map(SEGMENT_LABELS)
     print()
-
-    # Step 5: PCA for visualization
-    X_pca, pca = apply_pca(X_scaled)
+    
+    # 5. Label segments dynamically
+    segment_labels = map_segment_labels(df, labels, k=OPTIMAL_K)
     print()
-
-    # Step 6: Generate charts
+    
+    # 6. Apply PCA
+    X_scaled_for_pca = X_scaled  # Keep the same
+    X_pca, pca = apply_pca(X_scaled_for_pca)
+    print()
+    
+    # 7. Generate charts
     print("[INFO] Generating visualizations...")
-    plot_pca_segments(X_pca, labels, os.path.join(CHARTS_DIR, 'pca_segments.png'))
+    plot_pca_segments(X_pca, labels, segment_labels, os.path.join(CHARTS_DIR, 'pca_segments.png'))
     plot_elbow_silhouette(K_RANGE, eval_results['inertias'], eval_results['silhouettes'],
                           os.path.join(CHARTS_DIR, 'elbow_silhouette.png'))
     plot_segment_heatmap(df, FEATURES, os.path.join(CHARTS_DIR, 'segment_profile_heatmap.png'))
-    plot_segment_sizes(df, os.path.join(CHARTS_DIR, 'segment_sizes.png'))
+    plot_segment_sizes(df, segment_labels, os.path.join(CHARTS_DIR, 'segment_sizes.png'))
     print()
-
-    # Step 7: Save results
-    summary = save_results(df, DATA_DIR)
+    
+    # 8. Save output datasets
+    summary = save_results(df, segment_labels, DATA_DIR)
     print()
-
-    # Final summary
+    
     print("=" * 60)
-    print("  Segmentation Complete!")
+    print("  Segmentation pipeline complete!")
     print("=" * 60)
-    print(f"\n  Total Customers:     {len(df)}")
-    print(f"  Number of Segments:  {OPTIMAL_K}")
+    print(f"  Total Customers:     {len(df)}")
     print(f"  Silhouette Score:    {sil_score:.4f}")
     print(f"\n  Segment Breakdown:")
     for _, row in summary.iterrows():
-        print(f"    {row['SegmentLabel']:20s} — {int(row['Count']):3d} customers ({row['RevenueContribution']:.1f}% revenue)")
-    print(f"\n  Charts saved to:     {CHARTS_DIR}")
-    print(f"  Data saved to:       {DATA_DIR}")
+        print(f"    {row['SegmentLabel']:20s} — {int(row['Count']):4d} customers ({row['RevenueContribution']:.1f}% revenue contribution)")
     print("=" * 60)
-
 
 if __name__ == '__main__':
     main()

@@ -151,7 +151,7 @@ tr:hover td{background:rgba(99,102,241,.04)}
   <div class="kpi-grid">
     <div class="card kpi-card">
       <div class="kpi-icon">👥</div>
-      <div class="kpi-value" id="kpiTotalCustomers">600</div>
+      <div class="kpi-value" id="kpiTotalCustomers">4,338</div>
       <div class="kpi-label">Total Customers</div>
       <div class="kpi-trend up">▲ 12% vs last quarter</div>
     </div>
@@ -163,13 +163,13 @@ tr:hover td{background:rgba(99,102,241,.04)}
     </div>
     <div class="card kpi-card">
       <div class="kpi-icon">📊</div>
-      <div class="kpi-value">0.68</div>
+      <div class="kpi-value">0.62</div>
       <div class="kpi-label">Avg Silhouette Score</div>
       <div class="kpi-trend up">▲ Good cluster separation</div>
     </div>
     <div class="card kpi-card">
       <div class="kpi-icon">⭐</div>
-      <div class="kpi-value" style="font-size:1.35rem">Premium Loyalists</div>
+      <div class="kpi-value" style="font-size:1.35rem">Budget Shoppers</div>
       <div class="kpi-label">Top Segment</div>
       <div class="kpi-trend hot">🔥 Highest LTV</div>
     </div>
@@ -215,9 +215,9 @@ tr:hover td{background:rgba(99,102,241,.04)}
           <tr>
             <th onclick="sortTable(0)">CustomerID <span class="sort-icon">⇅</span></th>
             <th onclick="sortTable(1)">Name <span class="sort-icon">⇅</span></th>
-            <th onclick="sortTable(2)">Age <span class="sort-icon">⇅</span></th>
-            <th onclick="sortTable(3)">Annual Income <span class="sort-icon">⇅</span></th>
-            <th onclick="sortTable(4)">Spending Score <span class="sort-icon">⇅</span></th>
+            <th onclick="sortTable(2)">Recency (days) <span class="sort-icon">⇅</span></th>
+            <th onclick="sortTable(3)">Frequency (orders) <span class="sort-icon">⇅</span></th>
+            <th onclick="sortTable(4)">Monetary (spend) <span class="sort-icon">⇅</span></th>
             <th onclick="sortTable(5)">Segment <span class="sort-icon">⇅</span></th>
           </tr>
         </thead>
@@ -242,33 +242,529 @@ tr:hover td{background:rgba(99,102,241,.04)}
    DATA
    ═══════════════════════════════════════════════════ */
 const SEGMENTS = [
-  { name:'Premium Loyalists', color:'#6366f1', bg:'rgba(99,102,241,.12)', textColor:'#a5b4fc', badgeClass:'badge-seg1', count:108, pct:18, revenue:310500, avgIncome:'$71,969', avgSpending:77, avgFrequency:'17.4x/mo', desc:'High-income loyal customers with consistent premium purchases and strong brand affinity.' },
-  { name:'Budget Shoppers',   color:'#22c55e', bg:'rgba(34,197,94,.12)',  textColor:'#86efac', badgeClass:'badge-seg2', count:136, pct:23, revenue:212000, avgIncome:'$48,635', avgSpending:34, avgFrequency:'5.4x/mo', desc:'Price-conscious shoppers who respond well to discounts and value-oriented promotions.' },
-  { name:'New High-Value',    color:'#f59e0b', bg:'rgba(245,158,11,.12)',textColor:'#fcd34d', badgeClass:'badge-seg3', count:168, pct:28, revenue:312000, avgIncome:'$96,620', avgSpending:81, avgFrequency:'27.8x/mo', desc:'Recently acquired customers showing high spending potential and rapid engagement growth.' },
-  { name:'At-Risk',           color:'#ef4444', bg:'rgba(239,68,68,.12)', textColor:'#fca5a5', badgeClass:'badge-seg4', count:188, pct:31, revenue:145000, avgIncome:'$38,525', avgSpending:31, avgFrequency:'10.8x/mo', desc:'Previously active customers with declining engagement — require re-activation campaigns.' }
+  {
+    "name": "Premium Loyalists",
+    "color": "#6366f1",
+    "bg": "rgba(99,102,241,.12)",
+    "textColor": "#a5b4fc",
+    "badgeClass": "badge-seg1",
+    "count": 13,
+    "pct": 0.3,
+    "revenue": 1655398.08,
+    "avgRecency": "6.4 days",
+    "avgFrequency": "82.5 orders",
+    "avgMonetary": "$127338",
+    "desc": "High-value loyalists with low recency, high purchase frequency, and extremely high total monetary spend."
+  },
+  {
+    "name": "Budget Shoppers",
+    "color": "#22c55e",
+    "bg": "rgba(34,197,94,.12)",
+    "textColor": "#86efac",
+    "badgeClass": "badge-seg2",
+    "count": 3054,
+    "pct": 70.4,
+    "revenue": 4150536.513,
+    "avgRecency": "42.7 days",
+    "avgFrequency": "3.7 orders",
+    "avgMonetary": "$1359",
+    "desc": "Highly active price-conscious shoppers with low recency but moderate order frequency and spend."
+  },
+  {
+    "name": "New High-Value",
+    "color": "#f59e0b",
+    "bg": "rgba(245,158,11,.12)",
+    "textColor": "#fcd34d",
+    "badgeClass": "badge-seg3",
+    "count": 204,
+    "pct": 4.7,
+    "revenue": 2592654.46,
+    "avgRecency": "14.5 days",
+    "avgFrequency": "22.3 orders",
+    "avgMonetary": "$12709",
+    "desc": "Recently active high-value spenders who make large but less frequent purchases."
+  },
+  {
+    "name": "At-Risk",
+    "color": "#ef4444",
+    "bg": "rgba(239,68,68,.12)",
+    "textColor": "#fca5a5",
+    "badgeClass": "badge-seg4",
+    "count": 1067,
+    "pct": 24.6,
+    "revenue": 512818.851,
+    "avgRecency": "247.1 days",
+    "avgFrequency": "1.6 orders",
+    "avgMonetary": "$481",
+    "desc": "Previously active customers with very high recency (dormant for a long time) and low engagement."
+  }
 ];
 
 const CUSTOMERS = [
-  { id:'C-001', name:'Aarav Patel',     age:34, income:95000,  spending:88, segment:'Premium Loyalists' },
-  { id:'C-002', name:'Mei Chen',        age:28, income:42000,  spending:39, segment:'Budget Shoppers' },
-  { id:'C-003', name:'James Walker',    age:45, income:87000,  spending:79, segment:'Premium Loyalists' },
-  { id:'C-004', name:'Sofia Rodriguez', age:31, income:36000,  spending:52, segment:'Budget Shoppers' },
-  { id:'C-005', name:'Kenji Tanaka',    age:26, income:81000,  spending:71, segment:'New High-Value' },
-  { id:'C-006', name:'Priya Sharma',    age:52, income:58000,  spending:28, segment:'At-Risk' },
-  { id:'C-007', name:'Liam O\'Brien',   age:39, income:102000, spending:91, segment:'Premium Loyalists' },
-  { id:'C-008', name:'Fatima Al-Sayed', age:33, income:34000,  spending:41, segment:'Budget Shoppers' },
-  { id:'C-009', name:'Carlos Mendez',   age:47, income:76000,  spending:68, segment:'New High-Value' },
-  { id:'C-010', name:'Emily Johnson',   age:55, income:49000,  spending:25, segment:'At-Risk' },
-  { id:'C-011', name:'Ravi Kumar',      age:29, income:91000,  spending:85, segment:'Premium Loyalists' },
-  { id:'C-012', name:'Anna Kowalski',   age:36, income:40000,  spending:48, segment:'Budget Shoppers' },
-  { id:'C-013', name:'Yuto Yamamoto',   age:24, income:83000,  spending:77, segment:'New High-Value' },
-  { id:'C-014', name:'Grace Thompson',  age:61, income:52000,  spending:22, segment:'At-Risk' },
-  { id:'C-015', name:'Hassan Ali',      age:42, income:97000,  spending:93, segment:'Premium Loyalists' },
-  { id:'C-016', name:'Chloe Dubois',    age:30, income:31000,  spending:37, segment:'Budget Shoppers' },
-  { id:'C-017', name:'Aisha Okonkwo',   age:27, income:79000,  spending:73, segment:'New High-Value' },
-  { id:'C-018', name:'Viktor Petrov',   age:58, income:61000,  spending:34, segment:'At-Risk' },
-  { id:'C-019', name:'Isabella Rossi',  age:37, income:88000,  spending:82, segment:'Premium Loyalists' },
-  { id:'C-020', name:'David Kim',       age:44, income:45000,  spending:44, segment:'Budget Shoppers' }
+  {
+    "id": "C-12415",
+    "name": "Quinn Scott",
+    "recency": 23,
+    "frequency": 21,
+    "monetary": 124914.53,
+    "segment": "Premium Loyalists"
+  },
+  {
+    "id": "C-14911",
+    "name": "Kira King",
+    "recency": 0,
+    "frequency": 201,
+    "monetary": 143825.06,
+    "segment": "Premium Loyalists"
+  },
+  {
+    "id": "C-12569",
+    "name": "Will Hill",
+    "recency": 1,
+    "frequency": 32,
+    "monetary": 4124.69,
+    "segment": "New High-Value"
+  },
+  {
+    "id": "C-12347",
+    "name": "Henry Allen",
+    "recency": 1,
+    "frequency": 7,
+    "monetary": 4310.0,
+    "segment": "Budget Shoppers"
+  },
+  {
+    "id": "C-12353",
+    "name": "Leo King",
+    "recency": 203,
+    "frequency": 1,
+    "monetary": 89.0,
+    "segment": "At-Risk"
+  },
+  {
+    "id": "C-12386",
+    "name": "Amber Chen",
+    "recency": 337,
+    "frequency": 2,
+    "monetary": 401.9,
+    "segment": "At-Risk"
+  },
+  {
+    "id": "C-12678",
+    "name": "Liam Roberts",
+    "recency": 41,
+    "frequency": 12,
+    "monetary": 17628.46,
+    "segment": "New High-Value"
+  },
+  {
+    "id": "C-12367",
+    "name": "Olivia Wilson",
+    "recency": 3,
+    "frequency": 1,
+    "monetary": 168.9,
+    "segment": "Budget Shoppers"
+  },
+  {
+    "id": "C-12355",
+    "name": "Vera Williams",
+    "recency": 213,
+    "frequency": 1,
+    "monetary": 459.4,
+    "segment": "At-Risk"
+  },
+  {
+    "id": "C-18102",
+    "name": "David Hill",
+    "recency": 0,
+    "frequency": 60,
+    "monetary": 259657.3,
+    "segment": "Premium Loyalists"
+  },
+  {
+    "id": "C-12365",
+    "name": "Jack White",
+    "recency": 290,
+    "frequency": 2,
+    "monetary": 641.38,
+    "segment": "At-Risk"
+  },
+  {
+    "id": "C-14156",
+    "name": "Brian Green",
+    "recency": 9,
+    "frequency": 55,
+    "monetary": 117379.63,
+    "segment": "Premium Loyalists"
+  },
+  {
+    "id": "C-12621",
+    "name": "Umar Walker",
+    "recency": 1,
+    "frequency": 20,
+    "monetary": 13689.67,
+    "segment": "New High-Value"
+  },
+  {
+    "id": "C-12471",
+    "name": "Victor Green",
+    "recency": 1,
+    "frequency": 30,
+    "monetary": 19824.05,
+    "segment": "New High-Value"
+  },
+  {
+    "id": "C-16446",
+    "name": "Clara Mitchell",
+    "recency": 0,
+    "frequency": 2,
+    "monetary": 168472.5,
+    "segment": "Premium Loyalists"
+  },
+  {
+    "id": "C-12356",
+    "name": "Grace Allen",
+    "recency": 22,
+    "frequency": 3,
+    "monetary": 2811.43,
+    "segment": "Budget Shoppers"
+  },
+  {
+    "id": "C-15311",
+    "name": "Olivia Campbell",
+    "recency": 0,
+    "frequency": 91,
+    "monetary": 60767.9,
+    "segment": "Premium Loyalists"
+  },
+  {
+    "id": "C-14646",
+    "name": "Yara Clark",
+    "recency": 1,
+    "frequency": 73,
+    "monetary": 280206.02,
+    "segment": "Premium Loyalists"
+  },
+  {
+    "id": "C-12709",
+    "name": "Liam Smith",
+    "recency": 14,
+    "frequency": 15,
+    "monetary": 9736.52,
+    "segment": "New High-Value"
+  },
+  {
+    "id": "C-12358",
+    "name": "Noah Chen",
+    "recency": 1,
+    "frequency": 2,
+    "monetary": 1168.06,
+    "segment": "Budget Shoppers"
+  },
+  {
+    "id": "C-12437",
+    "name": "Gina Brown",
+    "recency": 1,
+    "frequency": 18,
+    "monetary": 4951.41,
+    "segment": "New High-Value"
+  },
+  {
+    "id": "C-12373",
+    "name": "Alice Green",
+    "recency": 310,
+    "frequency": 1,
+    "monetary": 364.6,
+    "segment": "At-Risk"
+  },
+  {
+    "id": "C-12377",
+    "name": "Henry Roberts",
+    "recency": 314,
+    "frequency": 2,
+    "monetary": 1628.12,
+    "segment": "At-Risk"
+  },
+  {
+    "id": "C-12402",
+    "name": "Mia Williams",
+    "recency": 322,
+    "frequency": 1,
+    "monetary": 225.6,
+    "segment": "At-Risk"
+  },
+  {
+    "id": "C-12349",
+    "name": "Xavier Scott",
+    "recency": 18,
+    "frequency": 1,
+    "monetary": 1757.55,
+    "segment": "Budget Shoppers"
+  },
+  {
+    "id": "C-17450",
+    "name": "Zach Thomas",
+    "recency": 7,
+    "frequency": 46,
+    "monetary": 194550.79,
+    "segment": "Premium Loyalists"
+  },
+  {
+    "id": "C-12371",
+    "name": "Ryan Scott",
+    "recency": 44,
+    "frequency": 2,
+    "monetary": 1887.96,
+    "segment": "Budget Shoppers"
+  },
+  {
+    "id": "C-12370",
+    "name": "Nate Allen",
+    "recency": 50,
+    "frequency": 4,
+    "monetary": 3545.69,
+    "segment": "Budget Shoppers"
+  },
+  {
+    "id": "C-12352",
+    "name": "Liam Smith",
+    "recency": 35,
+    "frequency": 8,
+    "monetary": 2506.04,
+    "segment": "Budget Shoppers"
+  },
+  {
+    "id": "C-12364",
+    "name": "Ryan Baker",
+    "recency": 7,
+    "frequency": 4,
+    "monetary": 1313.1,
+    "segment": "Budget Shoppers"
+  },
+  {
+    "id": "C-12540",
+    "name": "Liam Hall",
+    "recency": 19,
+    "frequency": 17,
+    "monetary": 13400.24,
+    "segment": "New High-Value"
+  },
+  {
+    "id": "C-12405",
+    "name": "Kira Roberts",
+    "recency": 148,
+    "frequency": 1,
+    "monetary": 1710.39,
+    "segment": "At-Risk"
+  },
+  {
+    "id": "C-12683",
+    "name": "Olivia Hill",
+    "recency": 3,
+    "frequency": 15,
+    "monetary": 8476.57,
+    "segment": "New High-Value"
+  },
+  {
+    "id": "C-17841",
+    "name": "Bob Moore",
+    "recency": 1,
+    "frequency": 124,
+    "monetary": 40991.57,
+    "segment": "Premium Loyalists"
+  },
+  {
+    "id": "C-12474",
+    "name": "Sean Martinez",
+    "recency": 16,
+    "frequency": 18,
+    "monetary": 7375.79,
+    "segment": "New High-Value"
+  },
+  {
+    "id": "C-12410",
+    "name": "Bob Nelson",
+    "recency": 308,
+    "frequency": 2,
+    "monetary": 693.33,
+    "segment": "At-Risk"
+  },
+  {
+    "id": "C-12350",
+    "name": "Bob Scott",
+    "recency": 309,
+    "frequency": 1,
+    "monetary": 334.4,
+    "segment": "At-Risk"
+  },
+  {
+    "id": "C-12431",
+    "name": "Carol Young",
+    "recency": 35,
+    "frequency": 15,
+    "monetary": 6487.45,
+    "segment": "New High-Value"
+  },
+  {
+    "id": "C-12401",
+    "name": "Gina Johnson",
+    "recency": 302,
+    "frequency": 1,
+    "monetary": 84.3,
+    "segment": "At-Risk"
+  },
+  {
+    "id": "C-12748",
+    "name": "Sean King",
+    "recency": 0,
+    "frequency": 209,
+    "monetary": 33719.73,
+    "segment": "Premium Loyalists"
+  },
+  {
+    "id": "C-12360",
+    "name": "Grace Wilson",
+    "recency": 51,
+    "frequency": 3,
+    "monetary": 2662.06,
+    "segment": "Budget Shoppers"
+  },
+  {
+    "id": "C-13089",
+    "name": "Zach Chen",
+    "recency": 2,
+    "frequency": 97,
+    "monetary": 58825.83,
+    "segment": "Premium Loyalists"
+  },
+  {
+    "id": "C-12354",
+    "name": "Amber Nelson",
+    "recency": 231,
+    "frequency": 1,
+    "monetary": 1079.4,
+    "segment": "At-Risk"
+  },
+  {
+    "id": "C-12682",
+    "name": "James Scott",
+    "recency": 3,
+    "frequency": 31,
+    "monetary": 12288.22,
+    "segment": "New High-Value"
+  },
+  {
+    "id": "C-12583",
+    "name": "Quinn Allen",
+    "recency": 2,
+    "frequency": 15,
+    "monetary": 7281.38,
+    "segment": "New High-Value"
+  },
+  {
+    "id": "C-12363",
+    "name": "Frank Brown",
+    "recency": 109,
+    "frequency": 2,
+    "monetary": 552.0,
+    "segment": "Budget Shoppers"
+  },
+  {
+    "id": "C-12361",
+    "name": "Noah Lewis",
+    "recency": 286,
+    "frequency": 1,
+    "monetary": 189.9,
+    "segment": "At-Risk"
+  },
+  {
+    "id": "C-17511",
+    "name": "Grace Clark",
+    "recency": 2,
+    "frequency": 31,
+    "monetary": 91062.38,
+    "segment": "Premium Loyalists"
+  },
+  {
+    "id": "C-12362",
+    "name": "Nate Brown",
+    "recency": 2,
+    "frequency": 10,
+    "monetary": 5226.23,
+    "segment": "Budget Shoppers"
+  },
+  {
+    "id": "C-12357",
+    "name": "Ryan Brown",
+    "recency": 32,
+    "frequency": 1,
+    "monetary": 6207.67,
+    "segment": "Budget Shoppers"
+  },
+  {
+    "id": "C-12414",
+    "name": "Felix Brown",
+    "recency": 216,
+    "frequency": 3,
+    "monetary": 562.41,
+    "segment": "At-Risk"
+  },
+  {
+    "id": "C-12359",
+    "name": "Bob Young",
+    "recency": 57,
+    "frequency": 4,
+    "monetary": 6372.58,
+    "segment": "Budget Shoppers"
+  },
+  {
+    "id": "C-16029",
+    "name": "Liam Allen",
+    "recency": 38,
+    "frequency": 63,
+    "monetary": 81024.84,
+    "segment": "Premium Loyalists"
+  },
+  {
+    "id": "C-12720",
+    "name": "Tina Hill",
+    "recency": 2,
+    "frequency": 25,
+    "monetary": 5781.73,
+    "segment": "New High-Value"
+  },
+  {
+    "id": "C-12348",
+    "name": "Sara Wright",
+    "recency": 74,
+    "frequency": 4,
+    "monetary": 1797.24,
+    "segment": "Budget Shoppers"
+  },
+  {
+    "id": "C-12346",
+    "name": "Maya Hill",
+    "recency": 325,
+    "frequency": 1,
+    "monetary": 77183.6,
+    "segment": "New High-Value"
+  },
+  {
+    "id": "C-12383",
+    "name": "Alice White",
+    "recency": 184,
+    "frequency": 5,
+    "monetary": 1850.56,
+    "segment": "At-Risk"
+  },
+  {
+    "id": "C-12681",
+    "name": "Liam Thomas",
+    "recency": 14,
+    "frequency": 22,
+    "monetary": 13787.54,
+    "segment": "New High-Value"
+  }
 ];
 
 /* ═══════════════════════════════════════════════════
@@ -384,7 +880,7 @@ new Chart(document.getElementById('doughnutChart'), {
       ctx.textAlign = 'center';
       ctx.fillStyle = '#e2e8f0';
       ctx.font = "800 28px 'Inter', sans-serif";
-      ctx.fillText('600', cx, cy - 4);
+      ctx.fillText('4,338', cx, cy - 4);
       ctx.fillStyle = '#64748b';
       ctx.font = "500 11px 'Inter', sans-serif";
       ctx.fillText('CUSTOMERS', cx, cy + 16);
@@ -396,12 +892,12 @@ new Chart(document.getElementById('doughnutChart'), {
 /* ═══════════════════════════════════════════════════
    3. RADAR CHART
    ═══════════════════════════════════════════════════ */
-const radarLabels = ['Annual Income', 'Spending Score', 'Purchase Frequency', 'Avg Order Value', 'Customer Tenure', 'Total Purchases'];
+const radarLabels = ['Recency Score', 'Frequency Score', 'Monetary Score'];
 const radarValues = [
-  [88, 85, 78, 82, 75, 80],  // Premium Loyalists
-  [35, 42, 55, 30, 60, 52],  // Budget Shoppers
-  [72, 76, 70, 74, 30, 45],  // New High-Value
-  [50, 28, 22, 38, 68, 40]   // At-Risk
+  [98.0, 100.0, 100.0],  // Premium Loyalists
+  [85.8, 4.5, 1.1],     // Budget Shoppers
+  [95.2, 27.0, 10.0],    // New High-Value
+  [17.6, 1.9, 0.4]       // At-Risk
 ];
 
 new Chart(document.getElementById('radarChart'), {
@@ -502,9 +998,9 @@ function renderSegmentProfiles() {
       <div class="seg-count">${seg.count}</div>
       <div class="seg-count-label">Customers (${seg.pct}%)</div>
       <div class="seg-metrics">
-        <div class="seg-metric"><span class="seg-metric-label">Avg Income</span><span class="seg-metric-value">${seg.avgIncome}</span></div>
-        <div class="seg-metric"><span class="seg-metric-label">Avg Spending</span><span class="seg-metric-value">${seg.avgSpending}/100</span></div>
+        <div class="seg-metric"><span class="seg-metric-label">Avg Recency</span><span class="seg-metric-value">${seg.avgRecency}</span></div>
         <div class="seg-metric"><span class="seg-metric-label">Avg Frequency</span><span class="seg-metric-value">${seg.avgFrequency}</span></div>
+        <div class="seg-metric"><span class="seg-metric-label">Avg Monetary</span><span class="seg-metric-value">${seg.avgMonetary}</span></div>
       </div>
       <div class="seg-desc">${seg.desc}</div>
     </div>
@@ -538,7 +1034,7 @@ function renderTable() {
   });
 
   if (sortCol >= 0) {
-    const keys = ['id','name','age','income','spending','segment'];
+    const keys = ['id','name','recency','frequency','monetary','segment'];
     const key = keys[sortCol];
     data.sort((a, b) => {
       let va = a[key], vb = b[key];
@@ -562,9 +1058,9 @@ function renderTable() {
     <tr>
       <td style="font-weight:600;color:var(--accent3)">${c.id}</td>
       <td>${c.name}</td>
-      <td>${c.age}</td>
-      <td>${fmt$(c.income)}</td>
-      <td>${c.spending}</td>
+      <td>${c.recency} days ago</td>
+      <td>${c.frequency} orders</td>
+      <td>${fmt$(Math.round(c.monetary))}</td>
       <td><span class="badge ${seg2badge[c.segment] || ''}"><span class="dot"></span>${c.segment}</span></td>
     </tr>
   `).join('');
@@ -586,10 +1082,10 @@ function filterBySegment() {
   // Update KPI total
   const seg = document.getElementById('segmentFilter').value;
   if (seg === 'All') {
-    document.getElementById('kpiTotalCustomers').textContent = '600';
+    document.getElementById('kpiTotalCustomers').textContent = '4,338';
   } else {
     const s = SEGMENTS.find(s => s.name === seg);
-    document.getElementById('kpiTotalCustomers').textContent = s ? s.count : '600';
+    document.getElementById('kpiTotalCustomers').textContent = s ? s.count : '4,338';
   }
 }
 
