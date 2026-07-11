@@ -3,35 +3,303 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sales & Revenue Analytics Dashboard</title>
-    <meta name="description" content="Interactive Sales & Revenue Analytics Dashboard with real-time charts, KPI tracking, and advanced filtering capabilities.">
-    <meta http-equiv="refresh" content="0; url=sales_dashboard.html">
-    <link rel="canonical" href="sales_dashboard.html">
+    <title>Sales & Revenue Dashboard — Project Portfolio</title>
+    <meta name="description" content="Data Analytics Portfolio featuring an interactive Sales & Revenue Dashboard and Customer Segmentation Analysis built with HTML, CSS, Chart.js, Python, and scikit-learn.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-card: rgba(17, 24, 39, 0.6);
+            --border-color: rgba(99, 102, 241, 0.15);
+            --border-glow: rgba(99, 102, 241, 0.35);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-indigo: #6366f1;
+            --accent-violet: #8b5cf6;
+            --accent-emerald: #10b981;
+            --accent-cyan: #06b6d4;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #0a0e17;
-            color: #f1f5f9;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            margin: 0;
+            overflow-x: hidden;
+            padding: 40px 24px;
         }
-        a {
-            color: #6366f1;
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background:
+                radial-gradient(ellipse at 25% 15%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 75% 85%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .logo-icon {
+            font-size: 56px;
+            margin-bottom: 16px;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            background: linear-gradient(135deg, #f1f5f9 0%, #6366f1 50%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            line-height: 1.15;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 36px 32px;
+            text-align: left;
+            backdrop-filter: blur(16px);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
             text-decoration: none;
-            font-weight: 600;
+            color: inherit;
+            display: block;
+            animation: fadeInUp 0.7s ease-out forwards;
+            opacity: 0;
         }
-        a:hover {
+
+        .card:nth-child(1) { animation-delay: 0.15s; }
+        .card:nth-child(2) { animation-delay: 0.3s; }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0; right: 0;
+            height: 3px;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .card:nth-child(1)::before {
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+        }
+
+        .card:nth-child(2)::before {
+            background: linear-gradient(90deg, #06b6d4, #10b981);
+        }
+
+        .card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(99, 102, 241, 0.15), 0 0 30px rgba(99, 102, 241, 0.08);
+        }
+
+        .card-icon {
+            font-size: 40px;
+            margin-bottom: 18px;
+            display: inline-block;
+        }
+
+        .card-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .card:nth-child(1) .card-tag {
+            background: rgba(99, 102, 241, 0.15);
+            color: var(--accent-indigo);
+        }
+
+        .card:nth-child(2) .card-tag {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-emerald);
+        }
+
+        .card h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.3px;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            margin-bottom: 20px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .tech-badge {
+            padding: 4px 10px;
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-indigo);
+            transition: all 0.2s ease;
+        }
+
+        .card:nth-child(2) .card-link {
+            color: var(--accent-emerald);
+        }
+
+        .card:hover .card-link {
+            gap: 10px;
+        }
+
+        footer {
+            color: var(--text-muted);
+            font-size: 13px;
+            animation: fadeInUp 0.7s ease-out 0.45s forwards;
+            opacity: 0;
+        }
+
+        footer a {
+            color: var(--accent-indigo);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer a:hover {
             text-decoration: underline;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 30px; }
+            .cards { grid-template-columns: 1fr; }
+            .card { padding: 28px 24px; }
         }
     </style>
 </head>
 <body>
-    <p>Redirecting to <a href="sales_dashboard.html">Sales & Revenue Dashboard</a>...</p>
-    <script>
-        window.location.replace('sales_dashboard.html');
-    </script>
+    <div class="container">
+        <div class="logo-icon">📊</div>
+        <h1>Data Analytics Portfolio</h1>
+        <p class="subtitle">
+            Interactive dashboards and machine learning projects — explore sales analytics with Chart.js and customer segmentation with scikit-learn.
+        </p>
+
+        <div class="cards">
+            <!-- Task 1 -->
+            <a href="task1-sales-dashboard/sales_dashboard.html" class="card" id="card-task1">
+                <div class="card-icon">💰</div>
+                <span class="card-tag">Task 1</span>
+                <h2>Sales & Revenue Dashboard</h2>
+                <p>
+                    Interactive analytics dashboard featuring 6 KPI cards with sparkline trends, 5 Chart.js visualizations (line, doughnut, bar, radar), advanced filtering by period/region/category, and a sortable orders table.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-badge">HTML5</span>
+                    <span class="tech-badge">CSS3</span>
+                    <span class="tech-badge">JavaScript</span>
+                    <span class="tech-badge">Chart.js</span>
+                </div>
+                <span class="card-link">Open Dashboard →</span>
+            </a>
+
+            <!-- Task 2 -->
+            <a href="task2-customer-segmentation/segmentation_dashboard.html" class="card" id="card-task2">
+                <div class="card-icon">🧬</div>
+                <span class="card-tag">Task 2</span>
+                <h2>Customer Segmentation</h2>
+                <p>
+                    K-Means clustering analysis that segments 200 customers into 4 distinct groups using scikit-learn. Includes PCA visualization, elbow/silhouette analysis, profile heatmaps, and an interactive dashboard.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">pandas</span>
+                    <span class="tech-badge">scikit-learn</span>
+                    <span class="tech-badge">Chart.js</span>
+                </div>
+                <span class="card-link">Open Dashboard →</span>
+            </a>
+        </div>
+
+        <footer>
+            Built with ❤️ by <a href="https://github.com/skmdshariff143-ai" target="_blank">Shaik Mahammad Shariff</a> ·
+            <a href="https://github.com/skmdshariff143-ai/sales-revenue-dashboard" target="_blank">View on GitHub</a>
+        </footer>
+    </div>
 </body>
 </html>
