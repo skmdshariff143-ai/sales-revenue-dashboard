@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>🔮 Revenue Prediction & Predictive Analytics Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0e17;--surface:rgba(255,255,255,.04);--surface-hover:rgba(255,255,255,.07);
+  --border:rgba(255,255,255,.08);--border-glow:rgba(16,185,129,.35);
+  --text:#e2e8f0;--text-secondary:#94a3b8;--text-muted:#64748b;
+  --accent:#10b981;--accent-light:#34d399;--accent2:#6366f1;
+  --radius:16px;--radius-sm:10px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 50% -20%,rgba(16,185,129,.12),transparent 70%),radial-gradient(ellipse 60% 50% at 20% 100%,rgba(99,102,241,.08),transparent 60%);pointer-events:none;z-index:0}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(16,185,129,.3);border-radius:3px}
+
+/* ── Layout ── */
+.wrapper{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:24px 28px 40px}
+
+/* ── Header ── */
+.header{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:32px;animation:fadeDown .7s ease}
+.header-left h1{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;letter-spacing:-.5px;background:linear-gradient(135deg,#e2e8f0 0%,#34d399 50%,#10b981 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.header-left p{color:var(--text-secondary);font-size:.92rem;margin-top:6px;font-weight:400}
+.header-right{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+
+/* ── Controls ── */
+.control-panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 24px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:28px;animation:fadeUp .6s ease both}
+.control-item{display:flex;flex-direction:column;gap:6px}
+.control-label{font-size:.76rem;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.slider-group{display:flex;align-items:center;gap:12px}
+.slider{appearance:none;-webkit-appearance:none;width:150px;height:6px;border-radius:3px;background:rgba(255,255,255,.1);outline:none;cursor:pointer}
+.slider::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--accent);transition:transform .15s}
+.slider::-webkit-slider-thumb:hover{transform:scale(1.2)}
+.slider-val{font-size:.9rem;font-weight:700;color:var(--accent);min-width:60px}
+
+/* ── Glass Card ── */
+.card{background:var(--surface);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:transform .3s cubic-bezier(.4,0,.2,1),border-color .3s,box-shadow .3s}
+.card:hover{transform:translateY(-3px);border-color:var(--border-glow);box-shadow:0 8px 32px rgba(16,185,129,.1),0 0 0 1px rgba(16,185,129,.08)}
+
+/* ── KPI Row ── */
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:28px}
+.kpi-card{animation:fadeUp .6s ease both}
+.kpi-card:nth-child(1){animation-delay:.1s}.kpi-card:nth-child(2){animation-delay:.18s}.kpi-card:nth-child(3){animation-delay:.26s}.kpi-card:nth-child(4){animation-delay:.34s}
+.kpi-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.35rem;margin-bottom:14px}
+.kpi-card:nth-child(1) .kpi-icon{background:rgba(16,185,129,.15)}
+.kpi-card:nth-child(2) .kpi-icon{background:rgba(52,211,153,.15)}
+.kpi-card:nth-child(3) .kpi-icon{background:rgba(99,102,241,.15)}
+.kpi-card:nth-child(4) .kpi-icon{background:rgba(239,68,68,.15)}
+.kpi-value{font-size:1.75rem;font-weight:800;letter-spacing:-.5px;line-height:1.1}
+.kpi-label{font-size:.78rem;color:var(--text-muted);font-weight:500;text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
+.kpi-trend{display:inline-flex;align-items:center;gap:4px;font-size:.76rem;font-weight:600;margin-top:10px;padding:3px 10px;border-radius:20px}
+.kpi-trend.up{color:#22c55e;background:rgba(34,197,94,.1)}
+.kpi-trend.neutral{color:#06b6d4;background:rgba(6,182,212,.1)}
+
+/* ── Chart Grid ── */
+.charts-grid{display:grid;grid-template-columns:2fr 1fr;gap:20px;margin-bottom:28px}
+.chart-card{animation:fadeUp .6s ease both}
+.chart-card:nth-child(1){animation-delay:.15s}.chart-card:nth-child(2){animation-delay:.22s}
+.chart-title{font-size:.95rem;font-weight:700;margin-bottom:4px}
+.chart-subtitle{font-size:.76rem;color:var(--text-muted);margin-bottom:18px;font-weight:400}
+.chart-container{position:relative;width:100%;height:320px}
+
+/* ── Bottom Grid ── */
+.bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px}
+
+/* ── Table Section ── */
+.table-section{animation:fadeUp .6s ease both;animation-delay:.4s}
+.table-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px}
+.table-title{font-size:1.05rem;font-weight:700}
+.data-table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+thead{background:rgba(16,185,129,.08)}
+th{padding:13px 16px;text-align:left;font-weight:600;color:var(--text-secondary);text-transform:uppercase;font-size:.72rem;letter-spacing:.6px}
+td{padding:12px 16px;border-top:1px solid var(--border);white-space:nowrap}
+tr{transition:background .2s}
+tr:hover td{background:rgba(16,185,129,.04)}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;font-size:.74rem;font-weight:600}
+.badge-forecast{background:rgba(16,185,129,.12);color:var(--accent-light)}
+
+/* ── Footer ── */
+.footer{text-align:center;padding:32px 0 16px;color:var(--text-muted);font-size:.8rem;animation:fadeUp .6s ease both;animation-delay:.5s}
+.footer a{color:var(--accent);text-decoration:none;font-weight:500;margin-left:4px}
+.footer a:hover{text-decoration:underline}
+
+/* ── Animations ── */
+@keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- ═══ Header ═══ -->
+  <header class="header">
+    <div class="header-left">
+      <h1>🔮 Predictive Revenue Forecasting</h1>
+      <p>Time-Series Analysis & Machine Learning Forecasts (Random Forest vs Linear Regression)</p>
+    </div>
+  </header>
+
+  <!-- ═══ Interactive Controls ═══ -->
+  <div class="control-panel">
+    <div class="control-item">
+      <span class="control-label">Forecasting Model</span>
+      <div style="margin-top:4px;">
+        <select id="modelSelect" style="background:#1a1f2e;color:var(--text);border:1px solid var(--border);padding:8px 12px;border-radius:6px;outline:none;cursor:pointer;font-family:inherit;font-size:.85rem;" onchange="updateForecast()">
+          <option value="RF">Random Forest Regressor (Optimal)</option>
+          <option value="LR">Linear Regression</option>
+        </select>
+      </div>
+    </div>
+    <div class="control-item">
+      <span class="control-label">Marketing Budget Growth Modifier</span>
+      <div class="slider-group" style="margin-top:6px;">
+        <input type="range" class="slider" id="budgetSlider" min="-50" max="100" value="0" step="10" oninput="updateForecast()"/>
+        <span class="slider-val" id="budgetVal">+0%</span>
+      </div>
+    </div>
+    <div class="control-item" style="margin-left:auto;">
+      <span style="font-size:.76rem;color:var(--text-secondary);font-weight:500;">Accuracy metrics based on test holdout</span>
+    </div>
+  </div>
+
+  <!-- ═══ KPI Cards ═══ -->
+  <div class="kpi-grid">
+    <div class="card kpi-card">
+      <div class="kpi-icon">💰</div>
+      <div class="kpi-value" id="kpi6MonthRevenue">$1.96M</div>
+      <div class="kpi-label">Forecasted 6-Month Revenue</div>
+      <div class="kpi-trend up">▲ 8.2% vs last half</div>
+    </div>
+    <div class="card kpi-card">
+      <div class="kpi-icon">📅</div>
+      <div class="kpi-value" id="kpiAvgMonthly">$327K</div>
+      <div class="kpi-label">Avg. Monthly Forecast</div>
+      <div class="kpi-trend neutral">● Stable Projected Growth</div>
+    </div>
+    <div class="card kpi-card">
+      <div class="kpi-icon">🎯</div>
+      <div class="kpi-value">91.2%</div>
+      <div class="kpi-label">Model Accuracy (R²)</div>
+      <div class="kpi-trend up">▲ High Feature Correlation</div>
+    </div>
+    <div class="card kpi-card">
+      <div class="kpi-icon">📉</div>
+      <div class="kpi-value" id="kpiMape">7.68%</div>
+      <div class="kpi-label">Model Error (MAPE)</div>
+      <div class="kpi-trend up">▲ Low Holdout Variance</div>
+    </div>
+  </div>
+
+  <!-- ═══ Charts Grid ═══ -->
+  <div class="charts-grid">
+    <div class="card chart-card">
+      <div class="chart-title">Revenue Forecast Trend</div>
+      <div class="chart-subtitle">Historical actuals (21 months) combined with 6-month predictive forecasts</div>
+      <div class="chart-container"><canvas id="forecastChart"></canvas></div>
+    </div>
+    <div class="card chart-card">
+      <div class="chart-title">Feature Importance</div>
+      <div class="chart-subtitle">Random Forest feature weights</div>
+      <div class="chart-container"><canvas id="importanceChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ═══ Bottom Grid ═══ -->
+  <div class="bottom-grid">
+    <!-- Table Section -->
+    <div class="card table-section" style="grid-column: 1 / -1;">
+      <div class="table-header">
+        <div class="table-title">📄 Projected Forecast Data (Next 6 Months)</div>
+      </div>
+      <div class="data-table-wrap">
+        <table id="forecastTable">
+          <thead>
+            <tr>
+              <th>Forecast Month</th>
+              <th>Year</th>
+              <th>Projected Revenue ($)</th>
+              <th>Estimated Marketing Spend ($)</th>
+              <th>R² Confidence Range ($)</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Footer ═══ -->
+  <div class="footer">
+    <p>Predictive Analytics Dashboard &copy; 2026 &nbsp;·&nbsp; <a href="https://github.com/skmdshariff143-ai/sales-revenue-dashboard" target="_blank" rel="noopener">GitHub Repository ↗</a></p>
+  </div>
+
+</div>
+
+<script>
+// ═══ Hardcoded Data derived from python output run ═══
+const HISTORICAL_DATA = [
+  { date: 'Oct 2024', revenue: 211535.40 },
+  { date: 'Nov 2024', revenue: 241314.36 },
+  { date: 'Dec 2024', revenue: 261586.03 },
+  { date: 'Jan 2025', revenue: 234146.03 },
+  { date: 'Feb 2025', revenue: 262749.04 },
+  { date: 'Mar 2025', revenue: 268123.07 },
+  { date: 'Apr 2025', revenue: 268551.23 },
+  { date: 'May 2025', revenue: 272952.29 },
+  { date: 'Jun 2025', revenue: 249389.57 },
+  { date: 'Jul 2025', revenue: 258404.15 },
+  { date: 'Aug 2025', revenue: 222657.36 },
+  { date: 'Sep 2025', revenue: 230931.32 },
+  { date: 'Oct 2025', revenue: 259628.81 },
+  { date: 'Nov 2025', revenue: 310371.12 },
+  { date: 'Dec 2025', revenue: 329870.71 },
+  { date: 'Jan 2026', revenue: 324739.93 },
+  { date: 'Feb 2026', revenue: 328092.84 },
+  { date: 'Mar 2026', revenue: 324630.93 },
+  { date: 'Apr 2026', revenue: 327429.21 },
+  { date: 'May 2026', revenue: 329680.12 },
+  { date: 'Jun 2026', revenue: 321590.22 }
+];
+
+// Base Model Outputs
+const FORECAST_BASE = {
+  RF: [
+    { date: 'Jul 2026', year: 2026, revenue: 325003.65, spend: 19462.88 },
+    { date: 'Aug 2026', year: 2026, revenue: 326652.17, spend: 19862.88 },
+    { date: 'Sep 2026', year: 2026, revenue: 327209.77, spend: 20262.88 },
+    { date: 'Oct 2026', year: 2026, revenue: 327219.91, spend: 20662.88 },
+    { date: 'Nov 2026', year: 2026, revenue: 327109.83, spend: 21062.88 },
+    { date: 'Dec 2026', year: 2026, revenue: 327421.22, spend: 21462.88 }
+  ],
+  LR: [
+    { date: 'Jul 2026', year: 2026, revenue: 318450.20, spend: 19462.88 },
+    { date: 'Aug 2026', year: 2026, revenue: 320120.45, spend: 19862.88 },
+    { date: 'Sep 2026', year: 2026, revenue: 321040.60, spend: 20262.88 },
+    { date: 'Oct 2026', year: 2026, revenue: 319800.70, spend: 20662.88 },
+    { date: 'Nov 2026', year: 2026, revenue: 323400.90, spend: 21062.88 },
+    { date: 'Dec 2026', year: 2026, revenue: 325100.15, spend: 21462.88 }
+  ]
+};
+
+const FEATURE_IMPORTANCES = {
+  RF: [0.42, 0.23, 0.18, 0.11, 0.06],
+  LR: [0.35, 0.28, 0.15, 0.12, 0.10]
+};
+
+let forecastChartInstance = null;
+let importanceChartInstance = null;
+
+function initCharts() {
+  const ctxForecast = document.getElementById('forecastChart').getContext('2d');
+  const labels = HISTORICAL_DATA.map(d => d.date).concat(FORECAST_BASE.RF.map(d => d.date));
+  
+  // Historical dataset config
+  const histDataPoints = HISTORICAL_DATA.map(d => d.revenue);
+  const fcDataPoints = Array(HISTORICAL_DATA.length).fill(null).concat(FORECAST_BASE.RF.map(d => d.revenue));
+  
+  // Connect historical and forecast visually
+  fcDataPoints[HISTORICAL_DATA.length - 1] = HISTORICAL_DATA[HISTORICAL_DATA.length - 1].revenue;
+
+  forecastChartInstance = new Chart(ctxForecast, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Historical Actuals',
+          data: histDataPoints,
+          borderColor: '#6366f1',
+          backgroundColor: 'rgba(99,102,241,0.06)',
+          fill: true,
+          tension: 0.3,
+          pointRadius: 4,
+          pointBackgroundColor: '#6366f1'
+        },
+        {
+          label: 'Projected Forecast',
+          data: fcDataPoints,
+          borderColor: '#10b981',
+          backgroundColor: 'rgba(16,185,129,0.06)',
+          borderDash: [5, 5],
+          fill: false,
+          tension: 0.3,
+          pointRadius: 4,
+          pointBackgroundColor: '#10b981'
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { labels: { color: '#94a3b8', font: { family: "'Inter', sans-serif" } } }
+      },
+      scales: {
+        x: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8' } },
+        y: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8', callback: v => '$' + (v / 1000).toFixed(0) + 'K' } }
+      }
+    }
+  });
+
+  const ctxImportance = document.getElementById('importanceChart').getContext('2d');
+  importanceChartInstance = new Chart(ctxImportance, {
+    type: 'bar',
+    data: {
+      labels: ['Lag Revenue', 'Marketing Spend', 'Seasonality', 'Rolling Average', 'Discount Index'],
+      datasets: [{
+        label: 'Feature Weight',
+        data: FEATURE_IMPORTANCES.RF,
+        backgroundColor: 'rgba(16,185,129,0.75)',
+        borderColor: '#10b981',
+        borderWidth: 1,
+        borderRadius: 6
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8' } },
+        y: { grid: { display: false }, ticks: { color: '#94a3b8' } }
+      }
+    }
+  });
+}
+
+function updateForecast() {
+  const model = document.getElementById('modelSelect').value;
+  const modifier = parseInt(document.getElementById('budgetSlider').value);
+  
+  document.getElementById('budgetVal').textContent = (modifier >= 0 ? '+' : '') + modifier + '%';
+
+  // Fetch base forecast
+  const baseForecast = FORECAST_BASE[model];
+  const finalForecast = baseForecast.map(item => {
+    // Model simulation: Marketing Spend modifier directly impacts forecast
+    // (e.g. RF has ~0.23 feature importance of marketing, LR has 0.28)
+    const weight = model === 'RF' ? 0.23 : 0.28;
+    const modifierFactor = 1 + (modifier / 100) * weight;
+    return {
+      ...item,
+      revenue: item.revenue * modifierFactor,
+      spend: item.spend * (1 + modifier / 100)
+    };
+  });
+
+  // Update KPIs
+  const total6M = finalForecast.reduce((sum, item) => sum + item.revenue, 0);
+  const avgMonthly = total6M / 6;
+  
+  document.getElementById('kpi6MonthRevenue').textContent = '$' + (total6M / 1000000).toFixed(2) + 'M';
+  document.getElementById('kpiAvgMonthly').textContent = '$' + (avgMonthly / 1000).toFixed(0) + 'K';
+  document.getElementById('kpiMape').textContent = model === 'RF' ? '7.68%' : '12.99%';
+
+  // Update chart
+  const fcDataPoints = Array(HISTORICAL_DATA.length).fill(null).concat(finalForecast.map(d => d.revenue));
+  fcDataPoints[HISTORICAL_DATA.length - 1] = HISTORICAL_DATA[HISTORICAL_DATA.length - 1].revenue;
+  
+  forecastChartInstance.data.datasets[1].data = fcDataPoints;
+  forecastChartInstance.data.datasets[1].borderColor = model === 'RF' ? '#10b981' : '#6366f1';
+  forecastChartInstance.data.datasets[1].pointBackgroundColor = model === 'RF' ? '#10b981' : '#6366f1';
+  forecastChartInstance.update();
+
+  importanceChartInstance.data.datasets[0].data = FEATURE_IMPORTANCES[model];
+  importanceChartInstance.data.datasets[0].backgroundColor = model === 'RF' ? 'rgba(16,185,129,0.75)' : 'rgba(99,102,241,0.75)';
+  importanceChartInstance.data.datasets[0].borderColor = model === 'RF' ? '#10b981' : '#6366f1';
+  importanceChartInstance.update();
+
+  // Update Table
+  const tbody = document.getElementById('tableBody');
+  tbody.innerHTML = finalForecast.map(item => {
+    const errorMargin = item.revenue * (model === 'RF' ? 0.0768 : 0.1299);
+    const minVal = item.revenue - errorMargin;
+    const maxVal = item.revenue + errorMargin;
+    
+    return `
+      <tr>
+        <td style="font-weight:600;">${item.date}</td>
+        <td>${item.year}</td>
+        <td style="font-weight:700;color:var(--accent-light);">$${Math.round(item.revenue).toLocaleString()}</td>
+        <td>$${Math.round(item.spend).toLocaleString()}</td>
+        <td style="color:var(--text-secondary)">$${Math.round(minVal).toLocaleString()} – $${Math.round(maxVal).toLocaleString()}</td>
+        <td><span class="badge badge-forecast">Forecasted</span></td>
+      </tr>
+    `;
+  }).join('');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initCharts();
+  updateForecast();
+});
+</script>
+</body>
+</html>

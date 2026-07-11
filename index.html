@@ -141,6 +141,10 @@
             background: linear-gradient(90deg, #06b6d4, #10b981);
         }
 
+        .card:nth-child(3)::before {
+            background: linear-gradient(90deg, #10b981, #059669);
+        }
+
         .card:hover {
             border-color: var(--border-glow);
             transform: translateY(-6px);
@@ -170,6 +174,11 @@
         }
 
         .card:nth-child(2) .card-tag {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-emerald);
+        }
+
+        .card:nth-child(3) .card-tag {
             background: rgba(16, 185, 129, 0.15);
             color: var(--accent-emerald);
         }
@@ -219,6 +228,10 @@
             color: var(--accent-emerald);
         }
 
+        .card:nth-child(3) .card-link {
+            color: var(--accent-emerald);
+        }
+
         .card:hover .card-link {
             gap: 10px;
         }
@@ -257,7 +270,7 @@
         <div class="logo-icon">📊</div>
         <h1>Data Analytics Portfolio</h1>
         <p class="subtitle">
-            Interactive dashboards and machine learning projects — explore sales analytics with Chart.js and customer segmentation with scikit-learn.
+            Interactive dashboards and machine learning projects — explore sales analytics, K-Means customer segmentation, and predictive revenue forecasting models.
         </p>
 
         <div class="cards">
@@ -284,7 +297,24 @@
                 <span class="card-tag">Task 2</span>
                 <h2>Customer Segmentation</h2>
                 <p>
-                    K-Means clustering analysis that segments 200 customers into 4 distinct groups using scikit-learn. Includes PCA visualization, elbow/silhouette analysis, profile heatmaps, and an interactive dashboard.
+                    K-Means clustering analysis that segments 600 customers into 4 distinct groups using scikit-learn. Includes PCA visualization, elbow/silhouette analysis, profile heatmaps, and an interactive dashboard.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">pandas</span>
+                    <span class="tech-badge">scikit-learn</span>
+                    <span class="tech-badge">Chart.js</span>
+                </div>
+                <span class="card-link">Open Dashboard →</span>
+            </a>
+
+            <!-- Task 3 -->
+            <a href="task3-predictive-analytics/predictive_dashboard.html" class="card" id="card-task3">
+                <div class="card-icon">🔮</div>
+                <span class="card-tag">Task 3</span>
+                <h2>Predictive Revenue Forecasting</h2>
+                <p>
+                    Time-series forecasting that predicts monthly revenue for the next 6 months using Linear Regression vs. Random Forest Regressor. Includes feature engineering, residual analysis, and interactive model tuning.
                 </p>
                 <div class="tech-stack">
                     <span class="tech-badge">Python</span>

@@ -1,15 +1,16 @@
-# 📊 Data Analytics Portfolio — Sales & Customer Segmentation
+# 📊 Data Analytics Portfolio — Sales, Segmentation & Predictive Analytics
 
-A data analytics portfolio featuring two projects: an interactive Sales & Revenue Dashboard and a Customer Segmentation analysis using K-Means clustering. Both include interactive web-based dashboards deployed via GitHub Pages.
+A data analytics portfolio featuring three projects: an interactive Sales & Revenue Dashboard, a Customer Segmentation analysis using K-Means clustering, and a Predictive Revenue Forecasting model. All three include interactive web-based dashboards deployed via GitHub Pages.
 
 ## 🌐 Live Demo
 
-**[View Portfolio →](https://skmdshariff143-ai.github.io/sales-revenue-dashboard/)**
+**[View Portfolio Hub →](https://skmdshariff143-ai.github.io/sales-revenue-dashboard/)**
 
 | Project | Live Link |
 |---------|-----------|
 | Task 1 — Sales Dashboard | [Open Dashboard](https://skmdshariff143-ai.github.io/sales-revenue-dashboard/task1-sales-dashboard/sales_dashboard.html) |
 | Task 2 — Customer Segmentation | [Open Dashboard](https://skmdshariff143-ai.github.io/sales-revenue-dashboard/task2-customer-segmentation/segmentation_dashboard.html) |
+| Task 3 — Predictive Revenue Forecasting | [Open Dashboard](https://skmdshariff143-ai.github.io/sales-revenue-dashboard/task3-predictive-analytics/predictive_dashboard.html) |
 
 ---
 
@@ -17,23 +18,36 @@ A data analytics portfolio featuring two projects: an interactive Sales & Revenu
 
 ```
 sales-revenue-dashboard/
-├── index.html                                  # Landing page linking both tasks
+├── index.html                                  # Landing page linking all tasks
 ├── README.md                                   # This file
 │
 ├── task1-sales-dashboard/
 │   └── sales_dashboard.html                    # Sales & Revenue Analytics Dashboard
 │
-└── task2-customer-segmentation/
-    ├── segmentation_dashboard.html             # Customer Segmentation Dashboard
-    ├── customer_segmentation.py                # Python clustering script
+├── task2-customer-segmentation/
+│   ├── segmentation_dashboard.html             # Customer Segmentation Dashboard
+│   ├── customer_segmentation.py                # Python clustering script
+│   ├── data/
+│   │   ├── segmented_customers.csv             # 600 customers with segment labels
+│   │   └── segment_profile_summary.csv         # Aggregated segment profiles
+│   └── charts/
+│       ├── pca_segments.png                    # PCA cluster visualization
+│       ├── elbow_silhouette.png                # Elbow method + silhouette analysis
+│       ├── segment_profile_heatmap.png         # Feature heatmap by segment
+│       └── segment_sizes.png                   # Segment distribution bar chart
+│
+└── task3-predictive-analytics/
+    ├── predictive_dashboard.html               # Predictive Analytics Dashboard
+    ├── predictive_analytics.py                 # Time-series forecasting script
     ├── data/
-    │   ├── segmented_customers.csv             # 200 customers with segment labels
-    │   └── segment_profile_summary.csv         # Aggregated segment profiles
+    │   ├── historical_cleaned.csv              # Historical cleaned sales data
+    │   ├── forecast_next_6_months.csv          # Future 6-month forecast values
+    │   └── model_evaluation.csv                # Model comparison metrics
     └── charts/
-        ├── pca_segments.png                    # PCA cluster visualization
-        ├── elbow_silhouette.png                # Elbow method + silhouette analysis
-        ├── segment_profile_heatmap.png         # Feature heatmap by segment
-        └── segment_sizes.png                   # Segment distribution bar chart
+        ├── forecast_overview.png               # Forecast trend line chart
+        ├── residuals.png                       # Residual distribution plot
+        ├── model_comparison.png                # Model performance comparison
+        └── feature_importance.png              # Random Forest feature weights
 ```
 
 ---
@@ -64,6 +78,21 @@ A machine learning project that performs K-Means customer segmentation on 200 cu
 | NumPy | Numerical computing |
 | scikit-learn | KMeans, PCA, StandardScaler, Silhouette |
 | Matplotlib & Seaborn | Static chart generation |
+| HTML/CSS/Chart.js | Interactive dashboard |
+
+---
+
+## Task 3 — Predictive Revenue Forecasting
+
+A machine learning and time-series forecasting project that predicts future monthly sales revenue for the next 6 months using **Python**, **pandas**, and **scikit-learn**. The pipeline engineers lag features, rolling averages, and seasonal indices from historical actuals to train and compare a Linear Regression model against a Random Forest Regressor using a time-based holdout validation split. Performance is evaluated using standard regression metrics (MAE, RMSE, MAPE, and R² Score), and the final selected Random Forest model is deployed recursively to generate predictions and residual distribution charts. A companion interactive dark glassmorphism dashboard allows users to adjust future marketing spend parameters and dynamically observe simulated revenue forecast updates.
+
+### Tech Stack
+| Technology | Purpose |
+|-----------|---------|
+| Python 3 | Core scripting |
+| pandas & NumPy | Feature engineering & data manipulation |
+| scikit-learn | Linear Regression, RandomForestRegressor, Train/Test split |
+| Matplotlib & Seaborn | Static evaluation chart generation |
 | HTML/CSS/Chart.js | Interactive dashboard |
 
 ---
